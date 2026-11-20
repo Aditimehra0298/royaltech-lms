@@ -1,0 +1,596 @@
+// MySQL — point DATABASE_URL in .env.local at your Workbench / cloud instance.
+// Create tables: `npm run db:migrate` (dev) or run the SQL in prisma/migrations/.../migration.sql in Workbench.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// LMS users — registration, login, and profile (avatar + account type).
+model LmsUser {
+  id            String    @id @default(cuid())
+  email         String    @unique @db.VarChar(255)
+  name          String?   @db.VarChar(255)
+  role          String    @default("learner") @db.VarChar(32)
+  accountType   String?   @db.VarChar(32)
+  avatarUrl     String?   @db.VarChar(512)
+  phone         String?   @db.VarChar(32)
+  companyName   String?   @db.VarChar(255)
+  personalEmail String?   @db.VarChar(255)
+  industryType  String?   @db.VarChar(64)
+  companySize   String?   @db.VarChar(32)
+  ipv4          String?   @db.VarChar(45)
+  ipv6          String?   @db.VarChar(45)
+  countryCode   String?   @db.VarChar(8)
+  countryName   String?   @db.VarChar(128)
+  passwordHash    String?   @db.VarChar(255)
+  lastLoginAt     DateTime?
+  emailVerifiedAt DateTime?
+  /// When set, the account cannot sign in (admin block from Users panel).
+  blockedAt       DateTime?
+  createdAt       DateTime  @default(now())
+  /// Permanent learner ID — first user 101, then 102, 103…
+  identificationNumber Int? @unique
+  /// Month (1–12) when the user registered — set once automatically
+  registrationMonth     Int?
+  /// Year (e.g. 2026) when the user registered — set once automatically
+  registrationYear      Int?
+  /// Display MM-YYYY at registration, e.g. 05-2026
+  registrationMonthYear String? @db.VarChar(7)
+
+  purchases      LmsPurchase[]
+  payments       LmsPayment[]
+  certificates   LmsCertificate[]
+  organization   LmsOrganization?
+  studentProfiles LmsStudent[]
+
+  @@map("lms_user")
+}
+
+/// Singleton row — only one admin panel login allowed at a time (shared across PM2).
+model AdminActiveSession {
+  id        String   @id @default("main") @db.VarChar(32)
+  email     String   @db.VarChar(255)
+  sid       String   @db.VarChar(128)
+  createdAt Int
+  exp       Int
+  updatedAt DateTime @updatedAt
+
+  @@map("lms_admin_active_session")
+}
+
+/// Organisation accounts — permanent ID from 101 (certificate format: {id}-org/{MM-YYYY}/{seq}).
+model LmsOrganization {
+  id                   String   @id @default(cuid())
+  /// Permanent organisation ID — first org 101, then 102, 103…
+  identificationNumber Int      @unique
+  companyName          String   @db.VarChar(255)
+  workEmail            String   @unique @db.VarChar(255)
+  personalEmail        String?  @db.VarChar(255)
+  industryType         String?  @db.VarChar(64)
+  companySize          String?  @db.VarChar(32)
+  userId               String?  @unique
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  /// Month (1–12) when the organisation registered — set once automatically
+  registrationMonth     Int?
+  registrationYear      Int?
+  registrationMonthYear String? @db.VarChar(7)
+
+  user         LmsUser?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  certificates LmsCertificate[]
+  students     LmsStudent[]
+  videoAccessRequests VideoAccessRequest[]
+  staffLinks   InstituteStaffLink[]
+
+  @@index([companyName])
+  @@map("lms_organization")
+}
+
+/// One-time codes for email verification during registration.
+model LmsEmailOtp {
+  id           String    @id @default(cuid())
+  email        String    @db.VarChar(255)
+  codeHash     String    @db.VarChar(128)
+  purpose      String    @default("register") @db.VarChar(32)
+  expiresAt    DateTime
+  verifiedAt   DateTime?
+  /// Failed verify attempts against this code (lockout after OTP_MAX_VERIFY_ATTEMPTS).
+  attemptCount Int       @default(0)
+  createdAt    DateTime  @default(now())
+
+  @@index([email, purpose])
+  @@index([expiresAt])
+  @@map("lms_email_otp")
+}
+
+/// Self-paced / catalog courses — permanent course ID from 101 (synced from admin JSON).
+model LmsCourse {
+  id                         String   @id @default(cuid())
+  /// Permanent course ID — first course 101, then 102, 103…
+  courseIdentificationNumber Int      @unique
+  slug                       String   @unique @db.VarChar(191)
+  title                      String   @db.VarChar(512)
+  subtitle                   String?  @db.VarChar(512)
+  category                   String?  @db.VarChar(128)
+  level                      String?  @db.VarChar(64)
+  published                  Boolean  @default(true)
+  learningFormat             String?  @db.VarChar(32)
+  createdAt                  DateTime @default(now())
+  updatedAt                  DateTime @updatedAt
+
+  certificates LmsCertificate[]
+  purchases    LmsPurchase[]
+  content      LmsCourseContent?
+
+  @@index([category])
+  @@map("lms_course")
+}
+
+/// Full self-paced course payload from admin (curriculum, hero, lesson video URLs, page copy).
+/// Video/image files stay on disk or cloud; this table stores JSON + URLs — not binary blobs.
+model LmsCourseContent {
+  id         String   @id @default(cuid())
+  courseId   String   @unique
+  courseSlug String   @unique @db.VarChar(191)
+  /// ManagedCourse-shaped JSON (curriculum, hero, overviewSection, image URLs, etc.)
+  payload    Json
+  updatedAt  DateTime @updatedAt
+  createdAt  DateTime @default(now())
+
+  course LmsCourse @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseSlug])
+  @@map("lms_course_content")
+}
+
+/// Registry of admin uploads (images, videos, exam files) — URL + metadata for audit and backup.
+model LmsMediaAsset {
+  id           String   @id @default(cuid())
+  url          String   @db.VarChar(1024)
+  originalName String?  @db.VarChar(255)
+  mimeType     String?  @db.VarChar(128)
+  sizeBytes    Int?
+  /// image | video | document
+  kind         String   @db.VarChar(32)
+  courseSlug   String?  @db.VarChar(191)
+  uploadedBy   String?  @db.VarChar(255)
+  /// local (public/uploads/admin) | r2 | s3 | cloudinary
+  storage      String   @default("local") @db.VarChar(32)
+  createdAt    DateTime @default(now())
+
+  @@index([courseSlug])
+  @@index([kind])
+  @@index([createdAt])
+  @@map("lms_media_asset")
+}
+
+/// Purchases / enrollments written from checkout (parallel path to localStorage).
+model LmsPurchase {
+  id           String   @id @default(cuid())
+  userId       String?
+  learnerEmail String   @db.VarChar(255)
+  courseSlug   String   @db.VarChar(191)
+  courseId     String?
+  title        String   @db.VarChar(512)
+  createdAt    DateTime @default(now())
+
+  user   LmsUser?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+  course LmsCourse? @relation(fields: [courseId], references: [id], onDelete: SetNull)
+
+  @@unique([learnerEmail, courseSlug], map: "lms_purchase_learner_course_unique")
+  @@index([learnerEmail])
+  @@index([courseSlug])
+  @@index([userId, courseSlug])
+  @@map("lms_purchase")
+}
+
+/// Razorpay / demo / admin-grant payment records for Orders & Payments admin panel.
+model LmsPayment {
+  id                String    @id @default(cuid())
+  userId            String?
+  learnerEmail      String    @db.VarChar(255)
+  razorpayOrderId   String?   @unique @db.VarChar(64)
+  razorpayPaymentId String?   @db.VarChar(64)
+  receipt           String?   @db.VarChar(64)
+  /// Amount in smallest currency unit (paise for INR).
+  amount            Int       @default(0)
+  currency          String    @default("INR") @db.VarChar(8)
+  /// pending | paid | failed | waived | demo | refunded
+  status            String    @default("pending") @db.VarChar(32)
+  /// razorpay | demo | admin_grant
+  method            String    @default("razorpay") @db.VarChar(32)
+  /// [{ slug, title, qty, price }]
+  items             Json
+  countryCode       String?   @db.VarChar(8)
+  adminNote         String?   @db.VarChar(512)
+  grantedByEmail    String?   @db.VarChar(255)
+  paidAt            DateTime?
+  createdAt         DateTime  @default(now())
+
+  user LmsUser? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([learnerEmail])
+  @@index([status])
+  @@index([method])
+  @@index([createdAt])
+  @@index([razorpayPaymentId])
+  @@map("lms_payment")
+}
+
+/// Issued completion certificate — unique number per holder per course.
+model LmsCertificate {
+  id                  String   @id @default(cuid())
+  userId              String?
+  organizationId      String?
+  /// individual | organisation
+  holderType          String   @default("individual") @db.VarChar(32)
+  learnerEmail        String   @db.VarChar(255)
+  learnerName         String?  @db.VarChar(255)
+  courseSlug          String   @db.VarChar(191)
+  courseId            String?
+  courseTitle         String   @db.VarChar(512)
+  /// SFT format: YYYY-MM-courseId-trainingId/userId
+  certificateNumber   String   @unique @db.VarChar(64)
+  /// Public tracker / QR: YYYY-verifyNumber-userId e.g. 2026-0042-123
+  delegateNumber      String?  @unique @db.VarChar(32)
+  /// Global verify sequence within issue year
+  verifyNumber        Int?
+  identificationNumber Int
+  issuedAt            DateTime @default(now())
+  scorePercent        Int?
+  templateImage       String?  @db.VarChar(512)
+  badgeImage          String?  @db.VarChar(512)
+  supplementaryDocs   Json?
+  /// pending | ready | failed | revoked
+  status              String   @default("pending") @db.VarChar(32)
+  /// Admin can hide/show on learner dashboard
+  visibleToLearner    Boolean  @default(false)
+  /// PDF URL from n8n (Google Drive, S3, etc.)
+  pdfUrl              String?  @db.VarChar(1024)
+  /// n8n | builtin
+  issuedVia           String   @default("n8n") @db.VarChar(32)
+
+  user         LmsUser?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+  organization LmsOrganization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  course       LmsCourse?        @relation(fields: [courseId], references: [id], onDelete: SetNull)
+
+  @@index([learnerEmail])
+  @@index([courseSlug])
+  @@index([courseId])
+  @@index([identificationNumber])
+  @@index([delegateNumber])
+  @@index([verifyNumber])
+  @@index([organizationId])
+  @@index([holderType])
+  @@map("lms_certificate")
+}
+
+/// Support tickets created by the AI chatbot when a technical issue is reported.
+model LmsIssue {
+  id              String    @id @default(cuid())
+  issueToken      String    @unique @db.VarChar(32) // e.g. SFT-TECH-1023
+  userId          String?   @db.VarChar(255)
+  userName        String?   @db.VarChar(255)
+  userEmail       String?   @db.VarChar(255)
+  studentId       String?   @db.VarChar(64)
+  issueText       String    @db.Text
+  subject         String?   @db.VarChar(255)
+  issueStatus     String    @default("open") @db.VarChar(32) // open | in_progress | resolved | closed
+  category        String?   @db.VarChar(32) // TECH | QUIZ | VIDEO | AUTH | PAY | CERT | LMS | ASSIGN | FAQ
+  priority        String    @default("medium") @db.VarChar(16) // low | medium | high
+  sentiment       String?   @db.VarChar(32) // angry | frustrated | neutral | positive
+  transactionId   String?   @db.VarChar(128)
+  paymentDate     String?   @db.VarChar(64)
+  screenshotUrl   String?   @db.VarChar(1024)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([issueStatus])
+  @@index([priority])
+  @@index([createdAt])
+  @@index([userEmail])
+  @@map("lms_issue")
+}
+
+/// Persisted chatbot conversation turns (MySQL chat history).
+model LmsChatHistory {
+  id           String   @id @default(cuid())
+  sessionId    String   @db.VarChar(128)
+  learnerEmail String?  @db.VarChar(255)
+  learnerName  String?  @db.VarChar(255)
+  role         String   @db.VarChar(16) // user | assistant | system
+  content      String   @db.Text
+  intent       String?  @db.VarChar(64)
+  provider     String?  @db.VarChar(32)
+  pagePath     String?  @db.VarChar(512)
+  ticketToken  String?  @db.VarChar(32)
+  metadata     Json?
+  createdAt    DateTime @default(now())
+
+  @@index([sessionId, createdAt])
+  @@index([learnerEmail, createdAt])
+  @@index([createdAt])
+  @@map("lms_chat_history")
+}
+
+/// Public website form submissions (contact, newsletter, etc.).
+model LmsFormSubmission {
+  id        String   @id @default(cuid())
+  formType  String   @db.VarChar(32)
+  status    String   @default("new") @db.VarChar(32)
+  name      String?  @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  phone     String?  @db.VarChar(64)
+  subject   String?  @db.VarChar(255)
+  category  String?  @db.VarChar(64)
+  message   String?  @db.Text
+  pagePath  String?  @db.VarChar(512)
+  metadata  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([formType])
+  @@index([status])
+  @@index([createdAt])
+  @@map("lms_form_submission")
+}
+
+/// Institute students synced from institute apps (also linked to lms_user when available).
+model LmsStudent {
+  id             String   @id @default(cuid())
+  /// Public student UID e.g. SFT-STU-101
+  uid            String   @unique @db.VarChar(64)
+  name           String   @db.VarChar(255)
+  email          String?  @db.VarChar(255)
+  phone          String?  @db.VarChar(32)
+  photoUrl       String?  @db.VarChar(1024)
+  batch          String?  @db.VarChar(128)
+  grade          String?  @db.VarChar(32)
+  courseSlug     String?  @db.VarChar(191)
+  courseTitle    String?  @db.VarChar(512)
+  organizationId String?
+  userId         String?
+  /// active | inactive | graduated
+  status         String   @default("active") @db.VarChar(32)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization   LmsOrganization?      @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  user           LmsUser?              @relation(fields: [userId], references: [id], onDelete: SetNull)
+  trainingVideos StudentTrainingVideo[]
+
+  @@index([organizationId])
+  @@index([userId])
+  @@index([email])
+  @@index([courseSlug])
+  @@map("students")
+}
+
+/// Public / verify-site video unlock requests.
+model VideoAccessRequest {
+  id             String   @id @default(cuid())
+  name           String   @db.VarChar(255)
+  organisation   String   @db.VarChar(255)
+  email          String   @db.VarChar(255)
+  location       String   @db.VarChar(255)
+  organizationId String?
+  /// new | reviewed | approved | rejected
+  status         String   @default("new") @db.VarChar(32)
+  notes          String?  @db.Text
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization LmsOrganization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+
+  @@index([email])
+  @@index([status])
+  @@index([organizationId])
+  @@index([createdAt])
+  @@map("video_access_requests")
+}
+
+/// Per-student training video status (uploaded | missing | approved).
+model StudentTrainingVideo {
+  id        String   @id @default(cuid())
+  studentId String
+  title     String   @db.VarChar(512)
+  courseSlug String? @db.VarChar(191)
+  /// uploaded | missing | approved
+  status    String   @default("missing") @db.VarChar(32)
+  videoUrl  String?  @db.VarChar(1024)
+  notes     String?  @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  student LmsStudent @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId])
+  @@index([status])
+  @@index([courseSlug])
+  @@map("student_training_videos")
+}
+
+/// Maps institute staff email → organisation (institute sees only own data).
+model InstituteStaffLink {
+  id             String   @id @default(cuid())
+  email          String   @unique @db.VarChar(255)
+  organizationId String
+  name           String?  @db.VarChar(255)
+  /// institute_admin | institute_viewer
+  role           String   @default("institute_admin") @db.VarChar(32)
+  createdAt      DateTime @default(now())
+
+  organization LmsOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@map("institute_staff_link")
+}
+
+// =============================================================================
+// SFT Global Skill Assessment Council — legacy multi-institute registry tables
+// =============================================================================
+
+/// Training institute onboarded under the Council (global admin sees all).
+model SftInstitute {
+  id        String   @id @default(cuid())
+  /// Public institute UID e.g. SFT-INS-1001
+  uid       String   @unique @db.VarChar(64)
+  name      String   @db.VarChar(255)
+  email     String   @unique @db.VarChar(255)
+  logoUrl   String?  @db.VarChar(1024)
+  /// active | inactive | pending
+  status    String   @default("pending") @db.VarChar(32)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  courses       SftInstituteCourse[]
+  students      SftInstituteStudent[]
+  trainingVideos SftTrainingVideo[]
+  certificates  SftInstituteCertificate[]
+  unlockForms   SftVerifyUnlockForm[]
+  staffUsers    SftInstituteStaff[]
+
+  @@index([status])
+  @@index([name])
+  @@map("sft_institute")
+}
+
+/// Institute staff login mapping (email → institute). Global admin has no row.
+model SftInstituteStaff {
+  id          String   @id @default(cuid())
+  instituteId String
+  email       String   @unique @db.VarChar(255)
+  name        String?  @db.VarChar(255)
+  /// institute_admin | institute_viewer
+  role        String   @default("institute_admin") @db.VarChar(32)
+  createdAt   DateTime @default(now())
+
+  institute SftInstitute @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+
+  @@index([instituteId])
+  @@map("sft_institute_staff")
+}
+
+/// Course created by an institute (stored centrally, not only locally).
+model SftInstituteCourse {
+  id          String   @id @default(cuid())
+  instituteId String
+  title       String   @db.VarChar(512)
+  code        String?  @db.VarChar(64)
+  /// draft | published | archived
+  status      String   @default("draft") @db.VarChar(32)
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  institute      SftInstitute            @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+  students       SftInstituteStudent[]
+  trainingVideos SftTrainingVideo[]
+  certificates   SftInstituteCertificate[]
+
+  @@index([instituteId])
+  @@index([status])
+  @@unique([instituteId, code])
+  @@map("sft_institute_course")
+}
+
+/// Student belonging to an institute (photo + UID + course + batch + grade).
+model SftInstituteStudent {
+  id          String   @id @default(cuid())
+  instituteId String
+  courseId    String?
+  /// Public student UID e.g. SFT-STU-2001
+  uid         String   @unique @db.VarChar(64)
+  name        String   @db.VarChar(255)
+  photoUrl    String?  @db.VarChar(1024)
+  phone       String?  @db.VarChar(32)
+  email       String?  @db.VarChar(255)
+  batch       String?  @db.VarChar(128)
+  grade       String?  @db.VarChar(32)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  institute    SftInstitute             @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+  course       SftInstituteCourse?      @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  certificates SftInstituteCertificate[]
+
+  @@index([instituteId])
+  @@index([courseId])
+  @@index([email])
+  @@map("sft_institute_student")
+}
+
+/// Training video upload status per institute/course.
+model SftTrainingVideo {
+  id          String   @id @default(cuid())
+  instituteId String
+  courseId    String?
+  title       String   @db.VarChar(512)
+  /// uploaded | missing | approved
+  status      String   @default("missing") @db.VarChar(32)
+  videoUrl    String?  @db.VarChar(1024)
+  notes       String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  institute SftInstitute       @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+  course    SftInstituteCourse? @relation(fields: [courseId], references: [id], onDelete: SetNull)
+
+  @@index([instituteId])
+  @@index([courseId])
+  @@index([status])
+  @@map("sft_training_video")
+}
+
+/// Certificates issued via institutes (central PDF + verify link).
+model SftInstituteCertificate {
+  id                String   @id @default(cuid())
+  instituteId       String
+  courseId          String?
+  studentId         String?
+  certificateNumber String   @unique @db.VarChar(64)
+  issueDate         DateTime @default(now())
+  pdfUrl            String?  @db.VarChar(1024)
+  verifyUrl         String?  @db.VarChar(1024)
+  /// pending | ready | revoked
+  status            String   @default("pending") @db.VarChar(32)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  institute SftInstitute        @relation(fields: [instituteId], references: [id], onDelete: Cascade)
+  course    SftInstituteCourse? @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  student   SftInstituteStudent? @relation(fields: [studentId], references: [id], onDelete: SetNull)
+
+  @@index([instituteId])
+  @@index([studentId])
+  @@index([courseId])
+  @@map("sft_institute_certificate")
+}
+
+/// Public verify-website unlock form submissions (same MySQL DB).
+model SftVerifyUnlockForm {
+  id           String   @id @default(cuid())
+  instituteId  String?
+  name         String   @db.VarChar(255)
+  organisation String   @db.VarChar(255)
+  email        String   @db.VarChar(255)
+  location     String   @db.VarChar(255)
+  /// new | reviewed | unlocked | rejected
+  status       String   @default("new") @db.VarChar(32)
+  notes        String?  @db.Text
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  institute SftInstitute? @relation(fields: [instituteId], references: [id], onDelete: SetNull)
+
+  @@index([email])
+  @@index([status])
+  @@index([instituteId])
+  @@index([createdAt])
+  @@map("sft_verify_unlock_form")
+}

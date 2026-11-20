@@ -1,0 +1,672 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import {
+  ClipboardList,
+  Clock3,
+  FileText,
+  Loader2,
+  Upload,
+  Video,
+} from "lucide-react";
+import type { CourseCurriculumItem, CourseCurriculumKind } from "@/lib/content-schema";
+import AdminAssetUrlField from "@/components/admin/AdminAssetUrlField";
+import AdminExamImageOptionsBuilder from "@/components/admin/AdminExamImageOptionsBuilder";
+
+const EXAM_FILE_ACCEPT =
+  ".pdf,.doc,.docx,.csv,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/csv,application/csv";
+const VIDEO_FILE_ACCEPT =
+  ".mp4,.webm,.mov,.m4v,video/mp4,video/webm,video/quicktime,video/x-m4v";
+const DOC_FILE_ACCEPT =
+  ".pdf,.doc,.docx,.ppt,.pptx,.txt,.vtt,.srt,audio/mpeg,audio/mp3,audio/wav,application/pdf,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation";
+const MAX_VIDEO_UPLOAD_MB = 1024;
+
+export type LessonRowPatch = Partial<{
+  label: string;
+  kind: CourseCurriculumKind;
+  description: string;
+  lessonDurationMinutes: number;
+  lessonVideoSizeMb: number;
+  previewLimitMinutes: number;
+  about: string;
+  learningOutcomes: string[];
+  notes: string;
+  captions: string;
+  pdfUrl: string;
+  pptUrl: string;
+  podcastUrl: string;
+  webhookUrl: string;
+  resourceUrl: string;
+  downloadUrl: string;
+  videoUrl: string;
+  timedExam: boolean;
+  examDurationMinutes: number;
+  examUploadUrl: string;
+  examPassingScorePercent: number;
+}>;
+
+function kindLabel(kind: CourseCurriculumKind): string {
+  switch (kind) {
+    case "video":
+      return "Lecture";
+    case "exam":
+      return "Assessment";
+    default:
+      return "Document";
+  }
+}
+
+function labelToKind(label: string): CourseCurriculumKind {
+  if (label === "Exam" || label === "Assessment") return "exam";
+  if (label === "Video" || label === "Lecture") return "video";
+  return "reading";
+}
+
+/** Upload with progress so large module videos feel responsive. */
+function uploadAdminFile(
+  file: File,
+  courseSlug?: string,
+  onProgress?: (percent: number) => void,
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const fd = new FormData();
+    fd.append("file", file);
+    if (courseSlug?.trim()) fd.append("courseSlug", courseSlug.trim());
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "/api/admin/upload");
+    xhr.timeout = 30 * 60 * 1000; // 30 min for large videos
+
+    xhr.upload.onprogress = (event) => {
+      if (!event.lengthComputable || !onProgress) return;
+      onProgress(Math.min(99, Math.round((event.loaded / event.total) * 100)));
+    };
+
+    xhr.onload = () => {
+      let data: { ok?: boolean; url?: string; error?: string } = {};
+      try {
+        data = JSON.parse(xhr.responseText) as typeof data;
+      } catch {
+        reject(
+          new Error(
+            xhr.status === 413
+              ? "File too large for the server (nginx/client_max_body_size)."
+              : xhr.status === 502
+                ? "Upload failed (HTTP 502). The server proxy or app restarted mid-upload. Ask your host to set nginx client_max_body_size 5120M, proxy_read_timeout 1800s, and PM2 max_memory_restart at least 3G — or bypass Cloudflare (grey cloud) for files over 100 MB."
+                : `Upload failed (HTTP ${xhr.status})`,
+          ),
+        );
+        return;
+      }
+      if (xhr.status >= 200 && xhr.status < 300 && data.url) {
+        onProgress?.(100);
+        resolve(data.url);
+        return;
+      }
+      reject(new Error(data.error ?? `Upload failed (HTTP ${xhr.status})`));
+    };
+
+    xhr.onerror = () => reject(new Error("Network error during upload. Check connection and try again."));
+    xhr.ontimeout = () => reject(new Error("Upload timed out. Try a smaller file or a faster connection."));
+    xhr.send(fd);
+  });
+}
+
+type Props = {
+  lesson: CourseCurriculumItem;
+  lessonIndexLabel: string;
+  onPatch: (patch: LessonRowPatch) => void;
+  onSave: () => void | Promise<void>;
+  saving?: boolean;
+  /** Links uploaded videos/files to this course in MySQL for later recovery. */
+  courseSlug?: string;
+};
+
+export default function AdminLessonEditor({
+  lesson,
+  lessonIndexLabel,
+  onPatch,
+  onSave,
+  saving = false,
+  courseSlug,
+}: Props) {
+  const [videoSource, setVideoSource] = useState<"upload" | "url">("upload");
+  const [documentSource, setDocumentSource] = useState<"upload" | "url">("upload");
+  const [examSource, setExamSource] = useState<"upload" | "url">("upload");
+  const [uploadingVideo, setUploadingVideo] = useState(false);
+  const [videoUploadPercent, setVideoUploadPercent] = useState(0);
+  const [uploadingExam, setUploadingExam] = useState(false);
+  const [uploadingDocument, setUploadingDocument] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [selectedVideoMeta, setSelectedVideoMeta] = useState<{ sizeMb: number } | null>(null);
+
+  useEffect(() => {
+    setUploadError(null);
+    if (lesson.videoUrl?.trim()) setVideoSource("url");
+    else setVideoSource("upload");
+    const docUrl = lesson.downloadUrl?.trim() || lesson.videoUrl?.trim();
+    if (docUrl && lesson.kind === "reading") setDocumentSource("url");
+    else setDocumentSource("upload");
+    if (lesson.examUploadUrl?.trim()) setExamSource("url");
+    else setExamSource("upload");
+  }, [lesson.kind, lesson.label, lesson.videoUrl, lesson.downloadUrl, lesson.examUploadUrl]);
+
+  const documentUrl =
+    lesson.kind === "reading"
+      ? lesson.downloadUrl?.trim() || lesson.videoUrl?.trim() || ""
+      : lesson.downloadUrl?.trim() || "";
+
+  const setDocumentUrl = (url: string) => {
+    if (lesson.kind === "reading") {
+      onPatch({ downloadUrl: url, videoUrl: url });
+    } else {
+      onPatch({ downloadUrl: url });
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between gap-2">
+        <h3 className="text-sm font-semibold text-white">Edit lesson</h3>
+        <span className="rounded-md bg-white/10 px-2 py-0.5 font-mono text-[10px] text-gray-400">
+          {lessonIndexLabel}
+        </span>
+      </div>
+
+      <label className="block">
+        <span className="mb-1 block text-[11px] text-gray-500">Lesson title</span>
+        <input
+          value={lesson.label}
+          onChange={(e) => onPatch({ label: e.target.value })}
+          className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none focus:border-violet-500/40"
+        />
+      </label>
+
+      <label className="block">
+        <span className="mb-1 block text-[11px] text-gray-500">Lesson type</span>
+        <select
+          value={kindLabel(lesson.kind)}
+          onChange={(e) => onPatch({ kind: labelToKind(e.target.value) })}
+          className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none focus:border-violet-500/40"
+        >
+          <option>Lecture</option>
+          <option>Document</option>
+          <option>Assessment</option>
+        </select>
+      </label>
+
+      {/* Type-specific primary content */}
+      {lesson.kind === "video" ? (
+        <div className="rounded-xl border border-violet-500/25 bg-violet-500/10 p-3">
+          <div className="mb-3 flex items-center gap-2 text-violet-100">
+            <Video className="h-4 w-4" />
+            <p className="text-[11px] font-semibold">Video lesson</p>
+          </div>
+          <div className="flex flex-wrap gap-4 text-xs">
+            <label className="inline-flex cursor-pointer items-center gap-2 text-gray-200">
+              <input
+                type="radio"
+                name="vsrc"
+                checked={videoSource === "upload"}
+                onChange={() => setVideoSource("upload")}
+                className="accent-violet-500"
+              />
+              Upload video
+            </label>
+            <label className="inline-flex cursor-pointer items-center gap-2 text-gray-200">
+              <input
+                type="radio"
+                name="vsrc"
+                checked={videoSource === "url"}
+                onChange={() => setVideoSource("url")}
+                className="accent-violet-500"
+              />
+              Video URL
+            </label>
+          </div>
+          <div className="mt-3 space-y-2 rounded-lg border border-white/10 bg-[#0a1120] p-3">
+            <div className="rounded-lg border border-cyan-400/30 bg-cyan-500/10 px-3 py-2">
+              <p className="text-[11px] font-semibold text-cyan-100">Preview settings</p>
+              <p className="mt-0.5 text-[10px] text-cyan-200/80">
+                Set how many minutes learners must watch before exam tab becomes live.
+              </p>
+            </div>
+            <label className="block">
+              <span className="mb-1 block text-[10px] text-gray-400">Preview limit for users (minutes)</span>
+              <input
+                type="number"
+                min={0}
+                step={1}
+                value={lesson.previewLimitMinutes ?? ""}
+                onChange={(e) => {
+                  const raw = e.target.value;
+                  onPatch({
+                    previewLimitMinutes: raw === "" ? undefined : Math.max(0, Math.round(Number(raw) || 0)),
+                  });
+                }}
+                placeholder="e.g. 5"
+                className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-xs outline-none"
+              />
+              <p className="mt-1 text-[10px] text-gray-500">
+                Rounded minutes are shown to learners. Set <b>0</b> for no preview limit.
+              </p>
+            </label>
+            {videoSource === "upload" ? (
+              <div className="space-y-2">
+                <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-violet-400/55 bg-gradient-to-r from-violet-600/30 via-fuchsia-500/20 to-indigo-500/30 py-2 text-xs text-violet-50 shadow-[0_0_18px_rgba(168,85,247,0.28)] hover:from-violet-500/40 hover:to-indigo-500/40">
+                  <Upload className="h-3.5 w-3.5 text-amber-200" />
+                  {uploadingVideo
+                    ? `Uploading… ${videoUploadPercent}%`
+                    : "Upload lesson video"}
+                  <input
+                    type="file"
+                    accept={VIDEO_FILE_ACCEPT}
+                    className="hidden"
+                    disabled={uploadingVideo}
+                    onChange={async (e) => {
+                      const f = e.target.files?.[0];
+                      if (!f) return;
+                      setUploadError(null);
+                      const sizeMb = Number((f.size / (1024 * 1024)).toFixed(1));
+                      setSelectedVideoMeta({ sizeMb });
+                      if (sizeMb > MAX_VIDEO_UPLOAD_MB) {
+                        setUploadError(
+                          `File is ${sizeMb} MB — max is ${MAX_VIDEO_UPLOAD_MB} MB. Compress the video or raise ADMIN_UPLOAD_MAX_VIDEO_MB on the server.`,
+                        );
+                        e.target.value = "";
+                        return;
+                      }
+                      setUploadingVideo(true);
+                      setVideoUploadPercent(0);
+                      try {
+                        const url = await uploadAdminFile(f, courseSlug, setVideoUploadPercent);
+                        onPatch({
+                          videoUrl: url,
+                          lessonVideoSizeMb: sizeMb,
+                        });
+                        setVideoSource("upload");
+                      } catch (err) {
+                        const message =
+                          err instanceof Error ? err.message : "Upload failed. Please try again.";
+                        setUploadError(message);
+                      } finally {
+                        setUploadingVideo(false);
+                        setVideoUploadPercent(0);
+                        e.target.value = "";
+                      }
+                    }}
+                  />
+                </label>
+                {uploadingVideo ? (
+                  <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+                    <div
+                      className="h-full rounded-full bg-violet-400 transition-[width] duration-200"
+                      style={{ width: `${videoUploadPercent}%` }}
+                    />
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <input
+                value={lesson.videoUrl ?? ""}
+                onChange={(e) => onPatch({ videoUrl: e.target.value })}
+                placeholder="https://…/lesson-video.mp4"
+                className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-xs outline-none"
+              />
+            )}
+            {lesson.videoUrl ? (
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="truncate text-[10px] text-gray-400">Video set</span>
+                {lesson.lessonDurationMinutes ? (
+                  <span className="inline-flex items-center gap-1 rounded border border-violet-300/35 bg-violet-500/15 px-1.5 py-0.5 text-[10px] text-violet-100">
+                    <Clock3 className="h-3 w-3" />
+                    {lesson.lessonDurationMinutes} min
+                  </span>
+                ) : null}
+                {typeof lesson.lessonVideoSizeMb === "number" ? (
+                  <span className="inline-flex items-center gap-1 rounded border border-cyan-300/35 bg-cyan-500/15 px-1.5 py-0.5 text-[10px] text-cyan-100">
+                    {lesson.lessonVideoSizeMb.toFixed(1)} MB
+                  </span>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={() => onPatch({ videoUrl: undefined })}
+                  className="text-[10px] text-rose-300 hover:text-rose-200"
+                >
+                  Clear
+                </button>
+              </div>
+            ) : null}
+            <p className="text-[10px] text-gray-500">
+              Max upload size: {MAX_VIDEO_UPLOAD_MB} MB. Large videos take time to upload — watch the
+              progress bar. After upload, click <b>Save curriculum</b> so the video sticks.
+            </p>
+            {selectedVideoMeta ? (
+              <p className="text-[10px] text-cyan-200/90">
+                Selected file: {selectedVideoMeta.sizeMb}MB
+              </p>
+            ) : null}
+            <label className="block">
+              <span className="mb-1 block text-[10px] text-gray-400">
+                Video duration (minutes, manual)
+              </span>
+              <input
+                type="number"
+                min={1}
+                step={1}
+                value={lesson.lessonDurationMinutes ?? ""}
+                onChange={(e) => {
+                  const raw = e.target.value;
+                  onPatch({
+                    lessonDurationMinutes: raw === "" ? undefined : Math.max(1, Math.round(Number(raw) || 1)),
+                  });
+                }}
+                placeholder="Enter manually, e.g. 12"
+                className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-xs outline-none"
+              />
+            </label>
+            <p className="text-[10px] text-gray-500">
+              Learner exam unlock uses watched preview minutes for this module. Set preview timing to control when
+              the exam tab becomes live.
+            </p>
+            {uploadError ? <p className="text-[10px] text-rose-300">{uploadError}</p> : null}
+          </div>
+        </div>
+      ) : null}
+
+      {lesson.kind === "reading" ? (
+        <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/10 p-3">
+          <div className="mb-3 flex items-center gap-2 text-emerald-100">
+            <FileText className="h-4 w-4" />
+            <p className="text-[11px] font-semibold">Document lesson</p>
+          </div>
+          <div className="flex flex-wrap gap-4 text-xs">
+            <label className="inline-flex cursor-pointer items-center gap-2 text-gray-200">
+              <input
+                type="radio"
+                name="dsrc"
+                checked={documentSource === "upload"}
+                onChange={() => setDocumentSource("upload")}
+                className="accent-emerald-500"
+              />
+              Upload document
+            </label>
+            <label className="inline-flex cursor-pointer items-center gap-2 text-gray-200">
+              <input
+                type="radio"
+                name="dsrc"
+                checked={documentSource === "url"}
+                onChange={() => setDocumentSource("url")}
+                className="accent-emerald-500"
+              />
+              Document URL
+            </label>
+          </div>
+          <div className="mt-3 space-y-2 rounded-lg border border-white/10 bg-[#0a1120] p-3">
+            {documentSource === "upload" ? (
+              <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-emerald-400/55 bg-gradient-to-r from-emerald-600/30 via-teal-500/20 to-cyan-500/25 py-2 text-xs text-emerald-50 shadow-[0_0_18px_rgba(16,185,129,0.25)] hover:from-emerald-500/40 hover:to-cyan-500/40">
+                <Upload className="h-3.5 w-3.5 text-lime-200" />
+                {uploadingDocument ? "Uploading…" : "Upload PDF / Word / PPT"}
+                <input
+                  type="file"
+                  accept={DOC_FILE_ACCEPT}
+                  className="hidden"
+                  disabled={uploadingDocument}
+                  onChange={async (e) => {
+                    const f = e.target.files?.[0];
+                    if (!f) return;
+                    setUploadingDocument(true);
+                    try {
+                      const url = await uploadAdminFile(f, courseSlug);
+                      setDocumentUrl(url);
+                    } finally {
+                      setUploadingDocument(false);
+                      e.target.value = "";
+                    }
+                  }}
+                />
+              </label>
+            ) : (
+              <input
+                value={documentUrl}
+                onChange={(e) => setDocumentUrl(e.target.value)}
+                placeholder="https://…/document.pdf"
+                className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-xs outline-none"
+              />
+            )}
+            {documentUrl ? (
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="truncate text-[10px] text-gray-400">{documentUrl}</span>
+                <button
+                  type="button"
+                  onClick={() => setDocumentUrl("")}
+                  className="text-[10px] text-rose-300 hover:text-rose-200"
+                >
+                  Clear
+                </button>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+
+      {lesson.kind === "exam" ? (
+        <div className="space-y-3 rounded-xl border border-amber-500/25 bg-amber-500/10 p-3">
+          <div className="flex items-center gap-2 text-amber-100">
+            <ClipboardList className="h-4 w-4" />
+            <p className="text-[11px] font-semibold">Module examination</p>
+          </div>
+          <label className="flex cursor-pointer items-center justify-between gap-3 text-xs text-gray-200">
+            <span>Timed exam</span>
+            <input
+              type="checkbox"
+              checked={!!lesson.timedExam}
+              onChange={(e) =>
+                onPatch({
+                  timedExam: e.target.checked,
+                  ...(e.target.checked ? {} : { examDurationMinutes: undefined }),
+                })
+              }
+              className="accent-amber-500"
+            />
+          </label>
+          <label className="block">
+            <span className="mb-1 block text-[11px] text-gray-500">Duration (minutes)</span>
+            <input
+              type="number"
+              min={1}
+              step={1}
+              disabled={!lesson.timedExam}
+              value={lesson.examDurationMinutes ?? ""}
+              onChange={(e) => {
+                const v = e.target.value;
+                onPatch({
+                  examDurationMinutes: v === "" ? undefined : Math.max(1, Number(v) || 1),
+                });
+              }}
+              placeholder="e.g. 30"
+              className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none disabled:opacity-40"
+            />
+          </label>
+          <label className="block">
+            <span className="mb-1 block text-[11px] text-gray-500">Passing score (%)</span>
+            <input
+              type="number"
+              min={0}
+              max={100}
+              step={1}
+              value={lesson.examPassingScorePercent ?? ""}
+              onChange={(e) => {
+                const v = e.target.value;
+                onPatch({
+                  examPassingScorePercent:
+                    v === "" ? undefined : Math.min(100, Math.max(0, Math.round(Number(v) || 0))),
+                });
+              }}
+              placeholder="e.g. 70"
+              className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none"
+            />
+          </label>
+          <div className="rounded-lg border border-white/10 bg-[#0a1120] p-3">
+            <p className="mb-2 text-[11px] font-medium text-amber-100">Exam paper / attachment</p>
+            <div className="mb-3">
+              <AdminExamImageOptionsBuilder
+                courseSlug={courseSlug}
+                existingExamUploadUrl={lesson.examUploadUrl}
+                uploadExamFile={uploadAdminFile}
+                onExamSaved={(url) => {
+                  onPatch({ examUploadUrl: url });
+                  setExamSource("upload");
+                  setUploadError(null);
+                }}
+              />
+              <p className="mt-1.5 text-[10px] text-gray-500">
+                Images are optional. Opens your existing quiz so you can add pictures on only a
+                few questions. Or upload CSV with{" "}
+                <code className="text-gray-400">text || IMAGE:/uploads/covers/…</code>.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-4 text-xs">
+              <label className="inline-flex cursor-pointer items-center gap-2 text-gray-200">
+                <input
+                  type="radio"
+                  name="esrc"
+                  checked={examSource === "upload"}
+                  onChange={() => setExamSource("upload")}
+                  className="accent-amber-500"
+                />
+                Upload
+              </label>
+              <label className="inline-flex cursor-pointer items-center gap-2 text-gray-200">
+                <input
+                  type="radio"
+                  name="esrc"
+                  checked={examSource === "url"}
+                  onChange={() => setExamSource("url")}
+                  className="accent-amber-500"
+                />
+                URL
+              </label>
+            </div>
+            <div className="mt-2 space-y-2">
+              {examSource === "upload" ? (
+                <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-amber-400/55 bg-gradient-to-r from-amber-600/30 via-orange-500/20 to-yellow-500/25 py-2 text-xs text-amber-50 shadow-[0_0_18px_rgba(54,182,255,0.28)] hover:from-amber-500/40 hover:to-yellow-500/40">
+                  <Upload className="h-3.5 w-3.5 text-amber-100" />
+                  {uploadingExam ? "Uploading…" : "Upload exam file (PDF / Word / CSV)"}
+                  <input
+                    type="file"
+                    accept={EXAM_FILE_ACCEPT}
+                    className="hidden"
+                    disabled={uploadingExam}
+                    onChange={async (e) => {
+                      const f = e.target.files?.[0];
+                      if (!f) return;
+                      setUploadingExam(true);
+                      setUploadError(null);
+                      try {
+                        const url = await uploadAdminFile(f, courseSlug);
+                        onPatch({ examUploadUrl: url });
+                      } catch (err) {
+                        setUploadError(
+                          err instanceof Error ? err.message : "Exam file upload failed.",
+                        );
+                      } finally {
+                        setUploadingExam(false);
+                        e.target.value = "";
+                      }
+                    }}
+                  />
+                </label>
+              ) : (
+                <input
+                  value={lesson.examUploadUrl ?? ""}
+                  onChange={(e) => onPatch({ examUploadUrl: e.target.value })}
+                  placeholder="https://…/exam.pdf"
+                  className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-xs outline-none"
+                />
+              )}
+              {lesson.examUploadUrl ? (
+                <button
+                  type="button"
+                  onClick={() => onPatch({ examUploadUrl: undefined })}
+                  className="text-[10px] text-rose-300 hover:text-rose-200"
+                >
+                  Clear attachment
+                </button>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      <label className="block">
+        <span className="mb-1 block text-[11px] text-gray-500">
+          Description (you type this — nothing auto-fills)
+        </span>
+        <textarea
+          value={lesson.description ?? ""}
+          onChange={(e) => onPatch({ description: e.target.value })}
+          rows={3}
+          placeholder="Write this lesson’s description yourself…"
+          className="w-full resize-y rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none focus:border-violet-500/40"
+        />
+      </label>
+
+      {lesson.kind === "video" ? (
+        <>
+          <label className="block">
+            <span className="mb-1 block text-[11px] text-gray-500">
+              About this module / lesson (shown below video — type your own text)
+            </span>
+            <textarea
+              value={lesson.about ?? ""}
+              onChange={(e) => onPatch({ about: e.target.value })}
+              rows={3}
+              placeholder="What this module covers…"
+              className="w-full resize-y rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none focus:border-violet-500/40"
+            />
+          </label>
+          <label className="block">
+            <span className="mb-1 block text-[11px] text-gray-500">
+              Learning outcomes (one per line — type your own; leave blank if none)
+            </span>
+            <textarea
+              value={(lesson.learningOutcomes ?? []).join("\n")}
+              onChange={(e) =>
+                onPatch({
+                  learningOutcomes: e.target.value
+                    .split("\n")
+                    .map((x) => x.trim())
+                    .filter(Boolean),
+                })
+              }
+              rows={4}
+              className="w-full resize-y rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none focus:border-violet-500/40"
+            />
+          </label>
+        </>
+      ) : null}
+
+      {/* Learning tools are course-wide — edit under Course tab → page content */}
+      <div className="rounded-xl border border-amber-500/20 bg-amber-500/[0.05] px-3 py-2.5 text-[11px] text-amber-100/90">
+        <p className="font-semibold text-amber-100">Learning tools (whole course)</p>
+        <p className="mt-1 text-[10px] text-gray-400">
+          E-Workbook, Transcript, PPT, Podcast, and Additional Resources are set once for the entire course. Open the{" "}
+          <strong className="text-gray-300">Learning Tools</strong> tab (after Content).
+        </p>
+      </div>
+
+      <div className="flex justify-end gap-2 border-t border-white/10 pt-4">
+        <button
+          type="button"
+          onClick={() => void onSave()}
+          disabled={saving}
+          className="inline-flex items-center gap-2 rounded-lg bg-[#6f55ff] px-4 py-2 text-xs font-semibold text-white hover:bg-[#7d63ff] disabled:opacity-50"
+        >
+          {saving ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : null}
+          Update lesson
+        </button>
+      </div>
+    </div>
+  );
+}
