@@ -1,9 +1,9 @@
-# Railway config for Royal Tech LMS
-# Dashboard overrides still work; this sets safe defaults.
+# Railway defaults for Royal Tech LMS
+# Avoid `npm ci` here — Railpack already installs deps; a second ci hits EBUSY on cache mounts.
 
 [build]
 builder = "NIXPACKS"
-buildCommand = "npm ci && npm run build"
+buildCommand = "npm run build"
 
 [deploy]
 startCommand = "npm run start:railway"

@@ -72,3 +72,6 @@ deploy-filezilla/
 
 deploy-filezilla-ready/
 
+
+.railway-admin-password.local
+.railway/
