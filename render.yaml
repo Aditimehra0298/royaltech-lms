@@ -1,0 +1,60 @@
+# Royal Tech LMS — Render Blueprint
+# Dashboard: New → Blueprint → connect https://github.com/Aditimehra0298/royaltech-lms
+#
+# IMPORTANT: This app needs MySQL (Prisma). Render only offers Postgres.
+# Create MySQL elsewhere (Aiven / Railway / TiDB / DigitalOcean), then set DATABASE_URL.
+
+services:
+  - type: web
+    name: royaltech-lms
+    runtime: node
+    plan: starter
+    region: singapore
+    branch: main
+    autoDeploy: true
+    buildCommand: npm ci && npm run build
+    # Paid plans only — runs migrations before traffic switches
+    preDeployCommand: npx prisma migrate deploy
+    startCommand: npx next start -H 0.0.0.0 -p $PORT
+    healthCheckPath: /api/health/mysql
+    disk:
+      name: lms-media
+      mountPath: /opt/render/project/src/storage
+      sizeGB: 10
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_APP_URL
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_SESSION_SECRET
+        generateValue: true
+      - key: LEARNER_SESSION_SECRET
+        generateValue: true
+      - key: MEDIA_SIGNING_SECRET
+        generateValue: true
+      - key: MAIN_ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_EMAILS
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: OTP_USE_SMTP
+        value: "true"
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false

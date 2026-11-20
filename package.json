@@ -7,15 +7,17 @@
     "dev:turbo": "next dev --hostname 0.0.0.0 -p 3000",
     "dev:fresh": "pkill -f 'next dev' 2>/dev/null || true; rm -rf .next; next dev --hostname 0.0.0.0 --webpack -p 3000",
     "dev:fresh:turbo": "pkill -f 'next dev' 2>/dev/null || true; rm -rf .next; next dev --hostname 0.0.0.0 -p 3000",
-    "build": "node --use-system-ca ./node_modules/prisma/build/index.js generate && next build --webpack",
+    "build": "prisma generate && next build --webpack",
     "build:turbo": "next build",
     "start": "next start",
     "start:server": "next start -H 0.0.0.0 -p 3000",
+    "start:render": "next start -H 0.0.0.0 -p ${PORT:-3000}",
+    "start:railway": "prisma migrate deploy && next start -H 0.0.0.0 -p ${PORT:-3000}",
     "studio:server": "prisma studio --hostname 127.0.0.1 --port 5555 --browser none",
     "lint": "eslint",
     "postinstall": "node scripts/postinstall.mjs",
     "clean:node_modules": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/clean-node-modules.ps1",
-    "db:generate": "node --use-system-ca ./node_modules/prisma/build/index.js generate",
+    "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
@@ -63,5 +65,8 @@
     "napi-postinstall": "^0.3.4",
     "prisma": "^6.19.0",
     "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
