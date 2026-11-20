@@ -29,7 +29,7 @@ export default function PodcastsPage() {
         {podcastEpisodes.map((ep, index) => (
           <article
             key={ep.slug}
-            className="lh-path-card grid overflow-hidden rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] shadow-[0_0_24px_rgba(249,177,77,0.14)] transition-all hover:border-amber-300/70 sm:grid-cols-[180px_1fr_auto]"
+            className="lh-path-card grid overflow-hidden rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] shadow-[0_0_24px_rgba(10,131,231,0.14)] transition-all hover:border-amber-300/70 sm:grid-cols-[180px_1fr_auto]"
           >
             <div className="relative flex min-h-[150px] items-center justify-center bg-black/30 p-3 sm:min-h-[160px]">
               <Image
@@ -57,7 +57,7 @@ export default function PodcastsPage() {
             <div className="flex items-center p-4 sm:pr-5">
               <Link
                 href="/courses"
-                className="lh-gold-btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-[#f9b14d] to-[#eb9422] px-5 py-2.5 text-sm font-bold text-black shadow-[0_8px_24px_rgba(249,177,77,.3)] transition-all hover:brightness-110 sm:w-auto"
+                className="lh-gold-btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-[#00b7fd] to-[#0070f0] px-5 py-2.5 text-sm font-bold text-black shadow-[0_8px_24px_rgba(10,131,231,.3)] transition-all hover:brightness-110 sm:w-auto"
               >
                 <Play size={14} /> Related courses
               </Link>
@@ -69,7 +69,7 @@ export default function PodcastsPage() {
       <LmsContentCard title="Course podcasts inside My Learning">
         <p>
           Many self-paced courses also include a Podcast learning tool after enrollment. Open{" "}
-          <Link href="/my-learning" className="font-bold text-[#eb9422] underline decoration-amber-500/40">
+          <Link href="/my-learning" className="font-bold text-[#0070f0] underline decoration-amber-500/40">
             My Learning
           </Link>{" "}
           and check Learning tools for audio linked to your course.

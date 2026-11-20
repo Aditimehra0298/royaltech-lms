@@ -42,7 +42,7 @@ export function TutorLedCertificatePreview({
     <div className={wrapperClass}>
       {!hideTitle && !isCompact && !isSidebar && !isPanel ? (
         <div className="mb-4 text-center lg:text-left">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FFB800]">Included with enrollment</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#00b7fd]">Included with enrollment</p>
           <h3 className="mt-1 text-xl font-bold text-white md:text-2xl">Your Certificate of Attainment</h3>
           <p className="mt-1 text-sm text-zinc-400">
             IEB-accredited credential personalized with your name, program title, and verification QR code.

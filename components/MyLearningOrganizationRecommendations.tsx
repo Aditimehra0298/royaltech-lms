@@ -178,11 +178,11 @@ export function MyLearningOrganizationRecommendations({
                     return (
                       <article
                         key={`org-rec-tl-${card.slug}`}
-                        className="flex flex-col overflow-hidden rounded-xl border border-[#FFC107]/25 bg-black/25 transition hover:border-[#FFC107]/45"
+                        className="flex flex-col overflow-hidden rounded-xl border border-[#0070f0]/25 bg-black/25 transition hover:border-[#0070f0]/45"
                       >
                         <div className="relative">
                           <CourseThumb image={card.image} title={card.title} />
-                          <span className="absolute left-2 top-2 rounded-md bg-[#FFC107] px-2 py-0.5 text-[9px] font-bold uppercase text-black">
+                          <span className="absolute left-2 top-2 rounded-md bg-[#0070f0] px-2 py-0.5 text-[9px] font-bold uppercase text-black">
                             Tutor led
                           </span>
                           <span className="absolute right-2 top-2 inline-flex items-center gap-0.5 rounded-md border border-violet-400/40 bg-violet-500/25 px-2 py-0.5 text-[9px] font-bold text-violet-100">
@@ -199,7 +199,7 @@ export function MyLearningOrganizationRecommendations({
                           <div className="mt-3 flex flex-wrap gap-2">
                             <Link
                               href={liveTutorCourseHref(card.slug)}
-                              className="inline-flex flex-1 items-center justify-center gap-1 rounded-lg bg-[#FFC107] py-2 text-xs font-bold text-black hover:bg-[#FFD54F]"
+                              className="inline-flex flex-1 items-center justify-center gap-1 rounded-lg bg-[#0070f0] py-2 text-xs font-bold text-black hover:bg-[#7ccfff]"
                             >
                               View program
                               <Rocket size={14} />

@@ -54,15 +54,15 @@ export function TutorLedLearnerSidebar({
         <p className="mt-3 text-base font-semibold leading-snug text-white">{nextSessionTitle}</p>
         <ul className="mt-4 space-y-2.5 text-sm text-zinc-400">
           <li className="flex items-start gap-2">
-            <Calendar className="mt-0.5 h-4 w-4 shrink-0 text-[#FFC107]/70" aria-hidden />
+            <Calendar className="mt-0.5 h-4 w-4 shrink-0 text-[#0070f0]/70" aria-hidden />
             <span>{program.nextBatchDate}</span>
           </li>
           <li className="flex items-start gap-2">
-            <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[#FFC107]/70" aria-hidden />
+            <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[#0070f0]/70" aria-hidden />
             <span>{program.schedule}</span>
           </li>
           <li className="flex items-start gap-2">
-            <User className="mt-0.5 h-4 w-4 shrink-0 text-[#FFC107]/70" aria-hidden />
+            <User className="mt-0.5 h-4 w-4 shrink-0 text-[#0070f0]/70" aria-hidden />
             <span>{program.trainer.name}</span>
           </li>
         </ul>
@@ -84,18 +84,18 @@ export function TutorLedLearnerSidebar({
         </div>
       </article>
 
-      <article id="certificate-center" className={`${tlCard} scroll-mt-24 border-[#FFC107]/22 tl-gold-glow`}>
+      <article id="certificate-center" className={`${tlCard} scroll-mt-24 border-[#0070f0]/22 tl-gold-glow`}>
         <div className="flex items-center justify-between gap-2">
           <h2 className="text-lg font-bold text-white">{section.certificateCenterTitle}</h2>
           <span className={certificateEarned ? tlGreenBadge : tlGoldBadge}>
             {certificateEarned ? "Earned" : "Eligible"}
           </span>
         </div>
-        <p className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-[#FFC107]">
+        <p className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0070f0]">
           <Trophy className="h-4 w-4" aria-hidden />
           {certificateEarned ? "Certificate earned" : "Certificate on completion"}
         </p>
-        <div className="mt-4 flex justify-center rounded-lg border border-[#FFC107]/20 bg-black/50 p-2">
+        <div className="mt-4 flex justify-center rounded-lg border border-[#0070f0]/20 bg-black/50 p-2">
           <TutorLedCertificatePreview
             programTitle={program.title}
             trainerName={program.trainer.name}
@@ -106,7 +106,7 @@ export function TutorLedLearnerSidebar({
         <dl className="mt-3 space-y-1.5 text-[10px] text-zinc-500">
           <div className="flex justify-between gap-2 border-b border-white/5 pb-1">
             <dt>Certificate ID</dt>
-            <dd className="font-mono text-[#FFC107]/90">SFT-{program.slug.slice(0, 8).toUpperCase()}</dd>
+            <dd className="font-mono text-[#0070f0]/90">SFT-{program.slug.slice(0, 8).toUpperCase()}</dd>
           </div>
           <div className="flex justify-between gap-2">
             <dt>Issue date</dt>

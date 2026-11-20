@@ -103,7 +103,7 @@ function ResetPasswordForm() {
             type="button"
             onClick={() => void handleSubmit()}
             disabled={submitting}
-            className="w-full rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] px-6 py-3.5 font-bold text-black disabled:opacity-60"
+            className="w-full rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] px-6 py-3.5 font-bold text-black disabled:opacity-60"
           >
             {submitting ? "Updating…" : "Set new password"}
           </button>
@@ -125,7 +125,7 @@ export default function ResetPasswordPage() {
         className="pointer-events-none absolute inset-0 opacity-80"
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(249,177,77,0.18), transparent 55%), radial-gradient(ellipse 60% 40% at 80% 80%, rgba(59,130,246,0.12), transparent 50%)",
+            "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(10,131,231,0.18), transparent 55%), radial-gradient(ellipse 60% 40% at 80% 80%, rgba(59,130,246,0.12), transparent 50%)",
         }}
       />
       <div className="relative z-10 flex min-h-screen items-center justify-center px-4 py-16">

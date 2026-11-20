@@ -230,7 +230,7 @@ export function writeWorkerTabLoading(
         html,body{margin:0;min-height:100%;font-family:system-ui,sans-serif;background:#0f172a;color:#f8fafc}
         .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
         .box{text-align:center;max-width:320px}
-        .spin{width:40px;height:40px;border:3px solid rgba(251,191,36,.25);border-top-color:#fbbf24;
+        .spin{width:40px;height:40px;border:3px solid rgba(251,191,36,.25);border-top-color:#00b7fd;
           border-radius:50%;margin:0 auto 1rem;animation:spin 1s linear infinite}
         @keyframes spin{to{transform:rotate(360deg)}}
         p{margin:0} .sub{color:#94a3b8;font-size:.875rem;margin-top:.5rem;line-height:1.5}

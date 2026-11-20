@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     // data-perf starts as "low" on server+client; ClientPerfGuard may upgrade after mount.
     // suppressHydrationWarning: theme/extensions may also touch <html> attributes.
-    <html lang="en" className="h-full antialiased" data-perf="low" suppressHydrationWarning>
+    <html lang="en" className="h-full antialiased" data-theme="dark" data-perf="low" suppressHydrationWarning>
       <body className="flex min-h-screen flex-col bg-background text-foreground">
         <ClientPerfGuard />
         <SiteChrome>{children}</SiteChrome>

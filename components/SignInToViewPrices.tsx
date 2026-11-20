@@ -20,8 +20,8 @@ export function SignInToViewPrices({ redirectPath, className = "", compact = fal
   if (compact) {
     return (
       <p className={`text-sm text-zinc-400 ${className}`}>
-        <Lock className="mr-1 inline h-3.5 w-3.5 text-[#FFB800]" aria-hidden />
-        <Link href={loginHref} className="font-semibold text-[#FFB800] hover:underline">
+        <Lock className="mr-1 inline h-3.5 w-3.5 text-[#00b7fd]" aria-hidden />
+        <Link href={loginHref} className="font-semibold text-[#00b7fd] hover:underline">
           Sign in
         </Link>{" "}
         to see pricing for your country
@@ -31,9 +31,9 @@ export function SignInToViewPrices({ redirectPath, className = "", compact = fal
 
   return (
     <div
-      className={`rounded-xl border border-[#FFB800]/25 bg-[#FFB800]/5 px-4 py-5 text-center ${className}`}
+      className={`rounded-xl border border-[#00b7fd]/25 bg-[#00b7fd]/5 px-4 py-5 text-center ${className}`}
     >
-      <Lock className="mx-auto h-8 w-8 text-[#FFB800]/80" aria-hidden />
+      <Lock className="mx-auto h-8 w-8 text-[#00b7fd]/80" aria-hidden />
       <p className="mt-2 text-sm font-semibold text-white">Pricing available after sign-in</p>
       <p className="mt-1 text-xs leading-relaxed text-zinc-400">
         We detect your country from Google sign-in, your IP address, or the country you pick at
@@ -42,7 +42,7 @@ export function SignInToViewPrices({ redirectPath, className = "", compact = fal
       <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
         <Link
           href={loginHref}
-          className="inline-flex rounded-lg bg-[#FFB800] px-4 py-2 text-sm font-bold text-black hover:bg-[#e5a600]"
+          className="inline-flex rounded-lg bg-[#00b7fd] px-4 py-2 text-sm font-bold text-black hover:bg-[#e5a600]"
         >
           Sign in
         </Link>

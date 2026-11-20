@@ -49,8 +49,8 @@ export function EnrolledTutorLedOnCalendar() {
   if (!rows.length) return null;
 
   return (
-    <section className="mb-5 rounded-2xl border border-[#FFC107]/30 bg-gradient-to-r from-[#2a2210] via-[#1a1508] to-[#0f0d08] p-4 shadow-[inset_0_1px_0_rgba(255,193,7,0.12)]">
-      <h2 className="text-base font-bold text-[#FFC107]">Your live enrollments</h2>
+    <section className="mb-5 rounded-2xl border border-[#0070f0]/30 bg-gradient-to-r from-[#2a2210] via-[#1a1508] to-[#0f0d08] p-4 shadow-[inset_0_1px_0_rgba(255,193,7,0.12)]">
+      <h2 className="text-base font-bold text-[#0070f0]">Your live enrollments</h2>
       <p className="mt-1 text-xs text-zinc-400">
         Tutor-led and one-day workshops appear on your calendar. Open the program for Zoom links.
       </p>
@@ -58,7 +58,7 @@ export function EnrolledTutorLedOnCalendar() {
         {rows.map(({ program }) => (
           <li
             key={program.slug}
-            className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#FFC107]/20 bg-black/40 px-4 py-3"
+            className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#0070f0]/20 bg-black/40 px-4 py-3"
           >
             <div className="min-w-0">
               <p className="font-semibold text-white">
@@ -73,13 +73,13 @@ export function EnrolledTutorLedOnCalendar() {
             <div className="flex flex-wrap gap-2">
               <Link
                 href={`/my-learning/course/${encodeURIComponent(program.slug)}`}
-                className="rounded-lg bg-[#FFC107] px-4 py-2 text-xs font-bold text-black shadow-[0_4px_16px_rgba(255,193,7,0.3)] hover:bg-[#FFD54F]"
+                className="rounded-lg bg-[#0070f0] px-4 py-2 text-xs font-bold text-black shadow-[0_4px_16px_rgba(255,193,7,0.3)] hover:bg-[#7ccfff]"
               >
                 Open program
               </Link>
               <Link
                 href="/my-learning?tab=live"
-                className="rounded-lg border border-[#FFC107]/45 bg-transparent px-4 py-2 text-xs font-semibold text-[#FFC107] hover:bg-[#FFC107]/10"
+                className="rounded-lg border border-[#0070f0]/45 bg-transparent px-4 py-2 text-xs font-semibold text-[#0070f0] hover:bg-[#0070f0]/10"
               >
                 Tutor Led tab
               </Link>

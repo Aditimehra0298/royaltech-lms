@@ -54,7 +54,7 @@ export default function AdminGlobalCertificatesPanel({ certificateCourses }: Pro
         />
         <div className="relative border-b border-white/[0.06] px-4 py-5 sm:px-6">
           <div className="flex gap-4">
-            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-amber-500/20 ring-1 ring-amber-400/35 shadow-[0_0_30px_rgba(245,158,11,0.2)]">
+            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-amber-500/20 ring-1 ring-amber-400/35 shadow-[0_0_30px_rgba(54,182,255,0.2)]">
               <Award className="h-6 w-6 text-amber-200" aria-hidden />
             </div>
             <div>

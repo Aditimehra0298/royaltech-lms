@@ -94,7 +94,7 @@ function SectionIntro({
 }) {
   return (
     <div className="max-w-2xl">
-      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#FFB800]">{eyebrow}</p>
+      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#00b7fd]">{eyebrow}</p>
       <h2 className="mt-2 text-2xl font-bold tracking-tight text-white md:text-3xl">{title}</h2>
       {description ? (
         <p className="mt-3 text-sm leading-relaxed text-zinc-400 md:text-base">{description}</p>
@@ -138,7 +138,7 @@ export default function TutorLedLandingSections({
           <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-y border-white/10 py-5">
             {meta.map((item) => (
               <div key={item.label} className="flex items-start gap-2.5">
-                <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-[#FFB800]" aria-hidden />
+                <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-[#00b7fd]" aria-hidden />
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-wide text-zinc-500">
                     {item.label}
@@ -160,7 +160,7 @@ export default function TutorLedLandingSections({
                 className="grid gap-3 border-b border-white/10 py-6 first:pt-0 last:border-b-0 md:grid-cols-[7rem_1fr_9rem] md:items-start md:gap-8"
               >
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#FFB800]">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#00b7fd]">
                     Day {row.day}
                   </p>
                   <p className="mt-1 text-xs text-zinc-500">{row.label}</p>
@@ -172,7 +172,7 @@ export default function TutorLedLandingSections({
                   </p>
                 </div>
                 <p className="text-xs font-semibold text-zinc-300 md:text-right">
-                  <Video className="mr-1.5 inline h-3.5 w-3.5 text-[#FFB800]" aria-hidden />
+                  <Video className="mr-1.5 inline h-3.5 w-3.5 text-[#00b7fd]" aria-hidden />
                   {row.sessionType}
                 </p>
                 {idx === scheduleDays.length - 1 ? null : null}
@@ -184,7 +184,7 @@ export default function TutorLedLandingSections({
             <ul className="mt-10 grid gap-3 sm:grid-cols-2">
               {course.highlights.slice(0, 6).map((h) => (
                 <li key={h} className="flex items-start gap-2.5 text-sm text-zinc-300">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#FFB800]" aria-hidden />
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#00b7fd]" aria-hidden />
                   <span>{h}</span>
                 </li>
               ))}
@@ -203,7 +203,7 @@ export default function TutorLedLandingSections({
               description={course.trainer.bio}
             />
             <div className="mt-8 flex items-center gap-4">
-              <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-[#FFB800]/40 bg-zinc-900">
+              <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-[#00b7fd]/40 bg-zinc-900">
                 {course.trainer.avatar?.trim() ? (
                   <Image
                     src={course.trainer.avatar}
@@ -213,14 +213,14 @@ export default function TutorLedLandingSections({
                     unoptimized
                   />
                 ) : (
-                  <span className="flex h-full w-full items-center justify-center text-2xl font-bold text-[#FFB800]">
+                  <span className="flex h-full w-full items-center justify-center text-2xl font-bold text-[#00b7fd]">
                     {course.trainer.name.replace(/^Mr\.?\s*/i, "").charAt(0)}
                   </span>
                 )}
               </div>
               <div>
                 <p className="text-lg font-bold text-white">{course.trainer.name}</p>
-                <p className="text-sm text-[#FFB800]">{course.trainer.role}</p>
+                <p className="text-sm text-[#00b7fd]">{course.trainer.role}</p>
                 <p className="mt-1 text-xs text-zinc-500">{course.trainer.experience}</p>
               </div>
             </div>
@@ -264,7 +264,7 @@ export default function TutorLedLandingSections({
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold text-zinc-400">
               {["Live on Zoom", "HD video", "Real-time Q&A", "Session recordings"].map((tag) => (
                 <span key={tag} className="inline-flex items-center gap-1.5">
-                  <span className="h-1 w-1 rounded-full bg-[#FFB800]" aria-hidden />
+                  <span className="h-1 w-1 rounded-full bg-[#00b7fd]" aria-hidden />
                   {tag}
                 </span>
               ))}

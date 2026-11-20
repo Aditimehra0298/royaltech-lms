@@ -103,7 +103,7 @@ export default function CertificateQrScanner({ open, isLight = true, onClose, on
       <div className={`w-full max-w-md ${panel}`} onClick={(e) => e.stopPropagation()}>
         <div className="mb-3 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Camera className={`h-5 w-5 ${isLight ? "text-[#8a6412]" : "text-amber-300"}`} aria-hidden />
+            <Camera className={`h-5 w-5 ${isLight ? "text-[#3b82c4]" : "text-amber-300"}`} aria-hidden />
             <h2 className={`text-base font-bold ${isLight ? "text-slate-900" : "text-white"}`}>
               Scan certificate QR
             </h2>

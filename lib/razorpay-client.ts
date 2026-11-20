@@ -82,7 +82,7 @@ export async function openRazorpayCheckout(
       order_id: input.orderId,
       prefill: input.prefill,
       notes: input.notes,
-      theme: { color: "#FFC107" },
+      theme: { color: "#0070f0" },
       handler: (response: RazorpayHandlerResponse) => resolve(response),
       modal: {
         ondismiss: () => reject(new Error("Payment cancelled.")),

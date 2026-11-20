@@ -50,14 +50,14 @@ export default function AdminTestimonialsPageEditor() {
   };
 
   const inputCls =
-    "w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none transition focus:border-[#f59e0b]/60";
+    "w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none transition focus:border-[#0070f0]/60";
   const labelCls = "block text-[11px] font-medium uppercase tracking-wider text-gray-500 mb-1.5";
   const itemCls = "rounded-xl border border-white/[0.07] bg-black/30 p-3 space-y-2";
 
   if (loading) {
     return (
       <div className="flex items-center justify-center gap-3 py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-[#f59e0b]" />
+        <Loader2 className="h-8 w-8 animate-spin text-[#0070f0]" />
         <span className="text-sm text-gray-400">Loading testimonials editor...</span>
       </div>
     );
@@ -76,7 +76,7 @@ export default function AdminTestimonialsPageEditor() {
             <div>
               <h2 className="text-lg font-bold text-white">Testimonials</h2>
               <p className="mt-1 text-xs text-gray-400">
-                Edits <code className="rounded bg-white/5 px-1 text-[#f59e0b]">/testimonials</code> and the home page testimonials section.
+                Edits <code className="rounded bg-white/5 px-1 text-[#0070f0]">/testimonials</code> and the home page testimonials section.
               </p>
             </div>
           </div>
@@ -84,7 +84,7 @@ export default function AdminTestimonialsPageEditor() {
             <Link
               href="/testimonials"
               target="_blank"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-3 py-2 text-xs text-gray-300 hover:border-[#f59e0b]/40 hover:text-[#f59e0b]"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-3 py-2 text-xs text-gray-300 hover:border-[#0070f0]/40 hover:text-[#0070f0]"
             >
               <ExternalLink size={14} /> Preview
             </Link>
@@ -92,7 +92,7 @@ export default function AdminTestimonialsPageEditor() {
               type="button"
               onClick={() => void save()}
               disabled={saving}
-              className="inline-flex items-center gap-2 rounded-lg bg-[#f59e0b] px-4 py-2 text-xs font-bold text-black disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-lg bg-[#0070f0] px-4 py-2 text-xs font-bold text-black disabled:opacity-60"
             >
               {saving ? <Loader2 size={14} className="animate-spin" /> : saved ? <Check size={14} /> : <Save size={14} />}
               {saving ? "Saving..." : saved ? "Saved" : "Save changes"}
@@ -177,7 +177,7 @@ export default function AdminTestimonialsPageEditor() {
         <button
           type="button"
           onClick={addTestimonial}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-dashed border-white/15 px-4 py-2.5 text-xs text-gray-300 hover:border-[#f59e0b]/40 hover:text-[#f59e0b]"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-dashed border-white/15 px-4 py-2.5 text-xs text-gray-300 hover:border-[#0070f0]/40 hover:text-[#0070f0]"
         >
           <Plus size={14} /> Add testimonial
         </button>

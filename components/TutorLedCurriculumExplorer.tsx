@@ -22,7 +22,7 @@ type Props = {
 
 const kindBadge: Record<string, { label: string; className: string }> = {
   live: { label: "Live", className: "border-sky-400/40 bg-sky-500/15 text-sky-200" },
-  recording: { label: "Recording", className: "border-[#FFB800]/40 bg-[#FFB800]/10 text-[#FFB800]" },
+  recording: { label: "Recording", className: "border-[#00b7fd]/40 bg-[#00b7fd]/10 text-[#00b7fd]" },
   lab: { label: "Lab", className: "border-violet-400/40 bg-violet-500/15 text-violet-200" },
 };
 
@@ -70,7 +70,7 @@ export function TutorLedCurriculumExplorer({
 
   const tabClass = (mode: ViewMode) =>
     viewMode === mode
-      ? "border-[#FFB800]/60 bg-[#FFB800]/15 text-[#FFB800]"
+      ? "border-[#00b7fd]/60 bg-[#00b7fd]/15 text-[#00b7fd]"
       : "border-white/10 bg-black/30 text-zinc-400 hover:bg-white/5";
 
   return (
@@ -131,11 +131,11 @@ export function TutorLedCurriculumExplorer({
                 key={week.week}
                 className={`rounded-xl border px-3 py-2.5 transition ${
                   weekIndex === 0
-                    ? "border-[#FFB800]/60 bg-[#FFB800]/12 shadow-[0_0_20px_rgba(255,184,0,0.12)]"
+                    ? "border-[#00b7fd]/60 bg-[#00b7fd]/12 shadow-[0_0_20px_rgba(255,184,0,0.12)]"
                     : "border-white/10 bg-black/20"
                 }`}
               >
-                <p className="text-[10px] font-bold uppercase tracking-wide text-[#FFB800]">Week {week.week}</p>
+                <p className="text-[10px] font-bold uppercase tracking-wide text-[#00b7fd]">Week {week.week}</p>
                 <p className="text-[11px] text-zinc-400">{week.label}</p>
                 <p className="mt-1 text-[10px] text-zinc-600">{days.length} days</p>
               </div>
@@ -156,14 +156,14 @@ export function TutorLedCurriculumExplorer({
                 {weeksWithDays.map(({ week, days }) => (
                   <tr key={week.week} className="border-b border-white/5 transition hover:bg-white/[0.02]">
                     <td className="px-4 py-3.5 align-top">
-                      <span className="font-bold text-[#FFB800]">Week {week.week}</span>
+                      <span className="font-bold text-[#00b7fd]">Week {week.week}</span>
                       <p className="mt-0.5 text-[10px] text-zinc-500">{week.label}</p>
                     </td>
                     <td className="px-4 py-3.5 align-top text-zinc-200">{week.topic}</td>
                     <td className="px-4 py-3.5 align-top text-zinc-500">{week.keyLearning}</td>
                     <td className="px-4 py-3.5 align-top text-right text-zinc-400">{days.length} days</td>
                     <td className="px-4 py-3.5 align-top text-right">
-                      <span className="inline-block rounded-full border border-[#FFB800]/25 bg-[#FFB800]/10 px-2.5 py-1 text-[10px] font-semibold text-[#FFB800]">
+                      <span className="inline-block rounded-full border border-[#00b7fd]/25 bg-[#00b7fd]/10 px-2.5 py-1 text-[10px] font-semibold text-[#00b7fd]">
                         {week.sessionType}
                       </span>
                     </td>
@@ -233,7 +233,7 @@ export function TutorLedCurriculumExplorer({
                                 href={day.recordingUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-lg border border-[#FFB800]/50 bg-[#FFB800]/10 px-3 py-1.5 text-xs font-bold text-[#FFB800] hover:bg-[#FFB800]/20"
+                                className="rounded-lg border border-[#00b7fd]/50 bg-[#00b7fd]/10 px-3 py-1.5 text-xs font-bold text-[#00b7fd] hover:bg-[#00b7fd]/20"
                               >
                                 Watch
                               </a>

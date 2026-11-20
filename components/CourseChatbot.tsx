@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { nanoid } from "nanoid";
-import sfWhiteLogo from "@/SF-WHITE-LOGO.png";
+import brandLogo from "@/logo-mark.png";
 import {
   MessageSquare,
   Send,
@@ -258,10 +258,10 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
       {/* 1. Floating Toggle Button with Pulse Glow */}
       {!isOpen && (
         <div className="relative group">
-          <div className="absolute -inset-0.5 rounded-full bg-[#FFB800] opacity-50 blur group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+          <div className="absolute -inset-0.5 rounded-full bg-[#00b7fd] opacity-50 blur group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
           <button
             onClick={() => setIsOpen(true)}
-            className="relative flex h-14 w-14 items-center justify-center rounded-full bg-zinc-950 text-[#FFB800] border-2 border-[#FFB800] shadow-2xl transition-all duration-300 hover:scale-110 hover:bg-[#FFB800] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#FFB800]/50"
+            className="relative flex h-14 w-14 items-center justify-center rounded-full bg-zinc-950 text-[#00b7fd] border-2 border-[#00b7fd] shadow-2xl transition-all duration-300 hover:scale-110 hover:bg-[#00b7fd] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#00b7fd]/50"
             aria-label="Open Course Chatbot"
           >
             <MessageSquare className="h-6 w-6 transition-transform duration-300 group-hover:rotate-6" />
@@ -274,14 +274,14 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
         <div className="flex h-[600px] w-[400px] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/95 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl transition-all duration-500 ease-out animate-in fade-in zoom-in-95 slide-in-from-bottom-10">
 
           {/* Glowing Top bar accent */}
-          <div className="h-1 w-full bg-gradient-to-r from-amber-500 via-[#FFB800] to-yellow-300" />
+          <div className="h-1 w-full bg-gradient-to-r from-amber-500 via-[#00b7fd] to-yellow-300" />
 
           {/* Header */}
           <div className="flex items-center justify-between border-b border-white/5 bg-zinc-900/70 px-4 py-3.5">
             <div className="flex items-center gap-3">
-              <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-zinc-950 border border-[#FFB800]/30 p-1.5 shadow-inner">
+              <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-zinc-950 border border-[#00b7fd]/30 p-1.5 shadow-inner">
                 <Image
-                  src={sfWhiteLogo}
+                  src={brandLogo}
                   alt="Sustainable Futures Trainings"
                   width={32}
                   height={32}
@@ -293,7 +293,7 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
                 <p className="text-[10px] text-zinc-400 font-medium flex items-center gap-1">
                   <span>Course Assistant</span>
                   <span className="inline-block h-1 w-1 rounded-full bg-zinc-600" />
-                  <span className="text-[#FFB800] truncate max-w-[120px]">{courseTitle}</span>
+                  <span className="text-[#00b7fd] truncate max-w-[120px]">{courseTitle}</span>
                 </p>
               </div>
             </div>
@@ -315,8 +315,8 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
               <p className="mt-2 leading-relaxed">
                 I can help you with course-related questions, training schedules, platform navigation, and common technical issues within the SFT Learning Management System.
               </p>
-              <div className="mt-3.5 flex items-start gap-2 rounded-lg bg-amber-500/10 border border-[#FFB800]/20 p-2 text-xs text-amber-200/90">
-                <AlertCircle className="h-4 w-4 shrink-0 text-[#FFB800]" />
+              <div className="mt-3.5 flex items-start gap-2 rounded-lg bg-amber-500/10 border border-[#00b7fd]/20 p-2 text-xs text-amber-200/90">
+                <AlertCircle className="h-4 w-4 shrink-0 text-[#00b7fd]" />
                 <p>
                   Encountering issues like buffering videos, stuck checkouts, or quiz errors?
                   Generate a <strong>support ticket</strong> directly through the assistant for faster resolution.
@@ -343,7 +343,7 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
             {/* Loader / Thinking State */}
             {status === "in_progress" && (
               <div className="mr-auto flex items-center gap-2 rounded-2xl rounded-tl-none border border-white/5 bg-zinc-900/60 px-4 py-3 text-xs text-zinc-400">
-                <Loader2 className="h-4 w-4 animate-spin text-[#FFB800]" />
+                <Loader2 className="h-4 w-4 animate-spin text-[#00b7fd]" />
                 <span>SFT Support Assistant is scanning system details...</span>
               </div>
             )}
@@ -362,7 +362,7 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
                   <button
                     key={idx}
                     onClick={() => handleQuickAction(action.text)}
-                    className="rounded-lg bg-zinc-900/60 hover:bg-zinc-900 border border-white/5 hover:border-[#FFB800]/30 px-3 py-1.5 text-xs text-zinc-300 hover:text-[#FFB800] transition duration-200 text-left"
+                    className="rounded-lg bg-zinc-900/60 hover:bg-zinc-900 border border-white/5 hover:border-[#00b7fd]/30 px-3 py-1.5 text-xs text-zinc-300 hover:text-[#00b7fd] transition duration-200 text-left"
                   >
                     {action.label}
                   </button>
@@ -373,14 +373,14 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
 
           {/* Glowing Support Token Banner Overlay */}
           {latestToken && (
-            <div className="mx-4 mb-3 rounded-xl border border-[#FFB800]/40 bg-gradient-to-r from-[#FFB800]/15 to-amber-600/5 p-3.5 shadow-[0_0_20px_rgba(255,184,0,0.15)] animate-in slide-in-from-bottom-4 duration-300">
+            <div className="mx-4 mb-3 rounded-xl border border-[#00b7fd]/40 bg-gradient-to-r from-[#00b7fd]/15 to-amber-600/5 p-3.5 shadow-[0_0_20px_rgba(255,184,0,0.15)] animate-in slide-in-from-bottom-4 duration-300">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-950 border border-[#FFB800]/30">
-                    <Sparkles className="h-4 w-4 text-[#FFB800]" />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-950 border border-[#00b7fd]/30">
+                    <Sparkles className="h-4 w-4 text-[#00b7fd]" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[10px] uppercase font-extrabold tracking-widest text-[#FFB800]">
+                    <p className="text-[10px] uppercase font-extrabold tracking-widest text-[#00b7fd]">
                       LMS Support Token Generated
                     </p>
                     <p className="font-mono text-xs font-bold text-white tracking-wider truncate mt-0.5">
@@ -391,7 +391,7 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
                 <div className="flex gap-1 shrink-0">
                   <button
                     onClick={() => copyToClipboard(latestToken.token)}
-                    className="rounded-lg bg-zinc-950 hover:bg-zinc-900 border border-[#FFB800]/20 px-2.5 py-1.5 text-[10px] font-bold text-white hover:text-[#FFB800] transition duration-200 flex items-center gap-1"
+                    className="rounded-lg bg-zinc-950 hover:bg-zinc-900 border border-[#00b7fd]/20 px-2.5 py-1.5 text-[10px] font-bold text-white hover:text-[#00b7fd] transition duration-200 flex items-center gap-1"
                   >
                     {copied ? (
                       <>
@@ -414,7 +414,7 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
                   </button>
                 </div>
               </div>
-              <div className="mt-2 border-t border-[#FFB800]/10 pt-2 flex items-center gap-1.5">
+              <div className="mt-2 border-t border-[#00b7fd]/10 pt-2 flex items-center gap-1.5">
                 <span className="text-[9px] text-zinc-400 italic truncate block">
                   Logged Issue: "{latestToken.query}"
                 </span>
@@ -433,7 +433,7 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
             }}
             className="border-t border-white/5 bg-zinc-900/30 p-3"
           >
-            <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-zinc-950/80 px-3 py-2 transition-all duration-300 focus-within:border-[#FFB800]/60 focus-within:shadow-[0_0_15px_rgba(255,184,0,0.05)]">
+            <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-zinc-950/80 px-3 py-2 transition-all duration-300 focus-within:border-[#00b7fd]/60 focus-within:shadow-[0_0_15px_rgba(255,184,0,0.05)]">
               <input
                 disabled={status === "in_progress"}
                 className="flex-1 bg-transparent text-sm text-white placeholder-zinc-500 focus:outline-none disabled:opacity-50"
@@ -444,7 +444,7 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
               <button
                 type="submit"
                 disabled={!input.trim() || status === "in_progress"}
-                className="rounded-lg bg-[#FFB800] p-2 text-black transition-all duration-200 hover:bg-[#e5a500] hover:scale-105 active:scale-95 disabled:bg-zinc-800 disabled:text-zinc-500 disabled:scale-100"
+                className="rounded-lg bg-[#00b7fd] p-2 text-black transition-all duration-200 hover:bg-[#e5a500] hover:scale-105 active:scale-95 disabled:bg-zinc-800 disabled:text-zinc-500 disabled:scale-100"
               >
                 <Send className="h-4 w-4" />
               </button>
@@ -452,12 +452,12 @@ export default function CourseChatbot({ courseTitle = "SF Trainings", courseSlug
 
             <div className="mt-2.5 flex items-center justify-between px-1 text-[9px] text-zinc-500">
               <span className="flex items-center gap-1">
-                <Cpu className="h-2.5 w-2.5 text-[#FFB800]" />
+                <Cpu className="h-2.5 w-2.5 text-[#00b7fd]" />
                 System Diagnostics Active
               </span>
               {/* {latestToken ? (
-                <span className="inline-flex items-center gap-1 text-[#FFB800] font-bold tracking-wide">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#FFB800] animate-ping" /> Support Token active
+                <span className="inline-flex items-center gap-1 text-[#00b7fd] font-bold tracking-wide">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#00b7fd] animate-ping" /> Support Token active
                 </span>
               ) : (
                 <span>Powered by OpenAI</span>

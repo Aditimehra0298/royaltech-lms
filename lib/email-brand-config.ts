@@ -45,8 +45,11 @@ function readLogoDataUriFromDisk(): string | undefined {
   const customFile = process.env.MAIL_LOGO_FILE?.trim();
   const candidates = [
     customFile,
+    join(process.cwd(), "public", "logo-mark.jpg"),
+    join(process.cwd(), "public", "logo-mark.png"),
     join(process.cwd(), "public", "SF-WHITE-LOGO.png"),
     join(process.cwd(), "public", "email", "sft-logo.png"),
+    join(process.cwd(), "logo-mark.jpg"),
     join(process.cwd(), "SF-WHITE-LOGO.png"),
   ].filter((p): p is string => Boolean(p));
 
@@ -86,6 +89,6 @@ export function emailLogoSrc(): string | undefined {
   if (url) return url;
 
   const base = emailAppUrl().replace(/\/$/, "");
-  const path = process.env.MAIL_LOGO_PATH?.trim() || "/SF-WHITE-LOGO.png";
+  const path = process.env.MAIL_LOGO_PATH?.trim() || "/logo-mark.png";
   return path.startsWith("/") ? `${base}${path}` : `${base}/${path}`;
 }

@@ -76,7 +76,7 @@ export default function CertificateVerifyQrMaker({ isLight, certificateNumber = 
   return (
     <div className={card}>
       <div className="flex items-center gap-2">
-        <QrCode className={`h-5 w-5 ${isLight ? "text-[#8a6412]" : "text-amber-300"}`} aria-hidden />
+        <QrCode className={`h-5 w-5 ${isLight ? "text-[#3b82c4]" : "text-amber-300"}`} aria-hidden />
         <h2 className={`text-base font-bold ${isLight ? "text-slate-900" : "text-white"}`}>
           Free QR for certificate (download PNG)
         </h2>
@@ -121,7 +121,7 @@ export default function CertificateVerifyQrMaker({ isLight, certificateNumber = 
             type="button"
             onClick={downloadPng}
             disabled={!qrDataUrl}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] px-4 py-3 text-sm font-bold text-black shadow-md transition hover:brightness-110 disabled:opacity-50"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] px-4 py-3 text-sm font-bold text-black shadow-md transition hover:brightness-110 disabled:opacity-50"
           >
             <Download className="h-4 w-4" aria-hidden />
             Download QR PNG (free)

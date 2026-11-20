@@ -25,7 +25,7 @@ export default function BlogsPageContent() {
       {featured ? (
         <Link
           href={`/blogs/${featured.slug}`}
-          className="lh-path-card group grid overflow-hidden rounded-3xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] shadow-[0_0_32px_rgba(249,177,77,0.16)] transition-all hover:border-amber-300/70 md:grid-cols-[1.15fr_0.85fr]"
+          className="lh-path-card group grid overflow-hidden rounded-3xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] shadow-[0_0_32px_rgba(10,131,231,0.16)] transition-all hover:border-amber-300/70 md:grid-cols-[1.15fr_0.85fr]"
         >
           <div className="relative flex min-h-[240px] items-center justify-center bg-black/30 p-4 md:min-h-[320px]">
             <Image
@@ -58,7 +58,7 @@ export default function BlogsPageContent() {
                 })}
               </span>
             </div>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#fde68a]">
+            <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#7ccfff]">
               Read article <ArrowRight size={14} />
             </span>
           </div>
@@ -69,7 +69,7 @@ export default function BlogsPageContent() {
         {rest.map((post) => (
           <article
             key={post.slug}
-            className="lh-course-card group flex flex-col overflow-hidden rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] shadow-[0_0_24px_rgba(249,177,77,0.14)] transition-all hover:border-amber-300/70 hover:shadow-[0_0_32px_rgba(249,177,77,0.22)]"
+            className="lh-course-card group flex flex-col overflow-hidden rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] shadow-[0_0_24px_rgba(10,131,231,0.14)] transition-all hover:border-amber-300/70 hover:shadow-[0_0_32px_rgba(10,131,231,0.22)]"
           >
             <div className="relative flex h-44 items-center justify-center overflow-hidden bg-black/30 p-3">
               <Image
@@ -93,7 +93,7 @@ export default function BlogsPageContent() {
                 </span>
                 <Link
                   href={`/blogs/${post.slug}`}
-                  className="inline-flex items-center gap-1 font-bold text-[#fde68a] hover:underline"
+                  className="inline-flex items-center gap-1 font-bold text-[#7ccfff] hover:underline"
                 >
                   Read <ArrowRight size={13} />
                 </Link>
@@ -106,11 +106,11 @@ export default function BlogsPageContent() {
       <LmsContentCard title="Want a topic covered?">
         <p>
           Tell us what your team needs next via{" "}
-          <Link href="/contact" className="font-bold text-[#eb9422] underline decoration-amber-500/40">
+          <Link href="/contact" className="font-bold text-[#0070f0] underline decoration-amber-500/40">
             Contact
           </Link>{" "}
           or{" "}
-          <Link href="/book-a-call" className="font-bold text-[#eb9422] underline decoration-amber-500/40">
+          <Link href="/book-a-call" className="font-bold text-[#0070f0] underline decoration-amber-500/40">
             Book a Call
           </Link>
           .

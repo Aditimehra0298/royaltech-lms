@@ -30,7 +30,7 @@ export default function TestimonialsPageContent({ meta, testimonials }: Props) {
               return (
                 <blockquote
                   key={key}
-                  className="flex flex-col rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] p-6 shadow-[0_0_24px_rgba(249,177,77,0.16)]"
+                  className="flex flex-col rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] p-6 shadow-[0_0_24px_rgba(10,131,231,0.16)]"
                 >
                   {t.courseBadge?.trim() ? (
                     <TestimonialCourseBadge label={t.courseBadge} className="mb-4 self-start" />

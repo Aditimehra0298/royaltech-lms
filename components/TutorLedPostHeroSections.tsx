@@ -110,7 +110,7 @@ function SectionHeader({
   return (
     <div>
       {eyebrow ? (
-        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FFB800]">{eyebrow}</p>
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#00b7fd]">{eyebrow}</p>
       ) : null}
       <h2 className="mt-1 text-xl font-bold text-white md:text-2xl">{title}</h2>
       {description ? <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-zinc-400">{description}</p> : null}
@@ -128,7 +128,7 @@ function PageAnchors({ items }: { items: { href: string; label: string }[] }) {
         <a
           key={item.href}
           href={item.href}
-          className="rounded-full border border-white/10 bg-black/50 px-3 py-1.5 text-[11px] font-medium text-zinc-300 transition hover:border-[#FFB800]/40 hover:text-[#FFB800]"
+          className="rounded-full border border-white/10 bg-black/50 px-3 py-1.5 text-[11px] font-medium text-zinc-300 transition hover:border-[#00b7fd]/40 hover:text-[#00b7fd]"
         >
           {item.label}
         </a>
@@ -181,7 +181,7 @@ export default function TutorLedPostHeroSections({
             ]
         ).map((item, i) => (
           <div key={i} className="flex items-center gap-3 text-xs text-zinc-300">
-            <item.icon className="h-4 w-4 shrink-0 text-[#FFB800]" aria-hidden />
+            <item.icon className="h-4 w-4 shrink-0 text-[#00b7fd]" aria-hidden />
             {item.text}
           </div>
         ))}
@@ -192,11 +192,11 @@ export default function TutorLedPostHeroSections({
             <div
               key={m.user + m.text}
               className={`flex gap-2 rounded-lg px-2 py-1.5 ${
-                m.tone === "amber" ? "bg-[#FFB800]/10 text-zinc-200" : "bg-white/[0.04] text-zinc-300"
+                m.tone === "amber" ? "bg-[#00b7fd]/10 text-zinc-200" : "bg-white/[0.04] text-zinc-300"
               }`}
             >
               <span
-                className={`shrink-0 font-semibold ${m.tone === "amber" ? "text-[#FFB800]" : "text-zinc-500"}`}
+                className={`shrink-0 font-semibold ${m.tone === "amber" ? "text-[#00b7fd]" : "text-zinc-500"}`}
               >
                 {m.user}:
               </span>
@@ -206,7 +206,7 @@ export default function TutorLedPostHeroSections({
         </div>
         <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-black/50 px-3 py-2 text-[11px] text-zinc-500">
           <span className="min-w-0 flex-1 truncate">Type a message…</span>
-          <Send className="h-3.5 w-3.5 shrink-0 text-[#FFB800]" aria-hidden />
+          <Send className="h-3.5 w-3.5 shrink-0 text-[#00b7fd]" aria-hidden />
         </div>
       </div>
     </div>
@@ -225,7 +225,7 @@ export default function TutorLedPostHeroSections({
               </h2>
               <div className="flex flex-1 flex-col">
                 <div className="flex gap-4">
-                  <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-full border-2 border-[#FFB800]/40 bg-zinc-900 sm:h-20 sm:w-20">
+                  <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-full border-2 border-[#00b7fd]/40 bg-zinc-900 sm:h-20 sm:w-20">
                     {course.trainer.avatar?.trim() ? (
                       <Image
                         src={course.trainer.avatar}
@@ -235,13 +235,13 @@ export default function TutorLedPostHeroSections({
                         unoptimized
                       />
                     ) : (
-                      <span className="flex h-full w-full items-center justify-center text-2xl font-bold text-[#FFB800]">
+                      <span className="flex h-full w-full items-center justify-center text-2xl font-bold text-[#00b7fd]">
                         {course.trainer.name.replace(/^Mr\.?\s*/i, "").charAt(0)}
                       </span>
                     )}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-base font-bold text-[#FFB800] sm:text-lg">{course.trainer.name}</h3>
+                    <h3 className="text-base font-bold text-[#00b7fd] sm:text-lg">{course.trainer.name}</h3>
                     <p className="text-sm text-zinc-200">{course.trainer.role}</p>
                     <p className="mt-2 text-sm leading-relaxed text-zinc-400">{course.trainer.bio}</p>
                   </div>
@@ -251,7 +251,7 @@ export default function TutorLedPostHeroSections({
                     {course.trainer.certifications.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-md border border-[#FFB800]/50 bg-transparent px-3 py-1.5 text-[11px] font-medium text-[#FFB800]"
+                        className="rounded-md border border-[#00b7fd]/50 bg-transparent px-3 py-1.5 text-[11px] font-medium text-[#00b7fd]"
                       >
                         {tag}
                       </span>
@@ -263,7 +263,7 @@ export default function TutorLedPostHeroSections({
                       {course.trainer.certifications.map((c) => (
                         <span
                           key={c}
-                          className="rounded-full border border-[#FFB800]/45 bg-[#FFB800]/[0.07] px-3 py-1.5 text-[11px] font-semibold text-[#FFB800]"
+                          className="rounded-full border border-[#00b7fd]/45 bg-[#00b7fd]/[0.07] px-3 py-1.5 text-[11px] font-semibold text-[#00b7fd]"
                         >
                           <ShieldCheck size={12} className="mr-1 inline -translate-y-px" />
                           {c}
@@ -300,7 +300,7 @@ export default function TutorLedPostHeroSections({
                   <ul className="space-y-2.5">
                     {course.highlights.map((h, i) => (
                       <li key={i} className="flex gap-2.5 text-sm leading-snug text-zinc-200">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#FFB800]" aria-hidden />
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#00b7fd]" aria-hidden />
                         <span>{h}</span>
                       </li>
                     ))}
@@ -331,7 +331,7 @@ export default function TutorLedPostHeroSections({
         <section className="border-b border-white/10 bg-black" id="certificate">
           <div className={`${shell} py-8 md:py-12`}>
             <div className="flex flex-col gap-8 lg:gap-10">
-              <div className="flex justify-center rounded-2xl border border-[#FFB800]/25 bg-zinc-950/50 p-6 md:p-8">
+              <div className="flex justify-center rounded-2xl border border-[#00b7fd]/25 bg-zinc-950/50 p-6 md:p-8">
                 <TutorLedCertificatePreview
                   programTitle={tutorLedCertificate.programTitle}
                   trainerName={tutorLedCertificate.trainerName}
@@ -339,19 +339,19 @@ export default function TutorLedPostHeroSections({
                 />
               </div>
               <div className="mx-auto w-full max-w-2xl space-y-4">
-                <div className={`${card} border-[#FFB800]/20 bg-gradient-to-br from-[#FFB800]/8 to-zinc-950/80`}>
+                <div className={`${card} border-[#00b7fd]/20 bg-gradient-to-br from-[#00b7fd]/8 to-zinc-950/80`}>
                   <h3 className="text-lg font-bold text-white">What you earn after payment</h3>
                   <ul className="mt-3 space-y-2.5 text-sm text-zinc-300">
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#FFB800]" aria-hidden />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#00b7fd]" aria-hidden />
                       Live Zoom classroom for every session in your batch
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#FFB800]" aria-hidden />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#00b7fd]" aria-hidden />
                       Recordings and materials in My Learning
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#FFB800]" aria-hidden />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#00b7fd]" aria-hidden />
                       Printable certificate with verified credential ID
                     </li>
                   </ul>
@@ -360,7 +360,7 @@ export default function TutorLedPostHeroSections({
                   <button
                     type="button"
                     onClick={() => registerTutorLedFromTemplate(router, tutorLedCheckoutSlug)}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#FFB800] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,184,0,0.25)] transition hover:bg-[#e5a500] sm:w-auto"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00b7fd] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,184,0,0.25)] transition hover:bg-[#e5a500] sm:w-auto"
                   >
                     Reserve seat &amp; earn this certificate
                     <ChevronRight size={18} strokeWidth={2.5} />
@@ -376,7 +376,7 @@ export default function TutorLedPostHeroSections({
         <section className="border-b border-white/10 bg-zinc-950" id="syllabus">
           <div className={`${shell} py-8 md:py-10`}>
             <div className="mb-6 text-center lg:text-left">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FFB800]">Before you enroll</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#00b7fd]">Before you enroll</p>
               <h2 className="mt-1 text-2xl font-bold text-white md:text-3xl">Live training syllabus</h2>
               <p className="mt-2 max-w-2xl text-sm text-zinc-400">
                 Review the full program by week or by day — every live session, lab, and recording slot.
@@ -424,11 +424,11 @@ export default function TutorLedPostHeroSections({
                       key={w.week}
                       className={`rounded-xl border px-3 py-2.5 transition ${
                         idx === 0
-                          ? "border-[#FFB800]/60 bg-[#FFB800]/12 shadow-[0_0_20px_rgba(255,184,0,0.12)]"
+                          ? "border-[#00b7fd]/60 bg-[#00b7fd]/12 shadow-[0_0_20px_rgba(255,184,0,0.12)]"
                           : "border-white/10 bg-black/20"
                       }`}
                     >
-                      <p className="text-[10px] font-bold uppercase tracking-wide text-[#FFB800]">
+                      <p className="text-[10px] font-bold uppercase tracking-wide text-[#00b7fd]">
                         {isSelfPaced ? `Mod ${w.week}` : `Week ${w.week}`}
                       </p>
                       <p className="text-[11px] text-zinc-400">{w.label}</p>
@@ -449,12 +449,12 @@ export default function TutorLedPostHeroSections({
                       {course.curriculum.map((w) => (
                         <tr key={w.week} className="border-b border-white/5 transition hover:bg-white/[0.02]">
                           <td className="px-4 py-3.5 align-top">
-                            <span className="font-bold text-[#FFB800]">{isSelfPaced ? `Module ${w.week}` : `Week ${w.week}`}</span>
+                            <span className="font-bold text-[#00b7fd]">{isSelfPaced ? `Module ${w.week}` : `Week ${w.week}`}</span>
                           </td>
                           <td className="px-4 py-3.5 align-top text-zinc-200">{w.topic}</td>
                           <td className="px-4 py-3.5 align-top text-zinc-500">{w.keyLearning}</td>
                           <td className="px-4 py-3.5 align-top text-right">
-                            <span className="inline-block rounded-full border border-[#FFB800]/25 bg-[#FFB800]/10 px-2.5 py-1 text-[10px] font-semibold text-[#FFB800]">
+                            <span className="inline-block rounded-full border border-[#00b7fd]/25 bg-[#00b7fd]/10 px-2.5 py-1 text-[10px] font-semibold text-[#00b7fd]">
                               {w.sessionType}
                             </span>
                           </td>
@@ -509,7 +509,7 @@ export default function TutorLedPostHeroSections({
                       ]
                   ).map((item, i) => (
                     <div key={i} className="flex items-center gap-3 text-xs text-zinc-300">
-                      <item.icon className="h-4 w-4 shrink-0 text-[#FFB800]" />
+                      <item.icon className="h-4 w-4 shrink-0 text-[#00b7fd]" />
                       {item.text}
                     </div>
                   ))}
@@ -520,10 +520,10 @@ export default function TutorLedPostHeroSections({
                       <div
                         key={m.user + m.text}
                         className={`flex gap-2 rounded-lg px-2 py-1.5 ${
-                          m.tone === "amber" ? "bg-[#FFB800]/10 text-zinc-200" : "bg-white/[0.04] text-zinc-300"
+                          m.tone === "amber" ? "bg-[#00b7fd]/10 text-zinc-200" : "bg-white/[0.04] text-zinc-300"
                         }`}
                       >
-                        <span className={`shrink-0 font-semibold ${m.tone === "amber" ? "text-[#FFB800]" : "text-zinc-500"}`}>
+                        <span className={`shrink-0 font-semibold ${m.tone === "amber" ? "text-[#00b7fd]" : "text-zinc-500"}`}>
                           {m.user}:
                         </span>
                         <span>{m.text}</span>
@@ -532,7 +532,7 @@ export default function TutorLedPostHeroSections({
                   </div>
                   <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-black/50 px-3 py-2 text-[11px] text-zinc-500">
                     <span className="min-w-0 flex-1 truncate">Type a message…</span>
-                    <Send className="h-3.5 w-3.5 shrink-0 text-[#FFB800]" />
+                    <Send className="h-3.5 w-3.5 shrink-0 text-[#00b7fd]" />
                   </div>
                 </div>
               </div>
@@ -554,10 +554,10 @@ export default function TutorLedPostHeroSections({
             {course.whyChoose.map((item, i) => (
               <div
                 key={item.title}
-                className="flex flex-col items-center rounded-2xl border border-white/[0.08] bg-zinc-950/70 px-3 py-4 text-center transition hover:border-[#FFB800]/25 hover:shadow-[0_12px_40px_rgba(0,0,0,0.45)] sm:px-4 sm:py-5"
+                className="flex flex-col items-center rounded-2xl border border-white/[0.08] bg-zinc-950/70 px-3 py-4 text-center transition hover:border-[#00b7fd]/25 hover:shadow-[0_12px_40px_rgba(0,0,0,0.45)] sm:px-4 sm:py-5"
               >
-                <div className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-[#FFB800]/10">
-                  <item.icon className="h-5 w-5 text-[#FFB800]" />
+                <div className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-[#00b7fd]/10">
+                  <item.icon className="h-5 w-5 text-[#00b7fd]" />
                 </div>
                 <p className="text-sm font-bold text-white">{item.title}</p>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-zinc-500">{item.desc}</p>
@@ -574,7 +574,7 @@ export default function TutorLedPostHeroSections({
       <section className="border-b border-white/10 bg-zinc-950">
         <div className={`${shell} flex flex-col gap-8 py-8 md:py-10`}>
           {!isSelfPaced && tutorLedCertificate ? (
-            <div className="mx-auto w-full max-w-2xl rounded-2xl border border-[#FFB800]/30 bg-zinc-900/50 p-6 md:p-8">
+            <div className="mx-auto w-full max-w-2xl rounded-2xl border border-[#00b7fd]/30 bg-zinc-900/50 p-6 md:p-8">
               <TutorLedCertificatePreview
                 programTitle={tutorLedCertificate.programTitle}
                 trainerName={tutorLedCertificate.trainerName}
@@ -609,7 +609,7 @@ export default function TutorLedPostHeroSections({
           </div>
 
           <div className="mx-auto w-full max-w-lg">
-            <div className="rounded-2xl border border-[#FFB800]/40 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black p-6 text-center shadow-[0_0_40px_rgba(255,184,0,0.08)]">
+            <div className="rounded-2xl border border-[#00b7fd]/40 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black p-6 text-center shadow-[0_0_40px_rgba(255,184,0,0.08)]">
               <h3 className="text-xl font-extrabold leading-tight text-white md:text-[1.5rem]">
                 {isSelfPaced ? "Start this course today" : "Secure Your Spot in the Next Batch!"}
               </h3>
@@ -621,14 +621,14 @@ export default function TutorLedPostHeroSections({
               {isSelfPaced ? (
                 <Link
                   href="/cart"
-                  className="mt-5 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-[#FFB800] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,184,0,0.25)] transition hover:bg-[#e5a500] md:w-full"
+                  className="mt-5 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-[#00b7fd] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,184,0,0.25)] transition hover:bg-[#e5a500] md:w-full"
                 >
                   Enroll now <ChevronRight size={18} strokeWidth={2.5} />
                 </Link>
               ) : enrolledLearning ? (
                 <Link
                   href="/my-learning?tab=live"
-                  className="mt-5 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-[#FFB800] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,184,0,0.25)] transition hover:bg-[#e5a500] md:w-full"
+                  className="mt-5 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-[#00b7fd] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,184,0,0.25)] transition hover:bg-[#e5a500] md:w-full"
                 >
                   Open Tutor Led dashboard <ChevronRight size={18} strokeWidth={2.5} />
                 </Link>
@@ -636,14 +636,14 @@ export default function TutorLedPostHeroSections({
                 <button
                   type="button"
                   onClick={() => registerTutorLedFromTemplate(router, tutorLedCheckoutSlug)}
-                  className="mt-5 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-[#FFB800] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,184,0,0.25)] transition hover:bg-[#e5a500] md:w-full"
+                  className="mt-5 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-[#00b7fd] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,184,0,0.25)] transition hover:bg-[#e5a500] md:w-full"
                 >
                   Register for live course <ChevronRight size={18} strokeWidth={2.5} />
                 </button>
               ) : (
                 <Link
                   href="/courses"
-                  className="mt-5 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-[#FFB800] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,184,0,0.25)] transition hover:bg-[#e5a500] md:w-full"
+                  className="mt-5 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-[#00b7fd] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,184,0,0.25)] transition hover:bg-[#e5a500] md:w-full"
                 >
                   Browse live programs <ChevronRight size={18} strokeWidth={2.5} />
                 </Link>

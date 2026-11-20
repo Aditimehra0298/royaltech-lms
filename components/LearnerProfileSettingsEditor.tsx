@@ -308,7 +308,7 @@ export function LearnerProfileSettingsEditor({ initialProfile, compact = false, 
           type="button"
           onClick={() => void save()}
           disabled={saving}
-          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] px-6 py-3 text-sm font-bold text-black hover:brightness-110 disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] px-6 py-3 text-sm font-bold text-black hover:brightness-110 disabled:opacity-60"
         >
           <Save size={16} />
           {saving ? "Saving…" : "Save settings"}

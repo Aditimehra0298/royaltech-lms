@@ -196,8 +196,8 @@ export function MyLearningDashboardCourses({
               ) : null}
 
               {tutorLedCourses.length > 0 ? (
-                <div className="rounded-lg border border-[#FFC107]/20 bg-[#FFC107]/5 p-3">
-                  <p className="mb-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[#FFC107]">
+                <div className="rounded-lg border border-[#0070f0]/20 bg-[#0070f0]/5 p-3">
+                  <p className="mb-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[#0070f0]">
                     <Video size={14} />
                     Live programs
                   </p>
@@ -217,7 +217,7 @@ export function MyLearningDashboardCourses({
                         <div className="flex flex-wrap gap-2">
                           <Link
                             href={tutorLedLearnerLiveJoinHref(course.slug)}
-                            className="inline-flex items-center gap-1 rounded-md bg-[#FFC107] px-3 py-1.5 text-xs font-bold text-black"
+                            className="inline-flex items-center gap-1 rounded-md bg-[#0070f0] px-3 py-1.5 text-xs font-bold text-black"
                           >
                             <Play className="h-3 w-3 fill-black" />
                             Join live
@@ -339,7 +339,7 @@ export function MyLearningDashboardCourses({
                         <li key={`explore-tl-${course.slug}`}>
                           <Link
                             href={liveTutorCourseHref(course.slug)}
-                            className="group flex gap-3 rounded-lg border border-white/10 bg-black/25 p-2 transition hover:border-[#FFC107]/40 hover:bg-black/40"
+                            className="group flex gap-3 rounded-lg border border-white/10 bg-black/25 p-2 transition hover:border-[#0070f0]/40 hover:bg-black/40"
                           >
                             <div className="relative h-14 w-16 shrink-0 overflow-hidden rounded-md border border-white/10 bg-black/30">
                               {course.image?.trim() ? (
@@ -350,13 +350,13 @@ export function MyLearningDashboardCourses({
                                   className="relative h-14 w-16 overflow-hidden rounded-md border border-white/10 bg-black/30"
                                 />
                               ) : (
-                                <div className="flex h-full items-center justify-center text-[8px] text-[#FFC107]">
+                                <div className="flex h-full items-center justify-center text-[8px] text-[#0070f0]">
                                   Live
                                 </div>
                               )}
                             </div>
                             <div className="min-w-0 flex-1">
-                              <p className="line-clamp-2 text-xs font-semibold leading-snug group-hover:text-[#FFC107]">
+                              <p className="line-clamp-2 text-xs font-semibold leading-snug group-hover:text-[#0070f0]">
                                 {course.title}
                               </p>
                               <p className="mt-0.5 text-[10px] text-gray-500">
@@ -371,7 +371,7 @@ export function MyLearningDashboardCourses({
                             </div>
                             <Rocket
                               size={14}
-                              className="mt-1 shrink-0 text-gray-600 group-hover:text-[#FFC107]"
+                              className="mt-1 shrink-0 text-gray-600 group-hover:text-[#0070f0]"
                             />
                           </Link>
                         </li>

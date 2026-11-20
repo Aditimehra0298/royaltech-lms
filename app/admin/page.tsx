@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import sfWhiteLogo from "@/SF-WHITE-LOGO.png";
+import brandLogo from "@/logo-mark.png";
 import {
   BookOpen,
   Briefcase,
@@ -23,7 +23,6 @@ import {
   LogOut,
   Menu,
   MessageSquare,
-  Moon,
   Pencil,
   Search,
   Settings,
@@ -716,7 +715,7 @@ function AdminPageInner() {
         <aside className="border-r border-white/10 bg-[#080f20] p-4">
           <div className="mb-4 flex items-center gap-3">
             <Image
-              src={sfWhiteLogo}
+              src={brandLogo}
               alt="Sustainable Futures Trainings"
               width={38}
               height={38}
@@ -816,9 +815,6 @@ function AdminPageInner() {
             </div>
             <div className="flex flex-wrap items-center justify-end gap-2">
               <AdminNotificationsBell onNavigate={(menu) => selectMenu(menu)} />
-              <button className="rounded-lg border border-white/10 bg-[#0a1120] p-2">
-                <Moon size={14} />
-              </button>
               <div className="hidden rounded-lg border border-white/10 bg-[#0a1120] px-3 py-2 text-xs sm:block">
                 {headerDateLabel}
               </div>
@@ -904,7 +900,7 @@ function AdminPageInner() {
                     Organizations: {dashStats ? fmtNum(dashStats.totalOrganizations) : "—"}
                   </p>
                   <p>
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-[#f59e0b]" />
+                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-[#0070f0]" />
                     Admins: {dashStats ? fmtNum(dashStats.totalAdmins) : "—"}
                   </p>
                 </div>

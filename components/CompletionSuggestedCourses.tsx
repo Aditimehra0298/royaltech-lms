@@ -106,7 +106,7 @@ export function CompletionSuggestedCourses({ excludeSlug, className = "" }: Prop
         return (
           <article
             key={course.slug}
-            className="flex flex-col overflow-hidden rounded-xl border border-amber-500/25 bg-gradient-to-b from-[#1b1305] via-[#141820] to-[#0a0a0a] transition hover:border-amber-300/50 hover:shadow-[0_0_24px_rgba(245,158,11,0.15)]"
+            className="flex flex-col overflow-hidden rounded-xl border border-amber-500/25 bg-gradient-to-b from-[#1b1305] via-[#141820] to-[#0a0a0a] transition hover:border-amber-300/50 hover:shadow-[0_0_24px_rgba(54,182,255,0.15)]"
           >
             <Link href={href} className="block">
               <div className="relative aspect-[16/10] bg-black/40">

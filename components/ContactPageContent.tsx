@@ -231,7 +231,7 @@ export default function ContactPageContent() {
 
             <article className="order-1 relative flex min-h-0 items-center justify-center lg:order-2">
               <div
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,158,11,0.12),transparent_68%)]"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(54,182,255,0.12),transparent_68%)]"
                 aria-hidden
               />
               <div className="relative h-[200px] w-full sm:h-[240px] md:h-[280px] lg:h-[340px]">

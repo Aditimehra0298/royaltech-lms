@@ -121,18 +121,18 @@ function CropModal({ src, aspect: initialAspect, onCrop, onCancel }: { src: stri
 
   return (
     <div className="fixed inset-0 z-100 flex items-center justify-center overflow-y-auto bg-black/90 backdrop-blur-xl p-4 py-6" onClick={onCancel}>
-      <div className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/8 bg-[#070b14] shadow-[0_0_100px_rgba(245,158,11,0.08),0_32px_80px_rgba(0,0,0,0.7)]" onClick={(e) => e.stopPropagation()} style={{ maxHeight: "min(92vh, calc(100vh - 3rem))" }}>
-        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#f59e0b]/60 to-transparent" />
+      <div className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/8 bg-[#070b14] shadow-[0_0_100px_rgba(54,182,255,0.08),0_32px_80px_rgba(0,0,0,0.7)]" onClick={(e) => e.stopPropagation()} style={{ maxHeight: "min(92vh, calc(100vh - 3rem))" }}>
+        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#0070f0]/60 to-transparent" />
         {/* Header - fixed */}
         <div className="relative flex shrink-0 items-center justify-between px-6 py-4">
-          <div className="absolute inset-0 bg-linear-to-b from-[#f59e0b]/4 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#0070f0]/4 to-transparent" />
           <div className="relative flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-[#f59e0b]/25 to-[#f59e0b]/5 ring-1 ring-[#f59e0b]/20"><Crop size={16} className="text-[#f59e0b]" /></div>
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-[#0070f0]/25 to-[#0070f0]/5 ring-1 ring-[#0070f0]/20"><Crop size={16} className="text-[#0070f0]" /></div>
             <div><h2 className="text-sm font-bold tracking-tight">Image Studio</h2><p className="text-[10px] text-gray-500">Crop, rotate & transform</p></div>
           </div>
           <div className="relative flex items-center gap-2">
             <div className="flex items-center gap-1 rounded-lg border border-white/10 bg-black/40 p-0.5">
-              {ASPECT_PRESETS.map((p) => (<button key={p.label} type="button" onClick={() => setAr(p.value)} className={`rounded-md px-2.5 py-1 text-[10px] font-medium transition ${ar === 0 ? p.value === 0 : Math.abs(ar - p.value) < 0.01 ? "bg-[#f59e0b] text-black shadow" : ""} ${!(ar === 0 ? p.value === 0 : Math.abs(ar - p.value) < 0.01) ? "text-gray-400 hover:text-white hover:bg-white/10" : ""}`}>{p.label}</button>))}
+              {ASPECT_PRESETS.map((p) => (<button key={p.label} type="button" onClick={() => setAr(p.value)} className={`rounded-md px-2.5 py-1 text-[10px] font-medium transition ${ar === 0 ? p.value === 0 : Math.abs(ar - p.value) < 0.01 ? "bg-[#0070f0] text-black shadow" : ""} ${!(ar === 0 ? p.value === 0 : Math.abs(ar - p.value) < 0.01) ? "text-gray-400 hover:text-white hover:bg-white/10" : ""}`}>{p.label}</button>))}
             </div>
             <button type="button" onClick={onCancel} className="rounded-xl p-2 text-gray-500 ring-1 ring-white/5 transition hover:bg-white/5 hover:text-white"><X size={16} /></button>
           </div>
@@ -141,13 +141,13 @@ function CropModal({ src, aspect: initialAspect, onCrop, onCancel }: { src: stri
         <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-2">
           <div className="relative overflow-hidden rounded-2xl bg-black/80 ring-1 ring-white/5" style={{ height: "clamp(180px, 38vh, 420px)" }}>
             <Cropper image={src} crop={crop} zoom={zoom} rotation={rotation} aspect={ar || undefined} onCropChange={setCrop} onZoomChange={setZoom} onRotationChange={setRotation} onCropComplete={onCropComplete} showGrid cropShape="rect" objectFit="contain"
-              style={{ containerStyle: { borderRadius: "1rem", background: "#05080f" }, mediaStyle: { transform: flipH ? "scaleX(-1)" : undefined }, cropAreaStyle: { border: "2px solid rgba(245, 158, 11, 0.7)", boxShadow: "0 0 30px rgba(245, 158, 11, 0.15)" } }} />
+              style={{ containerStyle: { borderRadius: "1rem", background: "#05080f" }, mediaStyle: { transform: flipH ? "scaleX(-1)" : undefined }, cropAreaStyle: { border: "2px solid rgba(54,182,255, 0.7)", boxShadow: "0 0 30px rgba(54,182,255, 0.15)" } }} />
           </div>
           <div className="mt-3 space-y-2">
-            <div className="flex items-center gap-2"><span className="text-[10px] font-semibold uppercase tracking-widest text-gray-600 w-14">Zoom</span><div className="flex flex-1 items-center gap-3 rounded-xl bg-white/3 px-3 py-2 ring-1 ring-white/5"><ZoomOut size={12} className="shrink-0 text-gray-500" /><input type="range" min={1} max={3} step={0.01} value={zoom} onChange={(e) => setZoom(Number(e.target.value))} className="flex-1 accent-[#f59e0b] h-1 cursor-pointer" /><ZoomIn size={12} className="shrink-0 text-gray-500" /><span className="ml-1 min-w-[3ch] text-right text-[11px] font-mono text-[#f59e0b]">{zoom.toFixed(1)}x</span></div></div>
+            <div className="flex items-center gap-2"><span className="text-[10px] font-semibold uppercase tracking-widest text-gray-600 w-14">Zoom</span><div className="flex flex-1 items-center gap-3 rounded-xl bg-white/3 px-3 py-2 ring-1 ring-white/5"><ZoomOut size={12} className="shrink-0 text-gray-500" /><input type="range" min={1} max={3} step={0.01} value={zoom} onChange={(e) => setZoom(Number(e.target.value))} className="flex-1 accent-[#0070f0] h-1 cursor-pointer" /><ZoomIn size={12} className="shrink-0 text-gray-500" /><span className="ml-1 min-w-[3ch] text-right text-[11px] font-mono text-[#0070f0]">{zoom.toFixed(1)}x</span></div></div>
             <div className="flex items-center gap-2"><span className="text-[10px] font-semibold uppercase tracking-widest text-gray-600 w-14">Rotate</span><div className="flex flex-1 items-center gap-3 rounded-xl bg-white/3 px-3 py-2 ring-1 ring-white/5"><RotateCcw size={12} className="shrink-0 text-gray-500" /><input type="range" min={-180} max={180} step={1} value={rotation} onChange={(e) => setRotation(Number(e.target.value))} className="flex-1 accent-[#6366f1] h-1 cursor-pointer" /><RotateCw size={12} className="shrink-0 text-gray-500" /><span className="ml-1 min-w-[4ch] text-right text-[11px] font-mono text-[#818cf8]">{rotation}°</span></div></div>
             <div className="flex flex-wrap items-center gap-2"><span className="text-[10px] font-semibold uppercase tracking-widest text-gray-600 w-14">Tools</span><div className="flex flex-wrap items-center gap-1.5">
-              <button type="button" onClick={() => setFlipH(!flipH)} className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[10px] font-medium ring-1 transition ${flipH ? "bg-[#f59e0b]/15 text-[#f59e0b] ring-[#f59e0b]/30" : "text-gray-400 ring-white/5 hover:bg-white/5"}`}><FlipHorizontal2 size={12} /> Flip</button>
+              <button type="button" onClick={() => setFlipH(!flipH)} className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[10px] font-medium ring-1 transition ${flipH ? "bg-[#0070f0]/15 text-[#0070f0] ring-[#0070f0]/30" : "text-gray-400 ring-white/5 hover:bg-white/5"}`}><FlipHorizontal2 size={12} /> Flip</button>
               <button type="button" onClick={() => setRotation((r) => r - 90)} className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[10px] font-medium text-gray-400 ring-1 ring-white/5 hover:bg-white/5 transition"><RotateCcw size={12} /> -90°</button>
               <button type="button" onClick={() => setRotation((r) => r + 90)} className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[10px] font-medium text-gray-400 ring-1 ring-white/5 hover:bg-white/5 transition"><RotateCw size={12} /> +90°</button>
               <button type="button" onClick={resetAll} className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[10px] font-medium text-gray-400 ring-1 ring-white/5 hover:bg-white/5 transition"><RotateCcw size={12} /> Reset</button>
@@ -220,13 +220,13 @@ function ImageUploader({ value, onChange, label, compact, aspect, cropEnabled = 
     <>
       <div className="space-y-1.5">
         {label && <label className="block text-[11px] font-medium uppercase tracking-wider text-gray-500">{label}</label>}
-        <div className={`group relative overflow-hidden rounded-xl border border-dashed border-white/15 bg-linear-to-br from-white/3 to-transparent ${h} transition-all hover:border-[#f59e0b]/40`}>
+        <div className={`group relative overflow-hidden rounded-xl border border-dashed border-white/15 bg-linear-to-br from-white/3 to-transparent ${h} transition-all hover:border-[#0070f0]/40`}>
           {preview ? (<img src={preview} alt="Preview" className="h-full w-full object-cover" onError={() => setPreview("")} />) : (<div className="flex h-full flex-col items-center justify-center gap-1 text-gray-500"><ImageIcon size={compact ? 18 : 24} /><span className="text-[10px]">No image</span></div>)}
           <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/60 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
-            <button type="button" onClick={() => { setMode("upload"); fileRef.current?.click(); }} className="flex items-center gap-1 rounded-lg bg-[#f59e0b] px-3 py-1.5 text-[11px] font-semibold text-black shadow-lg transition hover:bg-[#e5a32f]"><Upload size={12} /> {compact ? "Photo" : "Upload & Crop"}</button>
+            <button type="button" onClick={() => { setMode("upload"); fileRef.current?.click(); }} className="flex items-center gap-1 rounded-lg bg-[#0070f0] px-3 py-1.5 text-[11px] font-semibold text-black shadow-lg transition hover:bg-[#e5a32f]"><Upload size={12} /> {compact ? "Photo" : "Upload & Crop"}</button>
             {!compact && <button type="button" onClick={() => setMode("url")} className="flex items-center gap-1 rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-[11px] font-medium text-white backdrop-blur transition hover:bg-white/20"><Globe size={12} /> URL</button>}
           </div>
-          {uploading && (<div className="absolute inset-0 grid place-items-center bg-black/70"><Loader2 size={20} className="animate-spin text-[#f59e0b]" /></div>)}
+          {uploading && (<div className="absolute inset-0 grid place-items-center bg-black/70"><Loader2 size={20} className="animate-spin text-[#0070f0]" /></div>)}
         </div>
         <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); e.target.value = ""; }} />
         {!compact && mode === "url" && (<div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-black/40 px-2.5 py-1.5"><Globe size={12} className="shrink-0 text-gray-500" /><input className="flex-1 bg-transparent text-xs outline-none placeholder:text-gray-600" placeholder="Paste image URL..." value={value} onChange={(e) => { onChange(e.target.value); setPreview(e.target.value); }} /></div>)}
@@ -242,12 +242,12 @@ function ImageUploader({ value, onChange, label, compact, aspect, cropEnabled = 
 type SectionKey = "hero" | "stats" | "learningPaths" | "whyFeatures" | "testimonials" | "pricing" | "faqs" | "newsletter" | "unlock" | "media";
 
 const sectionMeta: Record<SectionKey, { label: string; icon: typeof Rocket; color: string }> = {
-  hero: { label: "Hero Section", icon: Rocket, color: "#f59e0b" },
+  hero: { label: "Hero Section", icon: Rocket, color: "#0070f0" },
   stats: { label: "Statistics Bar", icon: Zap, color: "#3b82f6" },
   learningPaths: { label: "Choose Your Path", icon: BookOpen, color: "#8b5cf6" },
   whyFeatures: { label: "Why Choose Us", icon: Award, color: "#10b981" },
   testimonials: { label: "Testimonials", icon: MessageSquare, color: "#ec4899" },
-  pricing: { label: "Pricing Plans", icon: CreditCard, color: "#f59e0b" },
+  pricing: { label: "Pricing Plans", icon: CreditCard, color: "#0070f0" },
   faqs: { label: "FAQ Section", icon: HelpCircle, color: "#6366f1" },
   newsletter: { label: "Newsletter", icon: Mail, color: "#0ea5e9" },
   unlock: { label: "Unlock Potential / CTA", icon: Sparkles, color: "#f43f5e" },
@@ -328,13 +328,13 @@ export default function AdminHomePageEditor() {
   const addExplorImg = () => setConfig((p) => ({ ...p, exploreProgramImages: [...p.exploreProgramImages, ""] }));
   const removeExplorImg = (i: number) => setConfig((p) => ({ ...p, exploreProgramImages: p.exploreProgramImages.filter((_, idx) => idx !== i) }));
 
-  if (loading) return (<div className="flex items-center justify-center gap-3 py-20"><div className="h-8 w-8 animate-spin rounded-full border-2 border-[#f59e0b] border-t-transparent" /><span className="text-sm text-gray-400">Loading editor...</span></div>);
+  if (loading) return (<div className="flex items-center justify-center gap-3 py-20"><div className="h-8 w-8 animate-spin rounded-full border-2 border-[#0070f0] border-t-transparent" /><span className="text-sm text-gray-400">Loading editor...</span></div>);
 
-  const inputCls = "w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none transition focus:border-[#f59e0b]/60 focus:shadow-[0_0_16px_rgba(245,158,11,0.12)]";
+  const inputCls = "w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none transition focus:border-[#0070f0]/60 focus:shadow-[0_0_16px_rgba(54,182,255,0.12)]";
   const labelCls = "block text-[11px] font-medium uppercase tracking-wider text-gray-500 mb-1.5";
   const cardCls = "rounded-2xl border border-white/[0.07] bg-linear-to-br from-[#0d1528] via-[#0b1224] to-[#0a0f1e] p-5 shadow-[0_4px_32px_rgba(0,0,0,0.3)]";
   const itemCls = "rounded-xl border border-white/[0.07] bg-black/30 p-3 backdrop-blur-sm transition-all hover:border-white/15";
-  const btnAdd = "inline-flex items-center gap-1.5 rounded-xl border border-dashed border-white/15 bg-linear-to-r from-white/[0.02] to-transparent px-4 py-2.5 text-xs text-gray-300 transition hover:border-[#f59e0b]/40 hover:text-[#f59e0b]";
+  const btnAdd = "inline-flex items-center gap-1.5 rounded-xl border border-dashed border-white/15 bg-linear-to-r from-white/[0.02] to-transparent px-4 py-2.5 text-xs text-gray-300 transition hover:border-[#0070f0]/40 hover:text-[#0070f0]";
   const btnDanger = "inline-flex items-center justify-center rounded-lg border border-red-500/20 bg-red-500/10 p-2 text-red-400 transition hover:bg-red-500/20 hover:text-red-300";
 
   const SectionHeader = ({ sectionKey }: { sectionKey: SectionKey }) => {
@@ -354,19 +354,19 @@ export default function AdminHomePageEditor() {
     <div className="space-y-5">
       {/* Header */}
       <section className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-linear-to-r from-[#0d1528] via-[#12182e] to-[#0d1528] p-5">
-        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#f59e0b]/10 blur-3xl" />
+        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#0070f0]/10 blur-3xl" />
         <div className="absolute -left-10 bottom-0 h-32 w-32 rounded-full bg-[#6366f1]/10 blur-3xl" />
         <div className="relative flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-[#f59e0b] to-[#d97706] shadow-lg shadow-amber-500/20"><Home size={22} className="text-black" /></div>
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-[#0070f0] to-[#d97706] shadow-lg shadow-amber-500/20"><Home size={22} className="text-black" /></div>
             <div>
               <h1 className="text-xl font-bold tracking-tight">Home Page Editor</h1>
-              <p className="text-xs text-gray-400">Manage hero, stats, paths, pricing, FAQ and all sections for <code className="rounded bg-white/5 px-1 text-[10px] text-[#f59e0b]">/</code></p>
+              <p className="text-xs text-gray-400">Manage hero, stats, paths, pricing, FAQ and all sections for <code className="rounded bg-white/5 px-1 text-[10px] text-[#0070f0]">/</code></p>
             </div>
           </div>
           <div className="flex items-center gap-2.5">
             <Link href="/" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium transition hover:bg-white/10"><Eye size={13} /> Preview</Link>
-            <button type="button" onClick={save} disabled={saving} className="flex items-center gap-1.5 rounded-xl bg-linear-to-r from-[#f59e0b] to-[#d97706] px-5 py-2.5 text-xs font-bold text-black shadow-lg shadow-amber-500/25 transition hover:shadow-amber-500/40 disabled:opacity-50">
+            <button type="button" onClick={save} disabled={saving} className="flex items-center gap-1.5 rounded-xl bg-linear-to-r from-[#0070f0] to-[#d97706] px-5 py-2.5 text-xs font-bold text-black shadow-lg shadow-amber-500/25 transition hover:shadow-amber-500/40 disabled:opacity-50">
               {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
               {saving ? "Saving..." : saved ? "Saved" : "Save Changes"}
             </button>
@@ -554,7 +554,7 @@ export default function AdminHomePageEditor() {
 
       {/* ── Sticky Save ── */}
       <div className="sticky bottom-4 z-10 flex justify-end">
-        <button type="button" onClick={save} disabled={saving} className="flex items-center gap-2 rounded-2xl bg-linear-to-r from-[#f59e0b] to-[#d97706] px-8 py-3 text-sm font-bold text-black shadow-[0_8px_32px_rgba(245,158,11,0.35)] transition-all hover:shadow-[0_12px_40px_rgba(245,158,11,0.5)] hover:scale-[1.02] disabled:opacity-50">
+        <button type="button" onClick={save} disabled={saving} className="flex items-center gap-2 rounded-2xl bg-linear-to-r from-[#0070f0] to-[#d97706] px-8 py-3 text-sm font-bold text-black shadow-[0_8px_32px_rgba(54,182,255,0.35)] transition-all hover:shadow-[0_12px_40px_rgba(54,182,255,0.5)] hover:scale-[1.02] disabled:opacity-50">
           {saving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
           {saving ? "Saving..." : saved ? "All Changes Saved" : "Save All Changes"}
         </button>

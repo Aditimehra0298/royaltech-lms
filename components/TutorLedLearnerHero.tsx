@@ -118,7 +118,7 @@ export function TutorLedLearnerHero({
             </h1>
             <p className="mt-1 text-sm text-zinc-400">{program.subtitle?.trim() || program.badge}</p>
 
-            <div className="mt-5 grid gap-4 border-y border-[#FFC107]/10 py-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-5 grid gap-4 border-y border-[#0070f0]/10 py-4 sm:grid-cols-2 xl:grid-cols-4">
               <MetaCell label="Batch" value={batchLabel} />
               <MetaCell label="Trainer" value={program.trainer.name} />
               <MetaCell label="Duration" value={duration} />
@@ -129,7 +129,7 @@ export function TutorLedLearnerHero({
               {checklist.map((item) => (
                 <li
                   key={item.label}
-                  className="flex items-center gap-2 rounded-lg border border-[#FFC107]/10 bg-black/40 px-3 py-2"
+                  className="flex items-center gap-2 rounded-lg border border-[#0070f0]/10 bg-black/40 px-3 py-2"
                 >
                   <CheckCircle2
                     className={`h-4 w-4 shrink-0 ${item.done ? "text-[#4CAF50]" : "text-zinc-600"}`}
@@ -143,7 +143,7 @@ export function TutorLedLearnerHero({
             <div
               className={`mt-4 rounded-xl border p-4 ${
                 examUnlocked
-                  ? "border-[#FFC107]/35 bg-gradient-to-r from-[#FFC107]/14 to-[#FFC107]/5"
+                  ? "border-[#0070f0]/35 bg-gradient-to-r from-[#0070f0]/14 to-[#0070f0]/5"
                   : "border-white/8 bg-black/30"
               }`}
             >
@@ -163,8 +163,8 @@ export function TutorLedLearnerHero({
               )}
             </div>
 
-            <p className="mt-4 inline-flex items-center gap-2 rounded-lg border border-[#FFC107]/12 bg-black/40 px-3 py-2 text-xs text-zinc-300">
-              <Calendar className="h-4 w-4 shrink-0 text-[#FFC107]" aria-hidden />
+            <p className="mt-4 inline-flex items-center gap-2 rounded-lg border border-[#0070f0]/12 bg-black/40 px-3 py-2 text-xs text-zinc-300">
+              <Calendar className="h-4 w-4 shrink-0 text-[#0070f0]" aria-hidden />
               <span>
                 {section.nextSessionPrefix}{" "}
                 <span className="font-semibold text-white">
@@ -202,7 +202,7 @@ export function TutorLedLearnerHero({
           <div className="flex flex-col items-center gap-3 lg:pt-1">
             <div className="tl-progress-ring relative grid h-40 w-40 place-items-center">
               <div className="absolute inset-0 rounded-full opacity-95" style={donutStyle} aria-hidden />
-              <div className="relative flex h-[6.25rem] w-[6.25rem] flex-col items-center justify-center rounded-full bg-black text-center ring-2 ring-[#FFC107]/10">
+              <div className="relative flex h-[6.25rem] w-[6.25rem] flex-col items-center justify-center rounded-full bg-black text-center ring-2 ring-[#0070f0]/10">
                 <span
                   className="text-3xl font-extrabold"
                   style={{ color: progressPercent >= 80 ? TL.green : TL.gold }}
@@ -227,7 +227,7 @@ export function TutorLedLearnerHero({
                   step.status === "completed"
                     ? "bg-[#4CAF50]"
                     : step.status === "in-progress"
-                      ? "bg-gradient-to-r from-[#4CAF50] to-[#FFC107]"
+                      ? "bg-gradient-to-r from-[#4CAF50] to-[#0070f0]"
                       : "bg-zinc-700";
 
                 return (
@@ -243,7 +243,7 @@ export function TutorLedLearnerHero({
                         step.status === "completed"
                           ? "border-[#4CAF50] bg-[#4CAF50]/15 text-[#66BB6A]"
                           : step.status === "in-progress"
-                            ? "border-[#FFC107] bg-[#FFC107]/15 text-[#FFC107]"
+                            ? "border-[#0070f0] bg-[#0070f0]/15 text-[#0070f0]"
                             : "border-zinc-600 bg-zinc-900 text-zinc-500"
                       }`}
                     >
@@ -264,7 +264,7 @@ export function TutorLedLearnerHero({
                         step.status === "completed"
                           ? "text-[#66BB6A]"
                           : step.status === "in-progress"
-                            ? "text-[#FFC107]"
+                            ? "text-[#0070f0]"
                             : "text-zinc-500"
                       }`}
                     >
@@ -289,7 +289,7 @@ export function TutorLedLearnerHero({
               Completed ({completedCount} sessions)
             </li>
             <li className="flex items-center gap-2 text-zinc-200">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#FFC107]" aria-hidden />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#0070f0]" aria-hidden />
               In progress ({inProgressCount} sessions)
             </li>
             <li className="flex items-center gap-2 text-zinc-200">

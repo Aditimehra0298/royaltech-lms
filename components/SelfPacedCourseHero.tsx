@@ -49,7 +49,7 @@ export default function SelfPacedCourseHero({ course }: Props) {
 
         <nav className="mb-4 flex flex-wrap items-center gap-1.5 text-[11px] text-zinc-500">
 
-          <Link href="/" className="transition hover:text-[#FFB800]">
+          <Link href="/" className="transition hover:text-[#00b7fd]">
 
             Home
 
@@ -57,7 +57,7 @@ export default function SelfPacedCourseHero({ course }: Props) {
 
           <span className="text-zinc-600">/</span>
 
-          <Link href="/courses" className="transition hover:text-[#FFB800]">
+          <Link href="/courses" className="transition hover:text-[#00b7fd]">
 
             Courses
 
@@ -65,7 +65,7 @@ export default function SelfPacedCourseHero({ course }: Props) {
 
           <span className="text-zinc-600">/</span>
 
-          <span className="font-medium text-[#FFB800]">{course.title}</span>
+          <span className="font-medium text-[#00b7fd]">{course.title}</span>
 
         </nav>
 
@@ -77,7 +77,7 @@ export default function SelfPacedCourseHero({ course }: Props) {
 
             <div className="mb-4 flex flex-wrap items-center gap-3">
 
-              <span className="rounded border border-[#FFB800]/80 bg-transparent px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#FFB800]">
+              <span className="rounded border border-[#00b7fd]/80 bg-transparent px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#00b7fd]">
 
                 {badge}
 
@@ -123,7 +123,7 @@ export default function SelfPacedCourseHero({ course }: Props) {
 
                 >
 
-                  <row.icon className="h-3.5 w-3.5 shrink-0 text-[#FFB800]" aria-hidden />
+                  <row.icon className="h-3.5 w-3.5 shrink-0 text-[#00b7fd]" aria-hidden />
 
                   {row.label}
 
@@ -137,7 +137,7 @@ export default function SelfPacedCourseHero({ course }: Props) {
 
             <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/60 px-4 py-3">
 
-              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-[#FFB800]/45 bg-zinc-950 text-lg font-bold text-[#FFB800]">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-[#00b7fd]/45 bg-zinc-950 text-lg font-bold text-[#00b7fd]">
 
                 {initial}
 
@@ -191,7 +191,7 @@ export default function SelfPacedCourseHero({ course }: Props) {
 
             <aside
               id="course-enroll"
-              className="scroll-mt-24 rounded-2xl border border-[#FFB800]/35 bg-gradient-to-b from-zinc-900 to-black p-5 shadow-[0_0_0_1px_rgba(255,184,0,0.08)] lg:sticky lg:top-24"
+              className="scroll-mt-24 rounded-2xl border border-[#00b7fd]/35 bg-gradient-to-b from-zinc-900 to-black p-5 shadow-[0_0_0_1px_rgba(255,184,0,0.08)] lg:sticky lg:top-24"
             >
 
               <p className="text-xs font-medium uppercase tracking-wide text-zinc-500">Enroll</p>
@@ -237,7 +237,7 @@ export default function SelfPacedCourseHero({ course }: Props) {
                     router.push("/cart");
                   }}
 
-                  className="flex w-full items-center justify-center rounded-xl bg-[#FFB800] py-3 text-sm font-extrabold text-black transition hover:bg-[#e5a500]"
+                  className="flex w-full items-center justify-center rounded-xl bg-[#00b7fd] py-3 text-sm font-extrabold text-black transition hover:bg-[#e5a500]"
 
                 >
 

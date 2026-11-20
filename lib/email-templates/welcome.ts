@@ -101,7 +101,7 @@ export function buildWelcomeEmail(input: WelcomeEmailTemplateInput): {
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 8px;background:${EMAIL_BRAND.surface};border-radius:14px;border:1px solid ${EMAIL_BRAND.borderSoft}">
       <tr>
         <td style="padding:16px 18px">
-          <p style="margin:0 0 6px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#9a6812">Quick links</p>
+          <p style="margin:0 0 6px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#3b82c4">Quick links</p>
           <p style="margin:0;font-size:14px;line-height:1.6">
             <a href="${escapeHtml(dashboardUrl)}" style="color:${EMAIL_BRAND.goldDark};font-weight:600;text-decoration:none">Dashboard</a>
             &nbsp;·&nbsp;

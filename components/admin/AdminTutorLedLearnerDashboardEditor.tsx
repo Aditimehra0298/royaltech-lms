@@ -43,10 +43,10 @@ export function AdminTutorLedLearnerDashboardEditor({ draft, setDraft, fieldClas
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-start justify-between gap-3 rounded-xl border border-[#FFC107]/25 bg-gradient-to-r from-[#FFC107]/10 to-transparent p-4">
+      <div className="flex flex-wrap items-start justify-between gap-3 rounded-xl border border-[#0070f0]/25 bg-gradient-to-r from-[#0070f0]/10 to-transparent p-4">
         <div className="flex items-start gap-3">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#FFC107]/35 bg-[#FFC107]/15">
-            <LayoutDashboard className="h-5 w-5 text-[#FFC107]" aria-hidden />
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#0070f0]/35 bg-[#0070f0]/15">
+            <LayoutDashboard className="h-5 w-5 text-[#0070f0]" aria-hidden />
           </span>
           <div>
             <h3 className="text-sm font-semibold text-white">Learner dashboard</h3>
@@ -61,7 +61,7 @@ export function AdminTutorLedLearnerDashboardEditor({ draft, setDraft, fieldClas
           href={`/my-learning/course/${draft.slug}`}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-lg border border-[#FFC107]/40 bg-[#FFC107]/10 px-3 py-2 text-[11px] font-semibold text-[#FFC107] hover:bg-[#FFC107]/20"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-[#0070f0]/40 bg-[#0070f0]/10 px-3 py-2 text-[11px] font-semibold text-[#0070f0] hover:bg-[#0070f0]/20"
         >
           <ExternalLink className="h-3.5 w-3.5" aria-hidden />
           Preview hub
@@ -186,7 +186,7 @@ export function AdminTutorLedLearnerDashboardEditor({ draft, setDraft, fieldClas
             type="checkbox"
             checked={ls.showLiveNowBadge ?? true}
             onChange={(e) => patchLearner(setDraft, { showLiveNowBadge: e.target.checked })}
-            className="accent-[#FFC107]"
+            className="accent-[#0070f0]"
           />
           Show &quot;Live now&quot; badge on classroom card
         </label>

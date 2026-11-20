@@ -136,7 +136,7 @@ export default function TutorLedCourseHero({
           {breadcrumbs.map((crumb, i) => (
             <span key={`${crumb.label}-${i}`} className="inline-flex items-center gap-1.5">
               {i > 0 && <ChevronRight size={11} className="text-zinc-600" aria-hidden />}
-              <Link href={crumb.href} className="transition hover:text-[#FFB800]">
+              <Link href={crumb.href} className="transition hover:text-[#00b7fd]">
                 {crumb.label}
               </Link>
             </span>
@@ -147,7 +147,7 @@ export default function TutorLedCourseHero({
           {/* Copy — one composition */}
           <div className="max-w-2xl">
             <div className="flex flex-wrap items-center gap-3">
-              <p className="font-[family-name:var(--font-display,inherit)] text-xs font-semibold uppercase tracking-[0.28em] text-[#FFB800]">
+              <p className="font-[family-name:var(--font-display,inherit)] text-xs font-semibold uppercase tracking-[0.28em] text-[#00b7fd]">
                 SF Trainings
               </p>
               <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-rose-300">
@@ -170,22 +170,22 @@ export default function TutorLedCourseHero({
 
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-zinc-300">
               <span className="inline-flex items-center gap-2">
-                <Calendar className="h-4 w-4 text-[#FFB800]" aria-hidden />
+                <Calendar className="h-4 w-4 text-[#00b7fd]" aria-hidden />
                 {course.nextBatchDate}
               </span>
               <span className="inline-flex items-center gap-2">
-                <Clock className="h-4 w-4 text-[#FFB800]" aria-hidden />
+                <Clock className="h-4 w-4 text-[#00b7fd]" aria-hidden />
                 {timeIst}
               </span>
               <span className="inline-flex items-center gap-2">
-                <Globe className="h-4 w-4 text-[#FFB800]" aria-hidden />
+                <Globe className="h-4 w-4 text-[#00b7fd]" aria-hidden />
                 {course.language} · {duration}
               </span>
             </div>
 
             {countdown ? (
               <div className="mt-6 flex flex-wrap items-end gap-3">
-                <p className="w-full text-[10px] font-bold uppercase tracking-[0.2em] text-[#FFB800]/90">
+                <p className="w-full text-[10px] font-bold uppercase tracking-[0.2em] text-[#00b7fd]/90">
                   Batch starts in
                 </p>
                 {[
@@ -208,7 +208,7 @@ export default function TutorLedCourseHero({
               {primaryCta?.kind === "link" ? (
                 <Link
                   href={primaryCta.href}
-                  className="inline-flex items-center justify-center rounded-md bg-[#FFB800] px-7 py-3.5 text-sm font-extrabold text-black transition hover:bg-[#e5a600]"
+                  className="inline-flex items-center justify-center rounded-md bg-[#00b7fd] px-7 py-3.5 text-sm font-extrabold text-black transition hover:bg-[#e5a600]"
                 >
                   {primaryCta.label}
                 </Link>
@@ -216,14 +216,14 @@ export default function TutorLedCourseHero({
                 <button
                   type="button"
                   onClick={onReserve}
-                  className="inline-flex items-center justify-center rounded-md bg-[#FFB800] px-7 py-3.5 text-sm font-extrabold text-black transition hover:bg-[#e5a600]"
+                  className="inline-flex items-center justify-center rounded-md bg-[#00b7fd] px-7 py-3.5 text-sm font-extrabold text-black transition hover:bg-[#e5a600]"
                 >
                   {primaryCta?.label ?? "Reserve Your Seat"}
                 </button>
               )}
               <Link
                 href="#course-details"
-                className="inline-flex items-center gap-1 rounded-md border border-white/25 px-5 py-3.5 text-sm font-semibold text-white transition hover:border-[#FFB800]/50 hover:text-[#FFB800]"
+                className="inline-flex items-center gap-1 rounded-md border border-white/25 px-5 py-3.5 text-sm font-semibold text-white transition hover:border-[#00b7fd]/50 hover:text-[#00b7fd]"
               >
                 View schedule
                 <ChevronRight className="h-4 w-4" aria-hidden />
@@ -231,7 +231,7 @@ export default function TutorLedCourseHero({
             </div>
 
             <div className="mt-8 flex items-center gap-3 border-t border-white/10 pt-6">
-              <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-[#FFB800]/40 bg-zinc-900">
+              <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-[#00b7fd]/40 bg-zinc-900">
                 {course.trainer.avatar?.trim() ? (
                   <Image
                     src={course.trainer.avatar}
@@ -241,7 +241,7 @@ export default function TutorLedCourseHero({
                     unoptimized
                   />
                 ) : (
-                  <span className="flex h-full w-full items-center justify-center text-lg font-bold text-[#FFB800]">
+                  <span className="flex h-full w-full items-center justify-center text-lg font-bold text-[#00b7fd]">
                     {course.trainer.name.replace(/^Mr\.?\s*/i, "").charAt(0)}
                   </span>
                 )}
@@ -271,7 +271,7 @@ export default function TutorLedCourseHero({
                 priority
               />
               {discountLabel ? (
-                <span className="absolute right-3 top-3 bg-[#FFB800] px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide text-black">
+                <span className="absolute right-3 top-3 bg-[#00b7fd] px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide text-black">
                   {discountLabel}
                 </span>
               ) : null}
@@ -279,7 +279,7 @@ export default function TutorLedCourseHero({
 
             <div className="mb-3 flex items-center justify-between gap-2">
               <p className="text-sm font-bold text-white">Upcoming live batch</p>
-              <span className="text-[11px] font-semibold text-[#FFB800]">
+              <span className="text-[11px] font-semibold text-[#00b7fd]">
                 {course.seatsLeft} seats left
               </span>
             </div>
@@ -313,7 +313,7 @@ export default function TutorLedCourseHero({
                 { label: "Mode", value: "Live on Zoom" },
               ].map((row) => (
                 <li key={row.label} className="flex items-start gap-2 text-xs text-zinc-300">
-                  <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#FFB800]" aria-hidden />
+                  <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#00b7fd]" aria-hidden />
                   <span>
                     <span className="text-zinc-500">{row.label}: </span>
                     {row.value}
@@ -325,7 +325,7 @@ export default function TutorLedCourseHero({
             {primaryCta?.kind === "link" ? (
               <Link
                 href={primaryCta.href}
-                className="mt-5 flex w-full items-center justify-center bg-[#FFB800] py-3.5 text-sm font-extrabold text-black transition hover:bg-[#e5a600]"
+                className="mt-5 flex w-full items-center justify-center bg-[#00b7fd] py-3.5 text-sm font-extrabold text-black transition hover:bg-[#e5a600]"
               >
                 {primaryCta.label}
               </Link>
@@ -333,7 +333,7 @@ export default function TutorLedCourseHero({
               <button
                 type="button"
                 onClick={onReserve}
-                className="mt-5 flex w-full items-center justify-center bg-[#FFB800] py-3.5 text-sm font-extrabold text-black transition hover:bg-[#e5a600]"
+                className="mt-5 flex w-full items-center justify-center bg-[#00b7fd] py-3.5 text-sm font-extrabold text-black transition hover:bg-[#e5a600]"
               >
                 {primaryCta?.label ?? "Reserve Your Seat"}
               </button>

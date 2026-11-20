@@ -91,9 +91,9 @@ export default function CourseEnrollActions({
             />
           ) : null}
           {discountBadge ? (
-            <span className="rounded-md bg-[#FFB800] px-2 py-0.5 text-[10px] font-bold text-black">{discountBadge}</span>
+            <span className="rounded-md bg-[#00b7fd] px-2 py-0.5 text-[10px] font-bold text-black">{discountBadge}</span>
           ) : discountPct != null ? (
-            <span className="rounded bg-[#FFB800]/15 px-2 py-0.5 text-xs font-bold text-[#FFB800]">{discountPct}% off</span>
+            <span className="rounded bg-[#00b7fd]/15 px-2 py-0.5 text-xs font-bold text-[#00b7fd]">{discountPct}% off</span>
           ) : null}
         </div>
       ) : null}
@@ -102,7 +102,7 @@ export default function CourseEnrollActions({
         <ul className="grid gap-1.5 sm:grid-cols-2">
           {highlights.slice(0, 6).map((item) => (
             <li key={item} className="flex items-start gap-1.5 text-[11px] leading-snug text-zinc-400">
-              <CheckCircle2 className="mt-0.5 h-3 w-3 shrink-0 text-[#FFB800]" aria-hidden />
+              <CheckCircle2 className="mt-0.5 h-3 w-3 shrink-0 text-[#00b7fd]" aria-hidden />
               <span>{item}</span>
             </li>
           ))}

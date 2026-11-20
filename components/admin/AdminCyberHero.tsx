@@ -43,7 +43,7 @@ const accents = {
   amber: {
     border: "border-amber-400/25",
     from: "from-[#16100a]",
-    iconBg: "bg-amber-500/20 ring-amber-400/35 shadow-[0_0_32px_rgba(245,158,11,0.22)]",
+    iconBg: "bg-amber-500/20 ring-amber-400/35 shadow-[0_0_32px_rgba(54,182,255,0.22)]",
     icon: "text-amber-200",
     eyebrow: "text-amber-300/90",
     grid: "rgba(251,191,36,0.5)",

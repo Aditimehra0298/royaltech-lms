@@ -550,7 +550,7 @@ export default function AdminLessonEditor({
             </div>
             <div className="mt-2 space-y-2">
               {examSource === "upload" ? (
-                <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-amber-400/55 bg-gradient-to-r from-amber-600/30 via-orange-500/20 to-yellow-500/25 py-2 text-xs text-amber-50 shadow-[0_0_18px_rgba(245,158,11,0.28)] hover:from-amber-500/40 hover:to-yellow-500/40">
+                <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-amber-400/55 bg-gradient-to-r from-amber-600/30 via-orange-500/20 to-yellow-500/25 py-2 text-xs text-amber-50 shadow-[0_0_18px_rgba(54,182,255,0.28)] hover:from-amber-500/40 hover:to-yellow-500/40">
                   <Upload className="h-3.5 w-3.5 text-amber-100" />
                   {uploadingExam ? "Uploading…" : "Upload exam file (PDF / Word / CSV)"}
                   <input

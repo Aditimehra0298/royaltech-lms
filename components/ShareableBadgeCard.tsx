@@ -88,7 +88,7 @@ export function ShareableBadgeCard({
             className="pointer-events-none absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-[42%] rounded-full opacity-70 blur-2xl"
             style={{
               background:
-                "radial-gradient(circle, rgba(245,158,11,0.28) 0%, rgba(139,92,246,0.18) 45%, transparent 72%)",
+                "radial-gradient(circle, rgba(54,182,255,0.28) 0%, rgba(139,92,246,0.18) 45%, transparent 72%)",
             }}
             aria-hidden
           />
@@ -113,7 +113,7 @@ export function ShareableBadgeCard({
           ) : null}
 
           <div
-            className={`relative block overflow-hidden rounded-full border-2 border-amber-400/50 bg-[#0d1118] shadow-[0_8px_32px_rgba(245,158,11,0.22),0_0_0_4px_rgba(245,158,11,0.06)] transition duration-300 group-hover:scale-[1.04] group-hover:border-amber-300/70 group-hover:shadow-[0_12px_40px_rgba(245,158,11,0.35)] group-focus-visible:ring-2 group-focus-visible:ring-amber-400/60 ${badgeSize}`}
+            className={`relative block overflow-hidden rounded-full border-2 border-amber-400/50 bg-[#0d1118] shadow-[0_8px_32px_rgba(54,182,255,0.22),0_0_0_4px_rgba(54,182,255,0.06)] transition duration-300 group-hover:scale-[1.04] group-hover:border-amber-300/70 group-hover:shadow-[0_12px_40px_rgba(54,182,255,0.35)] group-focus-visible:ring-2 group-focus-visible:ring-amber-400/60 ${badgeSize}`}
           >
             {showImage ? (
               // eslint-disable-next-line @next/next/no-img-element

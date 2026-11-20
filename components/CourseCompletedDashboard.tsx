@@ -514,7 +514,7 @@ export function CourseCompletedDashboard({
           className="pointer-events-none absolute inset-0 opacity-40"
           style={{
             background:
-              "radial-gradient(ellipse at 15% 50%, rgba(245,158,11,0.12) 0%, transparent 50%), radial-gradient(ellipse at 85% 30%, rgba(34,197,94,0.08) 0%, transparent 45%)",
+              "radial-gradient(ellipse at 15% 50%, rgba(54,182,255,0.12) 0%, transparent 50%), radial-gradient(ellipse at 85% 30%, rgba(34,197,94,0.08) 0%, transparent 45%)",
           }}
           aria-hidden
         />
@@ -877,7 +877,7 @@ export function CourseCompletedDashboard({
             className={`${CARD} relative overflow-hidden px-4 py-6`}
             style={{
               background:
-                "radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.08) 0%, transparent 55%), radial-gradient(ellipse at 50% 100%, rgba(139,92,246,0.06) 0%, transparent 50%)",
+                "radial-gradient(ellipse at 50% 0%, rgba(54,182,255,0.08) 0%, transparent 55%), radial-gradient(ellipse at 50% 100%, rgba(139,92,246,0.06) 0%, transparent 50%)",
             }}
           >
             <div

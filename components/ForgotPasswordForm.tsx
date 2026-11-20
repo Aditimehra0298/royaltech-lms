@@ -105,7 +105,7 @@ export default function ForgotPasswordForm({ accountType, onBackToLogin }: Props
           type="button"
           onClick={() => void sendLink()}
           disabled={sending || (sent && resendIn > 0)}
-          className="w-full rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] px-6 py-3.5 font-bold text-black disabled:opacity-60"
+          className="w-full rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] px-6 py-3.5 font-bold text-black disabled:opacity-60"
         >
           {sending
             ? "Sending…"

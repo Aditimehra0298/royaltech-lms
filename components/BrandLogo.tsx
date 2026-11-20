@@ -1,16 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useSyncExternalStore } from "react";
-import sfWhiteLogo from "@/SF-WHITE-LOGO.png";
-import sfLightLogo from "@/Untitled design (4).png";
+import brandLogo from "@/logo-mark.png";
 import { COMPANY_DISPLAY_NAME } from "@/lib/contact-site-data";
 
 type Props = {
   className?: string;
-  /** Force dark (white) logo — use on dark LMS panels. */
+  /** Kept for call-site compatibility — logo is theme-independent. */
   forceDark?: boolean;
-  /** Force light logo — use on light backgrounds. */
+  /** Kept for call-site compatibility — logo is theme-independent. */
   forceLight?: boolean;
   priority?: boolean;
   alt?: string;
@@ -18,50 +16,25 @@ type Props = {
   height?: number;
 };
 
-function subscribeTheme(onStoreChange: () => void): () => void {
-  if (typeof document === "undefined") return () => {};
-  const observer = new MutationObserver(onStoreChange);
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["data-theme"],
-  });
-  return () => observer.disconnect();
-}
-
-function getThemeIsLight(): boolean {
-  if (typeof document === "undefined") return false;
-  return document.documentElement.dataset.theme === "light";
-}
-
-function getServerThemeIsLight(): boolean {
-  return false;
-}
-
 /**
- * Same logo files as SiteHeader — use this everywhere in the LMS
+ * Same logo mark as SiteHeader — use this everywhere in the LMS
  * so branding matches the site header.
  */
 export default function BrandLogo({
   className = "h-10 w-auto object-contain",
-  forceDark = false,
-  forceLight = false,
+  forceDark: _forceDark = false,
+  forceLight: _forceLight = false,
   priority = false,
   alt = COMPANY_DISPLAY_NAME,
-  width = 200,
-  height = 64,
+  width = 128,
+  height = 128,
 }: Props) {
-  // Subscribe must be a stable function reference (do not recreate per render).
-  const themeIsLight = useSyncExternalStore(
-    subscribeTheme,
-    getThemeIsLight,
-    getServerThemeIsLight,
-  );
-
-  const useLight = forceLight ? true : forceDark ? false : themeIsLight;
+  void _forceDark;
+  void _forceLight;
 
   return (
     <Image
-      src={useLight ? sfLightLogo : sfWhiteLogo}
+      src={brandLogo}
       alt={alt}
       width={width}
       height={height}

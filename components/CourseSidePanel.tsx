@@ -23,7 +23,7 @@ export default function CourseSidePanel({ open, onClose, title, subtitle, childr
         onClick={onClose}
       />
       <aside
-        className="fixed inset-y-0 right-0 z-[201] flex w-full max-w-md flex-col border-l border-[#FFB800]/30 bg-zinc-950 shadow-[-12px_0_48px_rgba(0,0,0,0.55)]"
+        className="fixed inset-y-0 right-0 z-[201] flex w-full max-w-md flex-col border-l border-[#00b7fd]/30 bg-zinc-950 shadow-[-12px_0_48px_rgba(0,0,0,0.55)]"
         role="dialog"
         aria-labelledby="course-side-panel-title"
       >

@@ -428,7 +428,7 @@ export function eventKindColor(kind: CalendarEventKind): string {
     case "workshop":
       return "bg-rose-400";
     case "exam":
-      return "bg-[#FFC107]";
+      return "bg-[#0070f0]";
     case "certificate":
       return "bg-sky-400";
     case "course":
@@ -445,7 +445,7 @@ export function eventKindRing(kind: CalendarEventKind): string {
     case "workshop":
       return "ring-rose-400/70";
     case "exam":
-      return "ring-[#FFC107]/70";
+      return "ring-[#0070f0]/70";
     case "certificate":
       return "ring-sky-400/70";
     default:

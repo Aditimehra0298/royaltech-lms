@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { MessageCircle, RotateCcw, Send, Sparkles, X } from "lucide-react";
-import sfWhiteLogo from "@/SF-WHITE-LOGO.png";
+import brandLogo from "@/logo-mark.png";
 import { learnerDisplayFullName, readLearnerProfileFromStorage } from "@/lib/auth-profile";
 import {
   getLearnerEmail,
@@ -272,7 +272,7 @@ function ChatLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
     size === "sm" ? "h-6 w-auto" : size === "lg" ? "h-10 w-auto" : "h-8 w-auto";
   return (
     <Image
-      src={sfWhiteLogo}
+      src={brandLogo}
       alt=""
       aria-hidden
       className={`shrink-0 object-contain ${img}`}
@@ -780,7 +780,7 @@ export default function LmsChatbot() {
           aria-label={CHATBOT_FULL_NAME}
           className="pointer-events-auto flex h-[min(560px,calc(100vh-5rem))] w-[min(100vw-2rem,400px)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/95 shadow-[0_24px_64px_rgba(0,0,0,0.85)] backdrop-blur-xl animate-in fade-in slide-in-from-bottom-4 duration-300"
         >
-          <div className="h-1 w-full bg-gradient-to-r from-amber-600 via-[#FFB800] to-yellow-300" />
+          <div className="h-1 w-full bg-gradient-to-r from-amber-600 via-[#00b7fd] to-yellow-300" />
 
           <header className="flex items-center justify-between gap-2 border-b border-white/10 bg-zinc-900/80 px-4 py-3">
             <div className="flex min-w-0 items-center gap-3">
@@ -940,7 +940,7 @@ export default function LmsChatbot() {
             aria-label={`Open ${CHATBOT_FULL_NAME}`}
           >
             <Image
-              src={sfWhiteLogo}
+              src={brandLogo}
               alt=""
               className="h-9 w-auto object-contain p-1"
               sizes="36px"

@@ -28,7 +28,7 @@ export default function TutorLedPreFooterReserveBar({
   return (
     <section className="border-t border-white/10 bg-black" aria-label="Reserve your seat">
       <div className={`${shell} py-5 md:py-6`}>
-        <div className="overflow-hidden rounded-2xl border border-[#FFB800]/35 bg-gradient-to-r from-zinc-950 via-zinc-950/95 to-black shadow-[0_0_40px_rgba(255,184,0,0.06)]">
+        <div className="overflow-hidden rounded-2xl border border-[#00b7fd]/35 bg-gradient-to-r from-zinc-950 via-zinc-950/95 to-black shadow-[0_0_40px_rgba(255,184,0,0.06)]">
           <div className="flex flex-col gap-5 p-4 sm:p-5 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:p-6">
             <div className="flex items-center gap-4 lg:max-w-[340px]">
               <div className="relative h-16 w-16 shrink-0 sm:h-[72px] sm:w-[72px]">
@@ -41,7 +41,7 @@ export default function TutorLedPreFooterReserveBar({
                 />
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-bold text-[#FFB800] sm:text-base">Trusted &amp; verified</p>
+                <p className="text-sm font-bold text-[#00b7fd] sm:text-base">Trusted &amp; verified</p>
                 <p className="mt-1 text-xs leading-relaxed text-zinc-500">
                   Secure enrollment · IEB-accredited certificates · verified credentials
                 </p>
@@ -60,7 +60,7 @@ export default function TutorLedPreFooterReserveBar({
                 <button
                   type="button"
                   onClick={reserve}
-                  className="inline-flex min-w-[240px] items-center justify-center gap-2 rounded-xl bg-[#FFB800] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_8px_28px_rgba(255,184,0,0.32)] transition hover:bg-[#e5a600]"
+                  className="inline-flex min-w-[240px] items-center justify-center gap-2 rounded-xl bg-[#00b7fd] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_8px_28px_rgba(255,184,0,0.32)] transition hover:bg-[#e5a600]"
                 >
                   Reserve Your Seat Now
                   <ChevronRight className="h-4 w-4" aria-hidden />
@@ -68,7 +68,7 @@ export default function TutorLedPreFooterReserveBar({
               ) : (
                 <Link
                   href="/my-learning?tab=live"
-                  className="inline-flex min-w-[240px] items-center justify-center gap-2 rounded-xl bg-[#FFB800] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_8px_28px_rgba(255,184,0,0.32)] transition hover:bg-[#e5a600]"
+                  className="inline-flex min-w-[240px] items-center justify-center gap-2 rounded-xl bg-[#00b7fd] px-6 py-3.5 text-sm font-extrabold text-black shadow-[0_8px_28px_rgba(255,184,0,0.32)] transition hover:bg-[#e5a600]"
                 >
                   Open My Learning
                   <ChevronRight className="h-4 w-4" aria-hidden />

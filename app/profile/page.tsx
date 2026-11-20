@@ -118,7 +118,7 @@ export default function ProfilePage() {
         {profile?.role === "admin" ? (
           <Link
             href="/admin"
-            className="mt-8 inline-block rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] px-6 py-3 font-bold text-black"
+            className="mt-8 inline-block rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] px-6 py-3 font-bold text-black"
           >
             Open admin panel
           </Link>

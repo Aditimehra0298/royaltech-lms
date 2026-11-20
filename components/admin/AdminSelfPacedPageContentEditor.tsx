@@ -334,7 +334,7 @@ export default function AdminSelfPacedPageContentEditor({
                 value={draft.learningSection?.brandLogoUrl ?? ""}
                 onChange={(e) => patchLearning(setDraft, { brandLogoUrl: e.target.value })}
                 className={fieldClass}
-                placeholder="/SF-WHITE-LOGO.png (same as site header — leave blank to use header logo)"
+                placeholder="/logo-mark.png (same as site header — leave blank to use header logo)"
               />
             </label>
             <label className="block">

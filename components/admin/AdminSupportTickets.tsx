@@ -199,7 +199,7 @@ export default function AdminSupportTickets() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h1 className="text-xl font-semibold flex items-center gap-2">
-              <TicketCheck size={20} className="text-[#FFB800]" />
+              <TicketCheck size={20} className="text-[#00b7fd]" />
               Support Tickets
             </h1>
             <p className="text-xs text-gray-400 mt-0.5">
@@ -209,7 +209,7 @@ export default function AdminSupportTickets() {
           <button
             onClick={fetchIssues}
             disabled={loading}
-            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#0a1120] px-3 py-2 text-xs text-gray-300 hover:border-[#FFB800]/40 hover:text-[#FFB800] transition disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#0a1120] px-3 py-2 text-xs text-gray-300 hover:border-[#00b7fd]/40 hover:text-[#00b7fd] transition disabled:opacity-50"
           >
             <RefreshCw size={13} className={loading ? "animate-spin" : ""} />
             Refresh
@@ -258,7 +258,7 @@ export default function AdminSupportTickets() {
               onClick={() => setStatusFilter(s)}
               className={`rounded-lg px-3 py-1.5 text-xs font-medium border transition ${
                 statusFilter === s
-                  ? "border-[#FFB800]/50 bg-[#FFB800]/15 text-[#FFB800]"
+                  ? "border-[#00b7fd]/50 bg-[#00b7fd]/15 text-[#00b7fd]"
                   : "border-white/10 bg-[#0a1120] text-gray-400 hover:text-white"
               }`}
             >
@@ -271,7 +271,7 @@ export default function AdminSupportTickets() {
       <section className="rounded-xl border border-white/10 bg-[#0d1528] p-3">
         {loading ? (
           <div className="flex items-center justify-center gap-3 py-16 text-gray-400 text-sm">
-            <Loader2 size={18} className="animate-spin text-[#FFB800]" />
+            <Loader2 size={18} className="animate-spin text-[#00b7fd]" />
             Loading tickets…
           </div>
         ) : error ? (
@@ -289,7 +289,7 @@ export default function AdminSupportTickets() {
                   setSearchQuery("");
                   setStatusFilter("all");
                 }}
-                className="text-xs text-[#FFB800] hover:underline"
+                className="text-xs text-[#00b7fd] hover:underline"
               >
                 Clear filters
               </button>
@@ -363,7 +363,7 @@ export default function AdminSupportTickets() {
                                 href={issue.screenshotUrl}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-[#FFB800] hover:underline"
+                                className="text-[#00b7fd] hover:underline"
                               >
                                 Screenshot
                               </a>
@@ -390,7 +390,7 @@ export default function AdminSupportTickets() {
                       <td className="py-3 pr-4 text-gray-500 whitespace-nowrap">{formatDate(issue.createdAt)}</td>
                       <td className="py-3">
                         {updatingToken === issue.issueToken ? (
-                          <Loader2 size={14} className="animate-spin text-[#FFB800]" />
+                          <Loader2 size={14} className="animate-spin text-[#00b7fd]" />
                         ) : (
                           <div className="relative inline-block">
                             <select
@@ -398,7 +398,7 @@ export default function AdminSupportTickets() {
                                 issue.issueStatus === "closed" ? "resolved" : issue.issueStatus
                               }
                               onChange={(e) => updateStatus(issue.issueToken, e.target.value)}
-                              className="appearance-none rounded-lg border border-white/10 bg-[#0a1120] px-3 py-1.5 text-xs text-white pr-7 focus:outline-none focus:border-[#FFB800]/50 cursor-pointer hover:border-white/20 transition"
+                              className="appearance-none rounded-lg border border-white/10 bg-[#0a1120] px-3 py-1.5 text-xs text-white pr-7 focus:outline-none focus:border-[#00b7fd]/50 cursor-pointer hover:border-white/20 transition"
                             >
                               <option value="open">Open</option>
                               <option value="in_progress">In Progress</option>

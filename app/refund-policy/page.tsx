@@ -35,7 +35,7 @@ export default function RefundPolicyPage() {
         <LmsContentCard>
           <p>
             Need help with a payment issue?{" "}
-            <Link href="/contact" className="font-bold text-[#eb9422] underline decoration-amber-500/40 hover:brightness-110">
+            <Link href="/contact" className="font-bold text-[#0070f0] underline decoration-amber-500/40 hover:brightness-110">
               Contact us
             </Link>{" "}
             or open the site chat and say “payment problem”.

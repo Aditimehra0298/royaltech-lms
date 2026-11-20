@@ -48,7 +48,7 @@ export function TutorLedHighlightsContent({
       <ul className="min-w-0 flex-1 space-y-2">
         {highlights.slice(0, limit).map((h) => (
           <li key={h} className={`flex items-start gap-2 leading-snug ${itemClassName}`}>
-            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#FFB800]" aria-hidden />
+            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#00b7fd]" aria-hidden />
             <span>{h}</span>
           </li>
         ))}

@@ -66,7 +66,7 @@ function FamePill({
           ? "bg-sky-500/20 text-sky-200 ring-sky-400/30"
           : tone === "rose"
             ? "bg-rose-500/20 text-rose-200 ring-rose-400/30"
-            : "bg-[#FFC107]/15 text-[#FFC107] ring-[#FFC107]/35";
+            : "bg-[#0070f0]/15 text-[#0070f0] ring-[#0070f0]/35";
   return (
     <span
       className={`inline-block rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide ring-1 ${cls}`}
@@ -102,7 +102,7 @@ function FameFrame({
         ? "border-emerald-400/40 from-emerald-500/12"
         : frameTone === "rose"
           ? "border-rose-400/40 from-rose-500/12"
-          : "border-[#FFC107]/50 from-[#FFC107]/12";
+          : "border-[#0070f0]/50 from-[#0070f0]/12";
 
   return (
     <article className="w-[172px] shrink-0 snap-start">
@@ -124,7 +124,7 @@ function FameFrame({
       {subtitle ? (
         <p className="truncate text-[10px] leading-snug text-zinc-400">{subtitle}</p>
       ) : null}
-      {meta ? <p className="mt-0.5 font-mono text-[10px] text-[#FFC107]">{meta}</p> : null}
+      {meta ? <p className="mt-0.5 font-mono text-[10px] text-[#0070f0]">{meta}</p> : null}
     </article>
   );
 }
@@ -240,7 +240,7 @@ export function MyLearningOrganizationAchievementsTab({
     <section className="rounded-2xl border border-white/10 bg-[#0a0a0a] p-4 shadow-[0_0_24px_rgba(0,0,0,0.35)] md:p-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#FFC107]/80">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0070f0]/80">
             Team success
           </p>
           <h1 className="mt-1 text-2xl font-bold text-white md:text-3xl">
@@ -255,7 +255,7 @@ export function MyLearningOrganizationAchievementsTab({
         </div>
         <Link
           href="/my-learning?tab=certificates"
-          className="inline-flex items-center gap-1.5 rounded-lg border border-[#FFC107]/35 bg-[#FFC107]/10 px-3 py-2 text-xs font-semibold text-[#FFC107] hover:bg-[#FFC107]/20"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-[#0070f0]/35 bg-[#0070f0]/10 px-3 py-2 text-xs font-semibold text-[#0070f0] hover:bg-[#0070f0]/20"
         >
           <Star className="h-3.5 w-3.5" aria-hidden />
           Team certificates
@@ -278,7 +278,7 @@ export function MyLearningOrganizationAchievementsTab({
             key={label}
             className="flex shrink-0 items-center gap-2 rounded-lg border border-white/10 bg-black/40 px-3 py-2"
           >
-            <Icon className="h-4 w-4 text-[#FFC107]" aria-hidden />
+            <Icon className="h-4 w-4 text-[#0070f0]" aria-hidden />
             <span className="text-lg font-bold text-white">{value}</span>
             <span className="text-[10px] text-zinc-500">{label}</span>
           </div>
@@ -475,7 +475,7 @@ export function MyLearningOrganizationAchievementsTab({
         </div>
         <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/10">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-[#FFC107] to-amber-400"
+            className="h-full rounded-full bg-gradient-to-r from-[#0070f0] to-amber-400"
             style={{ width: `${overallPercent}%` }}
           />
         </div>
@@ -523,7 +523,7 @@ function CertFameFrame({
           </div>
         </div>
         {badge ? (
-          <div className="absolute bottom-1.5 right-1.5 h-10 w-10 overflow-hidden rounded-full border-2 border-[#FFC107]/70 bg-black/85 p-0.5">
+          <div className="absolute bottom-1.5 right-1.5 h-10 w-10 overflow-hidden rounded-full border-2 border-[#0070f0]/70 bg-black/85 p-0.5">
             <MediaThumb src={badge} alt="Badge" contain />
           </div>
         ) : null}

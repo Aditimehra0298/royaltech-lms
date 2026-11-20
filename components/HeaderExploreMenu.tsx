@@ -127,13 +127,13 @@ export default function HeaderExploreMenu({ isLight }: Props) {
     ? "border-[#b4965a]/30 bg-[#efe7da]/80"
     : "border-amber-500/20 bg-black/35";
   const activeDomainClass = isLight
-    ? "bg-amber-200/50 text-[#6a4a0c]"
+    ? "bg-amber-200/50 text-[#0049a3]"
     : "bg-amber-500/20 text-amber-100";
   const idleDomainClass = isLight
     ? "text-slate-700 hover:bg-amber-100/50"
     : "text-gray-300 hover:bg-white/5";
   const linkClass = isLight
-    ? "text-slate-800 hover:bg-amber-100/60 hover:text-[#6a4a0c]"
+    ? "text-slate-800 hover:bg-amber-100/60 hover:text-[#0049a3]"
     : "text-gray-200 hover:bg-amber-500/10 hover:text-amber-100";
   const muted = isLight ? "text-slate-500" : "text-gray-500";
 
@@ -147,10 +147,10 @@ export default function HeaderExploreMenu({ isLight }: Props) {
         className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-2.5 text-[13px] font-bold transition-all ${
           open
             ? isLight
-              ? "border-[#9a7222] bg-amber-200/55 text-[#6a4a0c]"
+              ? "border-[#9a7222] bg-amber-200/55 text-[#0049a3]"
               : "border-amber-400/70 bg-amber-500/20 text-amber-100"
             : isLight
-              ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-800 hover:border-[#9a7222] hover:text-[#6a4a0c]"
+              ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-800 hover:border-[#9a7222] hover:text-[#0049a3]"
               : "border-amber-500/40 bg-black/40 text-amber-100 hover:border-amber-400/70 hover:bg-amber-500/10"
         }`}
       >
@@ -215,7 +215,7 @@ export default function HeaderExploreMenu({ isLight }: Props) {
                       onClick={() => setOpen(false)}
                       className={`inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-bold ${
                         isLight
-                          ? "border-[#b4965a]/45 text-[#6a4a0c] hover:bg-amber-100/50"
+                          ? "border-[#b4965a]/45 text-[#0049a3] hover:bg-amber-100/50"
                           : "border-amber-500/40 text-amber-200 hover:bg-amber-500/10"
                       }`}
                     >
@@ -225,7 +225,7 @@ export default function HeaderExploreMenu({ isLight }: Props) {
 
                   <section className="mb-5">
                     <div className="mb-2 flex items-center gap-2">
-                      <BookOpen size={14} className={isLight ? "text-[#8a6412]" : "text-amber-300"} />
+                      <BookOpen size={14} className={isLight ? "text-[#3b82c4]" : "text-amber-300"} />
                       <h4 className="text-sm font-bold">Self-paced courses</h4>
                     </div>
                     {domainCourses.selfPaced.length === 0 ? (
@@ -255,7 +255,7 @@ export default function HeaderExploreMenu({ isLight }: Props) {
                     <div className="mb-2 flex items-center gap-2">
                       <MonitorPlay
                         size={14}
-                        className={isLight ? "text-[#8a6412]" : "text-amber-300"}
+                        className={isLight ? "text-[#3b82c4]" : "text-amber-300"}
                       />
                       <h4 className="text-sm font-bold">Tutor-led courses</h4>
                     </div>

@@ -55,11 +55,11 @@ export default function SelfPacedGoldCurriculum({ course, className = "" }: Prop
                 onClick={() => setActiveMod(idx)}
                 className={`w-full rounded-xl border px-3 py-2.5 text-left transition ${
                   activeMod === idx
-                    ? "border-[#FFB800]/60 bg-[#FFB800]/12 shadow-[0_0_20px_rgba(255,184,0,0.12)]"
-                    : "border-white/10 bg-black/20 hover:border-[#FFB800]/30"
+                    ? "border-[#00b7fd]/60 bg-[#00b7fd]/12 shadow-[0_0_20px_rgba(255,184,0,0.12)]"
+                    : "border-white/10 bg-black/20 hover:border-[#00b7fd]/30"
                 }`}
               >
-                <p className="text-[10px] font-bold uppercase tracking-wide text-[#FFB800]">
+                <p className="text-[10px] font-bold uppercase tracking-wide text-[#00b7fd]">
                   Mod {w.week}
                 </p>
                 <p className="text-[11px] leading-snug text-zinc-400">{w.label}</p>
@@ -83,16 +83,16 @@ export default function SelfPacedGoldCurriculum({ course, className = "" }: Prop
                   <tr
                     key={w.week}
                     className={`border-b border-white/5 transition ${
-                      activeMod === idx ? "bg-[#FFB800]/[0.06]" : "hover:bg-white/[0.02]"
+                      activeMod === idx ? "bg-[#00b7fd]/[0.06]" : "hover:bg-white/[0.02]"
                     }`}
                   >
                     <td className="px-4 py-3.5 align-top">
-                      <span className="font-bold text-[#FFB800]">Module {w.week}</span>
+                      <span className="font-bold text-[#00b7fd]">Module {w.week}</span>
                     </td>
                     <td className="px-4 py-3.5 align-top text-zinc-200">{w.topic}</td>
                     <td className="px-4 py-3.5 align-top text-zinc-500">{w.keyLearning}</td>
                     <td className="px-4 py-3.5 align-top text-right">
-                      <span className="inline-block rounded-full border border-[#FFB800]/25 bg-[#FFB800]/10 px-2.5 py-1 text-[10px] font-semibold text-[#FFB800]">
+                      <span className="inline-block rounded-full border border-[#00b7fd]/25 bg-[#00b7fd]/10 px-2.5 py-1 text-[10px] font-semibold text-[#00b7fd]">
                         {w.sessionType}
                       </span>
                     </td>
@@ -115,7 +115,7 @@ export default function SelfPacedGoldCurriculum({ course, className = "" }: Prop
               onClick={() => setActiveMod(idx)}
               className={`shrink-0 rounded-full border px-3 py-1.5 text-[11px] font-semibold transition ${
                 activeMod === idx
-                  ? "border-[#FFB800]/60 bg-[#FFB800]/15 text-[#FFB800]"
+                  ? "border-[#00b7fd]/60 bg-[#00b7fd]/15 text-[#00b7fd]"
                   : "border-white/15 text-zinc-400"
               }`}
             >

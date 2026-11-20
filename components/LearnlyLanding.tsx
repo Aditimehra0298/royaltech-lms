@@ -640,8 +640,8 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
     return () => el.removeEventListener("loadeddata", play);
   }, [isLightTheme]);
 
-  const goldGradient = "bg-gradient-to-b from-[#f9b14d] to-[#eb9422]";
-  const goldText = isLightTheme ? "lh-gold-text text-[#9a6812]" : "text-[#fde68a]";
+  const goldGradient = "bg-gradient-to-b from-[#00b7fd] to-[#0070f0]";
+  const goldText = isLightTheme ? "lh-gold-text text-[#3b82c4]" : "text-[#00b7fd]";
   const brandDark = "bg-[#0a0a0a]";
   const heroVideoSrc = isLightTheme ? HERO_VIDEO_LIGHT : HERO_VIDEO_DARK;
 
@@ -748,8 +748,8 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
     <div
       className={`learnly-home min-h-screen ${
         isLightTheme
-          ? "bg-[radial-gradient(circle_at_12%_8%,rgba(212,160,23,.22),transparent_34%),radial-gradient(circle_at_92%_10%,rgba(139,92,246,.16),transparent_34%),linear-gradient(180deg,#f8f4ec_0%,#f3ede3_100%)] text-slate-800"
-          : `${brandDark} bg-[radial-gradient(circle_at_20%_10%,rgba(90,52,170,.22),transparent_30%),radial-gradient(circle_at_90%_0%,rgba(35,95,210,.16),transparent_32%),#05070f] text-white`
+          ? "bg-[radial-gradient(circle_at_12%_8%,rgba(10,131,231,.22),transparent_34%),radial-gradient(circle_at_92%_10%,rgba(139,92,246,.16),transparent_34%),linear-gradient(180deg,#f8f4ec_0%,#f3ede3_100%)] text-slate-800"
+          : `${brandDark} bg-[radial-gradient(circle_at_20%_10%,rgba(10,131,231,.28),transparent_30%),radial-gradient(circle_at_90%_0%,rgba(0,180,240,.18),transparent_32%),#05070f] text-white`
       } font-sans selection:bg-amber-500 selection:text-black`}
     >
       <div className="pointer-events-none fixed top-[-10%] right-[-10%] h-[50%] w-[50%] rounded-full bg-amber-500/10 blur-[120px]" />
@@ -788,7 +788,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
               <Link
                 href="/courses"
-                className={`flex items-center gap-2 rounded-xl px-6 py-3.5 font-bold text-black shadow-[0_8px_24px_rgba(249,177,77,.35)] transition-all hover:-translate-y-0.5 hover:brightness-110 ${goldGradient}`}
+                className={`flex items-center gap-2 rounded-xl px-6 py-3.5 font-bold text-white shadow-[0_8px_24px_rgba(0,183,253,.35)] transition-all hover:-translate-y-0.5 hover:brightness-110 ${goldGradient}`}
               >
                 <GraduationCap size={18} />
                 {homeConfig.hero.ctaPrimary}
@@ -797,7 +797,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                 type="button"
                 className={`lh-hero-secondary-btn flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 py-3.5 font-bold text-slate-200 transition-all hover:border-amber-500/40 hover:bg-amber-500/10`}
               >
-                <Play size={18} fill="currentColor" className={isLightTheme ? "text-[#c47f0a]" : undefined} />
+                <Play size={18} fill="currentColor" className={isLightTheme ? "text-[#0070f0]" : undefined} />
                 {homeConfig.hero.ctaSecondary}
               </button>
             </div>
@@ -853,7 +853,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                   </div>
 
                   <div className="lh-hero-badge flex max-w-[min(100%,240px)] items-center gap-3 rounded-xl border border-amber-400/30 bg-black/70 px-3.5 py-2.5 shadow-[0_8px_24px_rgba(0,0,0,0.45)] backdrop-blur-xl md:max-w-[280px] md:gap-4 md:px-4 md:py-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#eb9422] shadow-[0_0_24px_rgba(235,148,34,0.35)] md:h-11 md:w-11">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0070f0] shadow-[0_0_24px_rgba(10,131,231,0.35)] md:h-11 md:w-11">
                       <Star fill={isLightTheme ? "#7c2d12" : "black"} size={20} className="md:h-[22px] md:w-[22px]" />
                     </div>
                     <div className="min-w-0">
@@ -876,7 +876,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
             {(homeConfig.stats.length > 0 ? homeConfig.stats.map(s => `${s.value} ${s.label}`) : []).map((item) => (
               <div
                 key={item}
-                className="lh-stat-pill rounded-xl border border-amber-400/60 bg-amber-500/15 px-4 py-3 text-center text-sm font-semibold text-amber-100 shadow-[0_0_30px_rgba(249,177,77,0.25)]"
+                className="lh-stat-pill rounded-xl border border-amber-400/60 bg-amber-500/15 px-4 py-3 text-center text-sm font-semibold text-amber-100 shadow-[0_0_30px_rgba(10,131,231,0.25)]"
               >
                 {item}
               </div>
@@ -916,7 +916,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                 >
                   <div className="pointer-events-none absolute inset-1 rounded-full lh-accreditation-glow bg-amber-300/22 blur-xl transition-all duration-300 group-hover:bg-amber-300/35 group-hover:blur-2xl" />
                   <div
-                    className="lh-accreditation-hex absolute inset-0 border-2 border-amber-400/75 bg-transparent shadow-[0_0_22px_rgba(249,177,77,0.28)] transition-all duration-300 group-hover:border-amber-300 group-hover:shadow-[0_0_44px_rgba(249,177,77,0.5)]"
+                    className="lh-accreditation-hex absolute inset-0 border-2 border-amber-400/75 bg-transparent shadow-[0_0_22px_rgba(10,131,231,0.28)] transition-all duration-300 group-hover:border-amber-300 group-hover:shadow-[0_0_44px_rgba(10,131,231,0.5)]"
                     style={{ clipPath: "polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%)" }}
                   />
                   <div className="pointer-events-none absolute inset-0 opacity-60 transition-opacity duration-300 group-hover:opacity-100">
@@ -966,7 +966,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
               return (
                 <div
                   key={item.id}
-                  className={`lh-path-card group relative overflow-hidden rounded-2xl border bg-linear-to-b from-[#1a1204] via-[#120d06] to-[#050509] p-6 transition-all duration-300 hover:shadow-[0_0_55px_rgba(249,177,77,0.55)] ${
+                  className={`lh-path-card group relative overflow-hidden rounded-2xl border bg-linear-to-b from-[#1a1204] via-[#120d06] to-[#050509] p-6 transition-all duration-300 hover:shadow-[0_0_55px_rgba(10,131,231,0.55)] ${
                     selected
                       ? "border-amber-300/95 ring-2 ring-amber-300/70"
                       : "border-amber-500/60 hover:border-amber-300/90"
@@ -991,7 +991,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-4 overflow-hidden rounded-xl border border-amber-400/70 bg-amber-950/40 shadow-[0_0_30px_rgba(249,177,77,0.35)]">
+                  <div className="mt-4 overflow-hidden rounded-xl border border-amber-400/70 bg-amber-950/40 shadow-[0_0_30px_rgba(10,131,231,0.35)]">
                     <Image
                       src={item.imageSrc}
                       alt={item.title}
@@ -1010,7 +1010,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                       }, 80);
                     }}
                     className={`lh-gold-btn mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-all hover:brightness-110 ${
-                      selected ? `${goldGradient} text-black` : `border border-amber-500/40 text-amber-100 hover:bg-amber-500/10`
+                      selected ? `${goldGradient} text-white` : `border border-amber-500/40 text-amber-100 hover:bg-amber-500/10`
                     }`}
                   >
                     {item.cta} <ChevronRight size={16} />
@@ -1049,7 +1049,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
               ].map((step) => (
                 <div key={step.num} className="space-y-2">
                   <div className="inline-flex items-baseline gap-2">
-                    <span className="lh-step-num text-5xl font-black leading-none text-amber-300 drop-shadow-[0_0_20px_rgba(249,177,77,0.8)]">
+                    <span className="lh-step-num text-5xl font-black leading-none text-amber-300 drop-shadow-[0_0_20px_rgba(10,131,231,0.8)]">
                       {step.num}
                     </span>
                     <span className="lh-step-label text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/85">
@@ -1106,7 +1106,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
               onClick={() => setActiveCategory("All")}
               className={`lh-filter-pill rounded-full px-4 py-2 text-sm font-bold transition-all md:px-5 ${
                 activeCategory === "All"
-                  ? `${goldGradient} text-black`
+                  ? `${goldGradient} text-white`
                   : "border border-white/10 bg-white/[0.04] text-gray-300 hover:border-amber-500/30 hover:text-amber-400"
               }`}
             >
@@ -1119,7 +1119,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                 onClick={() => setActiveCategory(cat.title)}
                 className={`lh-filter-pill rounded-full px-4 py-2 text-sm font-bold transition-all md:px-5 ${
                   activeCategory === cat.title
-                    ? `${goldGradient} text-black`
+                    ? `${goldGradient} text-white`
                     : "border border-white/10 bg-white/[0.04] text-gray-300 hover:border-amber-500/30 hover:text-amber-400"
                 }`}
               >
@@ -1142,7 +1142,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                 return (
                   <div
                     key={cat.slug}
-                    className="lh-category-card flex flex-col rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1305] via-[#120c06] to-[#07070a] p-5 transition-all hover:border-amber-300/80 hover:shadow-[0_0_32px_rgba(249,177,77,0.3)]"
+                    className="lh-category-card flex flex-col rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1305] via-[#120c06] to-[#07070a] p-5 transition-all hover:border-amber-300/80 hover:shadow-[0_0_32px_rgba(10,131,231,0.3)]"
                   >
                     <div className="lh-icon-chip mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/15 text-amber-400">
                       <Icon size={24} />
@@ -1249,7 +1249,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                     {displayedCourses.map((course) => (
                       <article
                         key={course.slug}
-                        className="lh-course-card flex h-full flex-col overflow-hidden rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1305] via-[#120c06] to-[#07070a] transition-all hover:border-amber-300/80 hover:shadow-[0_0_28px_rgba(249,177,77,0.24)]"
+                        className="lh-course-card flex h-full flex-col overflow-hidden rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1305] via-[#120c06] to-[#07070a] transition-all hover:border-amber-300/80 hover:shadow-[0_0_28px_rgba(10,131,231,0.24)]"
                       >
                         <Link
                           href={catalogCourseLandingHref(course.slug, tutorLedSlugSet, course.learningFormat)}
@@ -1308,7 +1308,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                         className={`rounded-full px-6 py-2.5 text-sm font-bold transition-all hover:brightness-110 ${
                           showAllCourses
                             ? "border border-amber-500/50 text-amber-100 hover:bg-amber-500/10"
-                            : `${goldGradient} text-black`
+                            : `${goldGradient} text-white`
                         }`}
                       >
                         {showAllCourses ? "Show Less" : "View All"}
@@ -1322,7 +1322,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
         </section>
 
         <section className={`${sectionShell} py-12 md:py-16`}>
-          <div className="lh-invest-shell rounded-3xl border border-amber-400/60 bg-linear-to-br from-[#221706] via-[#171006] to-[#0a0808] p-6 shadow-[0_0_58px_rgba(249,177,77,.3)] md:p-8">
+          <div className="lh-invest-shell rounded-3xl border border-amber-400/60 bg-linear-to-br from-[#221706] via-[#171006] to-[#0a0808] p-6 shadow-[0_0_58px_rgba(10,131,231,.3)] md:p-8">
             <h2 className={`${sectionTitle} text-center`}>
               Invest in your <span className={goldText}>career</span>
             </h2>
@@ -1330,7 +1330,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
               {careerHighlights.map((item) => (
                 <article
                   key={item.title}
-                  className="lh-invest-card rounded-2xl border border-amber-400/55 bg-linear-to-b from-[#251807] via-[#1a1208] to-[#110d09] p-5 shadow-[0_0_34px_rgba(249,177,77,0.2)] transition-all hover:-translate-y-0.5 hover:border-amber-300/90 hover:shadow-[0_0_44px_rgba(249,177,77,0.35)]"
+                  className="lh-invest-card rounded-2xl border border-amber-400/55 bg-linear-to-b from-[#251807] via-[#1a1208] to-[#110d09] p-5 shadow-[0_0_34px_rgba(10,131,231,0.2)] transition-all hover:-translate-y-0.5 hover:border-amber-300/90 hover:shadow-[0_0_44px_rgba(10,131,231,0.35)]"
                 >
                   <h3 className={`${cardTitle} text-amber-100`}>{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-300">{item.desc}</p>
@@ -1351,7 +1351,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                 type="button"
                 onClick={() => setPlanAudience("individual")}
                 className={`rounded-lg px-5 py-2 text-sm font-bold transition-colors ${
-                  planAudience === "individual" ? `${goldGradient} text-black` : "text-gray-300"
+                  planAudience === "individual" ? `${goldGradient} text-white` : "text-gray-300"
                 }`}
               >
                 Individual
@@ -1360,7 +1360,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                 type="button"
                 onClick={() => setPlanAudience("organisation")}
                 className={`rounded-lg px-5 py-2 text-sm font-bold transition-colors ${
-                  planAudience === "organisation" ? `${goldGradient} text-black` : "text-gray-300"
+                  planAudience === "organisation" ? `${goldGradient} text-white` : "text-gray-300"
                 }`}
               >
                 Organisation
@@ -1374,7 +1374,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                 {liveIndividualPlans.map((plan) => (
                   <article
                     key={plan.badge}
-                    className="lh-plan-card flex h-full flex-col rounded-2xl border border-amber-500/40 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] p-6 shadow-[0_0_30px_rgba(249,177,77,0.2)] transition-all hover:-translate-y-0.5 hover:border-amber-300/75 hover:shadow-[0_0_42px_rgba(249,177,77,0.3)]"
+                    className="lh-plan-card flex h-full flex-col rounded-2xl border border-amber-500/40 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] p-6 shadow-[0_0_30px_rgba(10,131,231,0.2)] transition-all hover:-translate-y-0.5 hover:border-amber-300/75 hover:shadow-[0_0_42px_rgba(10,131,231,0.3)]"
                   >
                     <p className="text-sm font-semibold text-amber-300">{plan.badge}</p>
                     <p className="mt-1 text-sm text-gray-300">{plan.tagline}</p>
@@ -1391,7 +1391,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                     </ul>
                     <button
                       type="button"
-                      className={`mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-black transition-all hover:brightness-110 ${goldGradient}`}
+                      className={`mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-white transition-all hover:brightness-110 ${goldGradient}`}
                     >
                       {plan.cta} <ChevronRight size={16} />
                     </button>
@@ -1400,7 +1400,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
               </div>
               <div className="lh-help-card mx-auto mt-6 max-w-6xl rounded-2xl border border-amber-500/45 bg-linear-to-r from-amber-500/16 via-amber-400/10 to-amber-500/16 p-5">
                 <div className="flex flex-col items-center gap-3 text-center">
-                  <span className="lh-symbol-chip inline-flex h-10 w-10 items-center justify-center rounded-full border border-amber-300/70 bg-amber-400/20 text-amber-100 shadow-[0_0_20px_rgba(249,177,77,0.35)]">
+                  <span className="lh-symbol-chip inline-flex h-10 w-10 items-center justify-center rounded-full border border-amber-300/70 bg-amber-400/20 text-amber-100 shadow-[0_0_20px_rgba(10,131,231,0.35)]">
                     <CircleHelp size={20} />
                   </span>
                   <p className="text-sm font-semibold text-amber-100 md:text-base">
@@ -1409,7 +1409,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                   </p>
                   <Link
                     href="#"
-                    className={`mt-1 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-black transition-all hover:brightness-110 ${goldGradient}`}
+                    className={`mt-1 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-white transition-all hover:brightness-110 ${goldGradient}`}
                   >
                     Contact Us <ChevronRight size={16} />
                   </Link>
@@ -1418,7 +1418,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
             </>
           ) : (
             <div className="mx-auto mt-10 max-w-4xl">
-              <article className="lh-plan-card flex h-full flex-col rounded-2xl border border-amber-500/40 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] p-6 shadow-[0_0_30px_rgba(249,177,77,0.2)] transition-all hover:-translate-y-0.5 hover:border-amber-300/75 hover:shadow-[0_0_42px_rgba(249,177,77,0.3)]">
+              <article className="lh-plan-card flex h-full flex-col rounded-2xl border border-amber-500/40 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] p-6 shadow-[0_0_30px_rgba(10,131,231,0.2)] transition-all hover:-translate-y-0.5 hover:border-amber-300/75 hover:shadow-[0_0_42px_rgba(10,131,231,0.3)]">
                 <p className="text-sm font-semibold text-amber-300">{liveOrgPlan?.title}</p>
                 <p className="mt-1 text-sm text-gray-300">{liveOrgPlan?.tagline}</p>
                 <p className="mt-4 text-sm leading-relaxed text-gray-400">{liveOrgPlan?.desc}</p>
@@ -1434,14 +1434,14 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                 </ul>
                 <button
                   type="button"
-                  className={`mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-black transition-all hover:brightness-110 ${goldGradient}`}
+                  className={`mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-white transition-all hover:brightness-110 ${goldGradient}`}
                 >
                   {liveOrgPlan?.cta} <ChevronRight size={16} />
                 </button>
               </article>
               <div className="lh-help-card mt-6 rounded-2xl border border-amber-500/45 bg-linear-to-r from-amber-500/16 via-amber-400/10 to-amber-500/16 p-5">
                 <div className="flex flex-col items-center gap-3 text-center">
-                  <span className="lh-symbol-chip inline-flex h-10 w-10 items-center justify-center rounded-full border border-amber-300/70 bg-amber-400/20 text-amber-100 shadow-[0_0_20px_rgba(249,177,77,0.35)]">
+                  <span className="lh-symbol-chip inline-flex h-10 w-10 items-center justify-center rounded-full border border-amber-300/70 bg-amber-400/20 text-amber-100 shadow-[0_0_20px_rgba(10,131,231,0.35)]">
                     <CircleHelp size={20} />
                   </span>
                   <p className="text-sm font-semibold text-amber-100 md:text-base">
@@ -1450,7 +1450,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                   </p>
                   <Link
                     href="#"
-                    className={`mt-1 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-black transition-all hover:brightness-110 ${goldGradient}`}
+                    className={`mt-1 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-white transition-all hover:brightness-110 ${goldGradient}`}
                   >
                     Contact Sales <ChevronRight size={16} />
                   </Link>
@@ -1491,7 +1491,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
               {whyFeatures.map(({ title, desc, icon: Icon }) => (
                 <div
                   key={title}
-                  className="lh-why-card rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] p-5 md:p-6 shadow-[0_0_24px_rgba(249,177,77,0.16)] transition-all hover:border-amber-300/70 hover:shadow-[0_0_32px_rgba(249,177,77,0.24)]"
+                  className="lh-why-card rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] p-5 md:p-6 shadow-[0_0_24px_rgba(10,131,231,0.16)] transition-all hover:border-amber-300/70 hover:shadow-[0_0_32px_rgba(10,131,231,0.24)]"
                 >
                   <div className="lh-icon-chip mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/15 text-amber-400">
                     <Icon size={20} />
@@ -1522,7 +1522,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
             {liveTestimonials.map((t) => (
               <blockquote
                 key={t.seed}
-                className="lh-testimonial-card flex flex-col rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] p-6 shadow-[0_0_24px_rgba(249,177,77,0.16)] transition-all hover:border-amber-300/70 hover:shadow-[0_0_32px_rgba(249,177,77,0.24)]"
+                className="lh-testimonial-card flex flex-col rounded-2xl border border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] p-6 shadow-[0_0_24px_rgba(10,131,231,0.16)] transition-all hover:border-amber-300/70 hover:shadow-[0_0_32px_rgba(10,131,231,0.24)]"
               >
                 {t.courseBadge ? (
                   <TestimonialCourseBadge label={t.courseBadge} className="mb-4 self-start" />
@@ -1543,7 +1543,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
 
         {/* Mid CTA */}
         <section className={`${sectionShell} py-16 md:py-20`}>
-          <div className="lh-unlock-shell rounded-3xl border border-amber-300/60 bg-linear-to-br from-amber-500/30 via-[#2a1b08] to-[#120c08] px-6 py-12 text-center shadow-[0_0_46px_rgba(249,177,77,.35)] md:px-12 md:py-16">
+          <div className="lh-unlock-shell rounded-3xl border border-amber-300/60 bg-linear-to-br from-amber-500/30 via-[#2a1b08] to-[#120c08] px-6 py-12 text-center shadow-[0_0_46px_rgba(10,131,231,.35)] md:px-12 md:py-16">
             <h2 className={`${sectionTitle} mx-auto max-w-3xl text-center`}>
               Start Your Learning Journey Today!
             </h2>
@@ -1554,13 +1554,13 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <button
                 type="button"
-                className={`rounded-full px-8 py-4 font-bold text-black shadow-lg transition-all hover:brightness-110 ${goldGradient}`}
+                className={`rounded-full px-8 py-4 font-bold text-white shadow-lg transition-all hover:brightness-110 ${goldGradient}`}
               >
                 Start Learning
               </button>
               <button
                 type="button"
-                className="rounded-full border border-amber-500/40 px-8 py-4 font-bold text-[#fde68a] transition-all hover:bg-amber-500/5"
+                className="rounded-full border border-amber-500/40 px-8 py-4 font-bold text-[#7ccfff] transition-all hover:bg-amber-500/5"
               >
                 Explore Courses
               </button>
@@ -1613,7 +1613,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                       className={`rounded-full px-6 py-2 text-sm font-bold transition-all hover:brightness-110 ${
                         showAllFaqs
                           ? "border border-amber-500/50 text-amber-100 hover:bg-amber-500/10"
-                          : `${goldGradient} text-black`
+                          : `${goldGradient} text-white`
                       }`}
                     >
                       {showAllFaqs ? "Show Less" : "View All"}
@@ -1641,7 +1641,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
 
         {/* Newsletter */}
         <section className={`${sectionShell} py-10 md:py-12`}>
-          <div className="lh-newsletter-shell rounded-2xl border border-amber-500/35 bg-linear-to-r from-[#1b1306] via-[#120d07] to-[#0a0808] p-5 shadow-[0_0_32px_rgba(249,177,77,0.18)] md:p-6">
+          <div className="lh-newsletter-shell rounded-2xl border border-amber-500/35 bg-linear-to-r from-[#1b1306] via-[#120d07] to-[#0a0808] p-5 shadow-[0_0_32px_rgba(10,131,231,0.18)] md:p-6">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div className="flex items-start gap-3">
                 <span className="lh-symbol-chip mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full border border-amber-400/60 bg-amber-500/15 text-amber-200">
@@ -1664,7 +1664,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                 buttonText={homeConfig.newsletter?.buttonText ?? "Subscribe"}
                 className="flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:items-end"
                 inputClassName="lh-newsletter-input w-full rounded-full border border-amber-500/40 bg-black/35 px-4 py-2.5 text-sm text-white outline-none placeholder:text-gray-500 focus:border-amber-300/80"
-                buttonClassName={`rounded-full px-6 py-2.5 text-sm font-bold text-black transition-all hover:brightness-110 ${goldGradient}`}
+                buttonClassName={`rounded-full px-6 py-2.5 text-sm font-bold text-white transition-all hover:brightness-110 ${goldGradient}`}
               />
             </div>
           </div>
@@ -1673,7 +1673,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
         {/* Footer CTA strip */}
         <section className="lh-unlock-strip border-t border-amber-500/20 bg-linear-to-r from-[#120d08] via-[#0c0908] to-[#120d08] py-16 md:py-20">
           <div className={sectionShell}>
-            <div className="lh-unlock-grid overflow-hidden rounded-3xl border border-amber-500/35 bg-linear-to-br from-[#1a1208] via-[#110d09] to-[#0a0808] p-6 shadow-[0_0_44px_rgba(249,177,77,0.2)] md:p-8">
+            <div className="lh-unlock-grid overflow-hidden rounded-3xl border border-amber-500/35 bg-linear-to-br from-[#1a1208] via-[#110d09] to-[#0a0808] p-6 shadow-[0_0_44px_rgba(10,131,231,0.2)] md:p-8">
               <div className="grid items-center gap-8 lg:grid-cols-2">
                 <div className="lh-unlock-image-shell relative overflow-hidden rounded-2xl border border-amber-400/40 bg-black/35">
                   <Image
@@ -1701,7 +1701,7 @@ export default function LearnlyLanding({ initialData }: { initialData?: LearnlyL
                   </p>
                   <button
                     type="button"
-                    className={`mt-8 rounded-full px-10 py-4 font-bold text-black shadow-lg transition-all hover:brightness-110 ${goldGradient}`}
+                    className={`mt-8 rounded-full px-10 py-4 font-bold text-white shadow-lg transition-all hover:brightness-110 ${goldGradient}`}
                   >
                     {unlockCta || "Get Started"}
                   </button>

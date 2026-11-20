@@ -69,7 +69,7 @@ const RESOURCE_TILE_STYLES: Record<
     iconColor: "text-orange-400",
     icon: Presentation,
   },
-  workbook: { bg: "bg-[#FFC107]/20", border: "border-[#FFC107]/40", iconColor: "text-[#FFC107]", icon: BookOpen },
+  workbook: { bg: "bg-[#0070f0]/20", border: "border-[#0070f0]/40", iconColor: "text-[#0070f0]", icon: BookOpen },
   podcast: { bg: "bg-[#4CAF50]/20", border: "border-[#4CAF50]/40", iconColor: "text-[#66BB6A]", icon: Headphones },
   links: { bg: "bg-sky-500/20", border: "border-sky-500/40", iconColor: "text-sky-400", icon: Link2 },
 };
@@ -171,18 +171,18 @@ export function TutorLedLearnerHubSections({
                       key={item.label}
                       type="button"
                       onClick={item.action}
-                      className="flex flex-col items-center gap-1 rounded-lg border border-white/10 bg-black/30 px-2 py-2.5 text-[10px] text-zinc-400 hover:border-[#FFC107]/30"
+                      className="flex flex-col items-center gap-1 rounded-lg border border-white/10 bg-black/30 px-2 py-2.5 text-[10px] text-zinc-400 hover:border-[#0070f0]/30"
                     >
-                      <item.icon className="h-4 w-4 text-[#FFC107]" aria-hidden />
+                      <item.icon className="h-4 w-4 text-[#0070f0]" aria-hidden />
                       {copied && item.label === "Meeting link" ? "Copied!" : item.label}
                     </button>
                   ) : (
                     <Link
                       key={item.label}
                       href={item.href!}
-                      className="flex flex-col items-center gap-1 rounded-lg border border-white/10 bg-black/30 px-2 py-2.5 text-[10px] text-zinc-400 hover:border-[#FFC107]/30"
+                      className="flex flex-col items-center gap-1 rounded-lg border border-white/10 bg-black/30 px-2 py-2.5 text-[10px] text-zinc-400 hover:border-[#0070f0]/30"
                     >
-                      <item.icon className="h-4 w-4 text-[#FFC107]" aria-hidden />
+                      <item.icon className="h-4 w-4 text-[#0070f0]" aria-hidden />
                       {item.label}
                     </Link>
                   ),
@@ -227,9 +227,9 @@ export function TutorLedLearnerHubSections({
               <Link
                 key={link.label + link.href}
                 href={link.href}
-                className="flex items-center gap-3 rounded-xl border border-[#FFC107]/12 bg-black/40 px-4 py-3 text-sm font-medium text-zinc-200 transition hover:border-[#FFC107]/35 hover:bg-[#FFC107]/5 hover:text-[#FFC107]"
+                className="flex items-center gap-3 rounded-xl border border-[#0070f0]/12 bg-black/40 px-4 py-3 text-sm font-medium text-zinc-200 transition hover:border-[#0070f0]/35 hover:bg-[#0070f0]/5 hover:text-[#0070f0]"
               >
-                <LinkIcon className="h-4 w-4 text-[#FFC107]" aria-hidden />
+                <LinkIcon className="h-4 w-4 text-[#0070f0]" aria-hidden />
                 {link.label}
               </Link>
             );
@@ -247,7 +247,7 @@ export function TutorLedLearnerHubSections({
           <div className="mb-4 flex items-center justify-between gap-2">
             <h2 className="text-lg font-bold">{section.recordingsTitle}</h2>
             {sessionRecordings.length > 0 ? (
-              <Link href="#session-recordings" className="text-xs font-semibold text-[#FFC107] hover:underline">
+              <Link href="#session-recordings" className="text-xs font-semibold text-[#0070f0] hover:underline">
                 View all recordings
               </Link>
             ) : null}
@@ -305,7 +305,7 @@ export function TutorLedLearnerHubSections({
         <article className={tlCard}>
           <div className="mb-3 flex items-center justify-between">
             <h2 className="text-lg font-bold">{section.forumTitle}</h2>
-            <Link href="/my-learning?tab=community" className="text-xs text-[#FFC107] hover:underline">
+            <Link href="/my-learning?tab=community" className="text-xs text-[#0070f0] hover:underline">
               View all
             </Link>
           </div>
@@ -316,7 +316,7 @@ export function TutorLedLearnerHubSections({
                 type="button"
                 onClick={() => setForumTab(tab)}
                 className={`rounded-full px-3 py-1 text-xs font-semibold capitalize ${
-                  forumTab === tab ? "bg-[#FFC107]/20 text-[#FFC107]" : "border border-white/10 text-zinc-400"
+                  forumTab === tab ? "bg-[#0070f0]/20 text-[#0070f0]" : "border border-white/10 text-zinc-400"
                 }`}
               >
                 {tab}
@@ -411,7 +411,7 @@ export function TutorLedLearnerHubSections({
             [`${section.examPassingScore}%`, "Passing score"],
           ].map(([value, label]) => (
             <div key={label} className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-center">
-              <p className="text-2xl font-bold text-[#FFC107]">{value}</p>
+              <p className="text-2xl font-bold text-[#0070f0]">{value}</p>
               <p className="text-xs text-zinc-500">{label}</p>
             </div>
           ))}
@@ -441,7 +441,7 @@ export function TutorLedLearnerHubSections({
                 <p className="text-[10px] text-zinc-500">{label}</p>
                 <div className="mt-1 flex justify-center gap-0.5">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} className="h-3.5 w-3.5 fill-[#FFC107] text-[#FFC107]" aria-hidden />
+                    <Star key={s} className="h-3.5 w-3.5 fill-[#0070f0] text-[#0070f0]" aria-hidden />
                   ))}
                 </div>
               </div>
@@ -451,7 +451,7 @@ export function TutorLedLearnerHubSections({
         <div className="mt-4 rounded-xl border border-white/10 bg-black/25 p-4">
           <div className="flex items-center justify-between gap-2">
             <p className="text-sm font-semibold text-zinc-200">Student reviews</p>
-            <p className="text-sm font-bold text-[#FFC107]">
+            <p className="text-sm font-bold text-[#0070f0]">
               {section.reviewRating}{" "}
               <span className="font-normal text-zinc-500">({section.reviewCount} reviews)</span>
             </p>
@@ -467,7 +467,7 @@ export function TutorLedLearnerHubSections({
               <li key={stars} className="flex items-center gap-2 text-[10px] text-zinc-500">
                 <span className="w-8">{stars} ★</span>
                 <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-zinc-800">
-                  <span className="block h-full rounded-full bg-[#FFC107]" style={{ width: `${pct}%` }} />
+                  <span className="block h-full rounded-full bg-[#0070f0]" style={{ width: `${pct}%` }} />
                 </span>
                 <span className="w-8 text-right">{pct}%</span>
               </li>
@@ -499,7 +499,7 @@ export function TutorLedLearnerHubSections({
                   <span>{progressPercent}%</span>
                 </div>
                 <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-800">
-                  <div className="h-full rounded-full bg-[#FFC107]" style={{ width: `${progressPercent}%` }} />
+                  <div className="h-full rounded-full bg-[#0070f0]" style={{ width: `${progressPercent}%` }} />
                 </div>
               </div>
               <Link href="#live-curriculum" className={`${tlGoldOutline} mt-3 text-xs py-2`}>
@@ -517,9 +517,9 @@ export function TutorLedLearnerHubSections({
               return (
                 <div
                   key={badge.label}
-                  className="tl-achievement-badge flex flex-col items-center rounded-xl border border-[#FFC107]/30 px-2 py-3 text-center"
+                  className="tl-achievement-badge flex flex-col items-center rounded-xl border border-[#0070f0]/30 px-2 py-3 text-center"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#FFC107]/40 text-[#FFC107]">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#0070f0]/40 text-[#0070f0]">
                     <BadgeIcon className="h-5 w-5" aria-hidden />
                   </span>
                   <p className="mt-2 text-[9px] font-semibold leading-tight text-zinc-300">{badge.label}</p>
@@ -543,7 +543,7 @@ export function TutorLedLearnerHubSections({
       </article>
 
       {/* Sticky bottom action bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#FFC107]/20 bg-black/92 px-4 py-3 shadow-[0_-8px_32px_rgba(0,0,0,0.6)] backdrop-blur-md">
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#0070f0]/20 bg-black/92 px-4 py-3 shadow-[0_-8px_32px_rgba(0,0,0,0.6)] backdrop-blur-md">
         <div className="mx-auto flex max-w-[1760px] flex-wrap items-center justify-center gap-3 md:justify-between">
           <div className="flex flex-wrap justify-center gap-2">
             {zoomJoinUrl ? (
@@ -562,13 +562,13 @@ export function TutorLedLearnerHubSections({
                 href={lastRecording.playUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#FFC107] px-4 py-2.5 text-xs font-bold text-black shadow-[0_0_16px_rgba(255,193,7,0.35)] hover:bg-[#FFD54F]"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#0070f0] px-4 py-2.5 text-xs font-bold text-black shadow-[0_0_16px_rgba(255,193,7,0.35)] hover:bg-[#7ccfff]"
               >
                 <Play className="h-4 w-4" aria-hidden />
                 {section.footerRecordingLabel}
               </a>
             ) : (
-              <Link href="#session-recordings" className="inline-flex items-center gap-2 rounded-lg bg-[#FFC107] px-4 py-2.5 text-xs font-bold text-black shadow-[0_0_16px_rgba(255,193,7,0.35)]">
+              <Link href="#session-recordings" className="inline-flex items-center gap-2 rounded-lg bg-[#0070f0] px-4 py-2.5 text-xs font-bold text-black shadow-[0_0_16px_rgba(255,193,7,0.35)]">
                 <Play className="h-4 w-4" aria-hidden />
                 {section.footerRecordingLabel}
               </Link>

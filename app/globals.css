@@ -4,19 +4,20 @@
 @source "../lib";
 @source "../data";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-:root[data-theme="dark"] {
+:root,
+:root[data-theme="dark"],
+:root[data-theme="light"] {
   --background: #05070f;
   --foreground: #ededed;
-}
-
-:root[data-theme="light"] {
-  --background: #f8f4ec;
-  --foreground: #1f2937;
+  /* Clean logo match: black + blue + cyan */
+  --brand-black: #05070f;
+  --brand-blue: #0070f0;
+  --brand-blue-deep: #0040d0;
+  --brand-cyan: #00b7fd;
+  --brand-cyan-soft: #7ccfff;
+  --brand-silver: #d5d7de;
+  --brand-glow: rgba(0, 183, 253, 0.32);
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -24,6 +25,19 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Remap amber utilities → black/blue/cyan system */
+  --color-amber-50: #e8f7ff;
+  --color-amber-100: #d0efff;
+  --color-amber-200: #a8e3ff;
+  --color-amber-300: #7ccfff;
+  --color-amber-400: #00b7fd;
+  --color-amber-500: #0070f0;
+  --color-amber-600: #0058c7;
+  --color-amber-700: #0040d0;
+  --color-amber-800: #0033a8;
+  --color-amber-900: #00267a;
+  --color-amber-950: #00143d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,7 +65,7 @@ body.tutor-led-marketing-body {
 }
 
 .tutor-led-learner-hub .tl-gold-glow {
-  box-shadow: 0 0 32px rgba(255, 193, 7, 0.22), inset 0 1px 0 rgba(255, 193, 7, 0.12);
+  box-shadow: 0 0 32px rgba(10, 131, 231, 0.28), inset 0 1px 0 rgba(54, 182, 255, 0.18);
 }
 
 .tutor-led-learner-hub .tl-progress-ring {
@@ -59,8 +73,8 @@ body.tutor-led-marketing-body {
 }
 
 .tutor-led-learner-hub .tl-achievement-badge {
-  background: radial-gradient(circle at 30% 20%, rgba(255, 193, 7, 0.35), rgba(255, 193, 7, 0.08));
-  box-shadow: 0 0 20px rgba(255, 193, 7, 0.2), inset 0 1px 0 rgba(255, 215, 64, 0.25);
+  background: radial-gradient(circle at 30% 20%, rgba(10, 131, 231, 0.4), rgba(0, 180, 240, 0.1));
+  box-shadow: 0 0 20px rgba(10, 131, 231, 0.28), inset 0 1px 0 rgba(213, 215, 222, 0.25);
 }
 
 /* Light theme: remove white surfaces and keep premium beige feel */
@@ -72,7 +86,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .learnly-home {
   color: #1f2937;
   background:
-    radial-gradient(circle at 10% 8%, rgba(212, 160, 23, 0.2), transparent 28%),
+    radial-gradient(circle at 10% 8%, rgba(10,131,231, 0.2), transparent 28%),
     radial-gradient(circle at 88% 14%, rgba(139, 92, 246, 0.1), transparent 24%),
     linear-gradient(180deg, #f8f4ec 0%, #f3ede3 48%, #efe7da 100%);
 }
@@ -88,12 +102,12 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .learnly-home .lh-testimonial-card,
 :root[data-theme="light"] .learnly-home .lh-unlock-shell {
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 160, 23, 0.2), transparent 34%),
+    radial-gradient(circle at 12% 0%, rgba(10,131,231, 0.2), transparent 34%),
     linear-gradient(135deg, rgba(248, 244, 236, 0.95), rgba(243, 237, 227, 0.92)) !important;
   border-color: rgba(180, 150, 90, 0.2) !important;
   box-shadow:
     0 14px 32px rgba(148, 118, 59, 0.14),
-    0 0 0 1px rgba(212, 160, 23, 0.1) inset !important;
+    0 0 0 1px rgba(10,131,231, 0.1) inset !important;
   backdrop-filter: blur(8px);
   transition: transform 220ms ease, box-shadow 240ms ease;
 }
@@ -108,7 +122,7 @@ body.tutor-led-marketing-body {
   transform: translateY(-3px);
   box-shadow:
     0 18px 40px rgba(148, 118, 59, 0.2),
-    0 0 24px rgba(212, 160, 23, 0.2) !important;
+    0 0 24px rgba(10,131,231, 0.2) !important;
 }
 
 :root[data-theme="light"] .learnly-home .bg-white,
@@ -189,28 +203,28 @@ body.tutor-led-marketing-body {
 
 /* Premium gold accents — keep warm icon & highlight colors in light theme */
 :root[data-theme="light"] .learnly-home .lh-gold-text {
-  color: #9a6812 !important;
+  color: #3b82c4 !important;
 }
 
 :root[data-theme="light"] .learnly-home .lh-icon-chip {
   background: linear-gradient(145deg, #fff9ee 0%, #fdecc8 100%) !important;
   color: #b45309 !important;
-  border: 1px solid rgba(212, 160, 23, 0.38);
+  border: 1px solid rgba(10,131,231, 0.38);
   box-shadow:
-    0 2px 10px rgba(212, 160, 23, 0.14),
+    0 2px 10px rgba(10,131,231, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 :root[data-theme="light"] .learnly-home .lh-icon-chip svg {
-  color: #c47f0a !important;
-  stroke: #c47f0a;
+  color: #0070f0 !important;
+  stroke: #0070f0;
 }
 
 :root[data-theme="light"] .learnly-home .lh-premium-badge {
   background: linear-gradient(135deg, rgba(255, 251, 240, 0.95), rgba(253, 236, 200, 0.9)) !important;
-  border-color: rgba(212, 160, 23, 0.4) !important;
+  border-color: rgba(10,131,231, 0.4) !important;
   color: #b45309 !important;
-  box-shadow: 0 4px 16px rgba(212, 160, 23, 0.12);
+  box-shadow: 0 4px 16px rgba(10,131,231, 0.12);
 }
 
 :root[data-theme="light"] .learnly-home .lh-premium-badge svg {
@@ -219,33 +233,33 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .learnly-home .lh-stat-pill {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(253, 244, 220, 0.88)) !important;
-  border-color: rgba(212, 160, 23, 0.42) !important;
-  color: #8a6412 !important;
+  border-color: rgba(10,131,231, 0.42) !important;
+  color: #3b82c4 !important;
   box-shadow:
-    0 4px 18px rgba(212, 160, 23, 0.1),
+    0 4px 18px rgba(10,131,231, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
 }
 
 :root[data-theme="light"] .learnly-home .lh-hero-secondary-btn {
   background: rgba(255, 255, 255, 0.78) !important;
-  border-color: rgba(212, 160, 23, 0.45) !important;
-  color: #8a6412 !important;
+  border-color: rgba(10,131,231, 0.45) !important;
+  color: #3b82c4 !important;
   box-shadow: 0 4px 16px rgba(148, 118, 59, 0.1);
   backdrop-filter: blur(8px);
 }
 
 :root[data-theme="light"] .learnly-home .lh-hero-secondary-btn svg {
-  color: #c47f0a !important;
-  fill: #c47f0a;
+  color: #0070f0 !important;
+  fill: #0070f0;
 }
 
 :root[data-theme="light"] .learnly-home .lh-hero-secondary-btn:hover {
   background: rgba(255, 249, 235, 0.95) !important;
-  border-color: rgba(212, 160, 23, 0.62) !important;
+  border-color: rgba(10,131,231, 0.62) !important;
 }
 
 :root[data-theme="light"] .learnly-home .lh-hero-video-shell {
-  border: 1px solid rgba(212, 160, 23, 0.28);
+  border: 1px solid rgba(10,131,231, 0.28);
   box-shadow:
     0 16px 40px rgba(148, 118, 59, 0.14),
     0 0 0 1px rgba(255, 255, 255, 0.6) inset;
@@ -265,8 +279,8 @@ body.tutor-led-marketing-body {
   background-image:
     linear-gradient(to top right, rgba(5, 7, 15, 0.55) 0%, transparent 42%),
     linear-gradient(to top, rgba(5, 7, 15, 0.35) 0%, transparent 28%),
-    linear-gradient(rgba(249, 177, 77, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(249, 177, 77, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(10,131,231, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,131,231, 0.05) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
   background-position: bottom right, bottom center, center, center;
   mask-image: linear-gradient(to top left, black 0%, black 22%, transparent 55%);
@@ -275,13 +289,13 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .learnly-home .lh-hero-tag {
   background: rgba(255, 255, 255, 0.88) !important;
-  border-color: rgba(212, 160, 23, 0.4) !important;
-  color: #6a4a0c !important;
+  border-color: rgba(10,131,231, 0.4) !important;
+  color: #0049a3 !important;
 }
 
 :root[data-theme="light"] .learnly-home .lh-hero-badge {
   background: rgba(255, 255, 255, 0.9) !important;
-  border-color: rgba(212, 160, 23, 0.35) !important;
+  border-color: rgba(10,131,231, 0.35) !important;
   box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08) !important;
   backdrop-filter: blur(12px);
 }
@@ -340,8 +354,8 @@ body.tutor-led-marketing-body {
   background: linear-gradient(180deg, #f9cb77 0%, #e5a32f 100%) !important;
   color: #111827 !important;
   box-shadow:
-    0 10px 24px rgba(212, 160, 23, 0.3),
-    0 0 22px rgba(212, 160, 23, 0.22) !important;
+    0 10px 24px rgba(10,131,231, 0.3),
+    0 0 22px rgba(10,131,231, 0.22) !important;
 }
 
 :root[data-theme="dark"] .learnly-home .lh-accreditation-logo--irba {
@@ -350,12 +364,12 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .learnly-home .lh-filter-pill {
   background: rgba(255, 255, 255, 0.72) !important;
-  border-color: rgba(212, 160, 23, 0.28) !important;
+  border-color: rgba(10,131,231, 0.28) !important;
   color: #64748b !important;
 }
 
 :root[data-theme="light"] .learnly-home .lh-filter-pill:hover {
-  border-color: rgba(212, 160, 23, 0.5) !important;
+  border-color: rgba(10,131,231, 0.5) !important;
   color: #b45309 !important;
 }
 
@@ -363,7 +377,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .learnly-home button[class*="text-black"][class*="rounded-full"]:hover {
   transform: translateY(-1px);
   box-shadow:
-    0 14px 30px rgba(212, 160, 23, 0.34),
+    0 14px 30px rgba(10,131,231, 0.34),
     0 0 28px rgba(139, 92, 246, 0.2) !important;
 }
 
@@ -398,27 +412,27 @@ body.tutor-led-marketing-body {
 }
 
 :root[data-theme="light"] .learnly-home .fill-amber-400 {
-  fill: #f59e0b !important;
+  fill: #0070f0 !important;
 }
 
-:root[data-theme="light"] .learnly-home .text-\[\#fde68a\] {
+:root[data-theme="light"] .learnly-home .text-\[\#d5d7de\] {
   color: #b45309 !important;
-  border-color: rgba(212, 160, 23, 0.55) !important;
+  border-color: rgba(10,131,231, 0.55) !important;
   background: rgba(255, 255, 255, 0.65) !important;
 }
 
-:root[data-theme="light"] .learnly-home .text-\[\#fde68a\]:hover {
+:root[data-theme="light"] .learnly-home .text-\[\#d5d7de\]:hover {
   background: rgba(255, 249, 235, 0.95) !important;
-  border-color: rgba(212, 160, 23, 0.7) !important;
+  border-color: rgba(10,131,231, 0.7) !important;
 }
 
 /* Colorful symbol icons (help, mail, chevrons, stars) */
 :root[data-theme="light"] .learnly-home .lh-symbol-chip {
   background: linear-gradient(145deg, #fff9ee 0%, #fdecc8 100%) !important;
-  border-color: rgba(212, 160, 23, 0.55) !important;
+  border-color: rgba(10,131,231, 0.55) !important;
   color: #c2410c !important;
   box-shadow:
-    0 4px 14px rgba(212, 160, 23, 0.22),
+    0 4px 14px rgba(10,131,231, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
 }
 
@@ -443,7 +457,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .learnly-home .lh-accreditation-hex {
   border-color: rgba(217, 119, 6, 0.85) !important;
   box-shadow:
-    0 0 24px rgba(249, 177, 77, 0.35),
+    0 0 24px rgba(10,131,231, 0.35),
     inset 0 0 12px rgba(255, 251, 235, 0.5) !important;
 }
 
@@ -461,7 +475,7 @@ body.tutor-led-marketing-body {
   border-color: rgba(217, 119, 6, 0.45) !important;
   color: #92400e !important;
   box-shadow:
-    0 4px 14px rgba(212, 160, 23, 0.16),
+    0 4px 14px rgba(10,131,231, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
 }
 
@@ -475,7 +489,7 @@ body.tutor-led-marketing-body {
   background:
     linear-gradient(rgba(248, 244, 236, 0.9), rgba(243, 237, 227, 0.92)),
     url("/op.png"),
-    radial-gradient(circle at 10% 8%, rgba(212, 160, 23, 0.18), transparent 30%),
+    radial-gradient(circle at 10% 8%, rgba(10,131,231, 0.18), transparent 30%),
     radial-gradient(circle at 90% 12%, rgba(139, 92, 246, 0.1), transparent 24%),
     linear-gradient(180deg, #f8f4ec 0%, #f3ede3 52%, #efe7da 100%) !important;
   color: #1f2937 !important;
@@ -501,11 +515,11 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .about-page div[class*="bg-white/5"],
 :root[data-theme="light"] .about-page div[class*="bg-[#0a1120]/80"] {
   background:
-    radial-gradient(circle at 10% 0%, rgba(212, 160, 23, 0.16), transparent 34%),
+    radial-gradient(circle at 10% 0%, rgba(10,131,231, 0.16), transparent 34%),
     linear-gradient(135deg, rgba(248, 244, 236, 0.96), rgba(243, 237, 227, 0.92)) !important;
   box-shadow:
     0 12px 30px rgba(148, 118, 59, 0.12),
-    0 0 0 1px rgba(212, 160, 23, 0.08) inset !important;
+    0 0 0 1px rgba(10,131,231, 0.08) inset !important;
 }
 
 :root[data-theme="light"] .about-page h1,
@@ -527,7 +541,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .about-page .text-amber-300,
 :root[data-theme="light"] .about-page .text-violet-200,
 :root[data-theme="light"] .about-page .text-violet-300 {
-  color: #7a5610 !important;
+  color: #0058c7 !important;
 }
 
 /* About "More Than Learning" section light-theme polish */
@@ -565,8 +579,8 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .about-page .about-who-badge {
   border-color: rgba(180, 150, 90, 0.35) !important;
-  background: rgba(212, 160, 23, 0.14) !important;
-  color: #7a5610 !important;
+  background: rgba(10,131,231, 0.14) !important;
+  color: #0058c7 !important;
 }
 
 :root[data-theme="light"] .about-page .about-who-title {
@@ -603,7 +617,7 @@ body.tutor-led-marketing-body {
 /* About — Mission & Training Technologies (light theme) */
 :root[data-theme="light"] .about-page .about-mission-section {
   background:
-    radial-gradient(circle at 8% 0%, rgba(212, 160, 23, 0.14), transparent 36%),
+    radial-gradient(circle at 8% 0%, rgba(10,131,231, 0.14), transparent 36%),
     radial-gradient(circle at 92% 100%, rgba(139, 92, 246, 0.08), transparent 32%),
     linear-gradient(135deg, rgba(248, 244, 236, 0.98), rgba(243, 237, 227, 0.94)) !important;
   border-color: rgba(180, 150, 90, 0.28) !important;
@@ -615,7 +629,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .about-page .about-mission-card {
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(253, 244, 220, 0.9)) !important;
-  border-color: rgba(212, 160, 23, 0.28) !important;
+  border-color: rgba(10,131,231, 0.28) !important;
   box-shadow:
     0 8px 22px rgba(148, 118, 59, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
@@ -627,11 +641,11 @@ body.tutor-led-marketing-body {
 }
 
 :root[data-theme="light"] .about-page .about-mission-heading .text-amber-300 {
-  color: #9a6812 !important;
+  color: #3b82c4 !important;
 }
 
 :root[data-theme="light"] .about-page .about-mission-badge-amber {
-  border-color: rgba(212, 160, 23, 0.42) !important;
+  border-color: rgba(10,131,231, 0.42) !important;
   background: linear-gradient(135deg, #fff9ee, #fdecc8) !important;
   color: #92400e !important;
 }
@@ -655,7 +669,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .courses-page {
   color: #1f2937;
   background:
-    radial-gradient(circle at 10% 8%, rgba(212, 160, 23, 0.18), transparent 28%),
+    radial-gradient(circle at 10% 8%, rgba(10,131,231, 0.18), transparent 28%),
     radial-gradient(circle at 88% 14%, rgba(139, 92, 246, 0.08), transparent 24%),
     linear-gradient(180deg, #f8f4ec 0%, #f3ede3 48%, #efe7da 100%);
 }
@@ -665,12 +679,12 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .courses-page .courses-course-card,
 :root[data-theme="light"] .courses-page .courses-category-card {
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 160, 23, 0.16), transparent 34%),
+    radial-gradient(circle at 12% 0%, rgba(10,131,231, 0.16), transparent 34%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(253, 244, 220, 0.9)) !important;
   border-color: rgba(180, 150, 90, 0.24) !important;
   box-shadow:
     0 10px 28px rgba(148, 118, 59, 0.1),
-    0 0 0 1px rgba(212, 160, 23, 0.08) inset !important;
+    0 0 0 1px rgba(10,131,231, 0.08) inset !important;
 }
 
 :root[data-theme="light"] .courses-page .courses-inner-card,
@@ -682,7 +696,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .courses-page .courses-inner-card:hover,
 :root[data-theme="light"] .courses-page .courses-course-card:hover,
 :root[data-theme="light"] .courses-page .courses-category-card:hover {
-  border-color: rgba(212, 160, 23, 0.42) !important;
+  border-color: rgba(10,131,231, 0.42) !important;
   box-shadow: 0 12px 30px rgba(148, 118, 59, 0.14) !important;
 }
 
@@ -701,7 +715,7 @@ body.tutor-led-marketing-body {
 }
 
 :root[data-theme="light"] .courses-page .courses-hero-badge {
-  border-color: rgba(212, 160, 23, 0.42) !important;
+  border-color: rgba(10,131,231, 0.42) !important;
   background: linear-gradient(135deg, #fff9ee, #fdecc8) !important;
   color: #92400e !important;
 }
@@ -727,7 +741,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .courses-page .text-amber-200,
 :root[data-theme="light"] .courses-page .text-amber-300,
 :root[data-theme="light"] .courses-page [class*="text-amber-50"] {
-  color: #9a6812 !important;
+  color: #3b82c4 !important;
 }
 
 :root[data-theme="light"] .courses-page h1 .text-amber-300 {
@@ -741,9 +755,9 @@ body.tutor-led-marketing-body {
 }
 
 :root[data-theme="light"] .courses-page .courses-secondary-btn:hover {
-  border-color: rgba(212, 160, 23, 0.5) !important;
+  border-color: rgba(10,131,231, 0.5) !important;
   background: #fff9ee !important;
-  color: #7a5610 !important;
+  color: #0058c7 !important;
 }
 
 :root[data-theme="light"] .courses-page .courses-filter-input,
@@ -765,13 +779,13 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .courses-page .courses-featured-panel {
   background:
-    radial-gradient(circle at 8% 0%, rgba(212, 160, 23, 0.2), transparent 36%),
+    radial-gradient(circle at 8% 0%, rgba(10,131,231, 0.2), transparent 36%),
     radial-gradient(circle at 92% 100%, rgba(139, 92, 246, 0.1), transparent 32%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(253, 244, 220, 0.92)) !important;
-  border-color: rgba(212, 160, 23, 0.35) !important;
+  border-color: rgba(10,131,231, 0.35) !important;
   box-shadow:
     0 14px 32px rgba(148, 118, 59, 0.14),
-    0 0 24px rgba(212, 160, 23, 0.12) !important;
+    0 0 24px rgba(10,131,231, 0.12) !important;
 }
 
 :root[data-theme="light"] .courses-page .courses-featured-panel h3,
@@ -785,26 +799,26 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .courses-page .courses-expert-tooltip {
   background: #fff9ee !important;
-  border-color: rgba(212, 160, 23, 0.4) !important;
-  color: #7a5610 !important;
+  border-color: rgba(10,131,231, 0.4) !important;
+  color: #0058c7 !important;
 }
 
 :root[data-theme="light"] .courses-page .courses-recommended-thumb {
   background: rgba(255, 255, 255, 0.9) !important;
-  border-color: rgba(212, 160, 23, 0.28) !important;
+  border-color: rgba(10,131,231, 0.28) !important;
 }
 
 :root[data-theme="light"] .courses-page .courses-recommended-thumb:hover {
-  border-color: rgba(212, 160, 23, 0.48) !important;
+  border-color: rgba(10,131,231, 0.48) !important;
   box-shadow: 0 8px 20px rgba(148, 118, 59, 0.12) !important;
 }
 
 :root[data-theme="light"] .courses-page .courses-cta-banner {
   background:
-    radial-gradient(circle at 12% 50%, rgba(212, 160, 23, 0.22), transparent 40%),
-    radial-gradient(circle at 88% 50%, rgba(212, 160, 23, 0.16), transparent 38%),
+    radial-gradient(circle at 12% 50%, rgba(10,131,231, 0.22), transparent 40%),
+    radial-gradient(circle at 88% 50%, rgba(10,131,231, 0.16), transparent 38%),
     linear-gradient(90deg, #fff9ee, #fdecc8, #fff9ee) !important;
-  border-color: rgba(212, 160, 23, 0.38) !important;
+  border-color: rgba(10,131,231, 0.38) !important;
 }
 
 :root[data-theme="light"] .courses-page .courses-cta-banner h2 {
@@ -866,7 +880,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .courses-page .courses-icon-chip.bg-emerald-500\/20 { background: rgba(16, 185, 129, 0.14) !important; }
 :root[data-theme="light"] .courses-page .courses-icon-chip.bg-violet-500\/20 { background: rgba(139, 92, 246, 0.14) !important; }
 :root[data-theme="light"] .courses-page .courses-icon-chip.bg-green-500\/20 { background: rgba(34, 197, 94, 0.14) !important; }
-:root[data-theme="light"] .courses-page .courses-icon-chip.bg-amber-500\/20 { background: rgba(245, 158, 11, 0.16) !important; }
+:root[data-theme="light"] .courses-page .courses-icon-chip.bg-amber-500\/20 { background: rgba(54,182,255, 0.16) !important; }
 :root[data-theme="light"] .courses-page .courses-icon-chip.bg-teal-500\/20 { background: rgba(20, 184, 166, 0.14) !important; }
 :root[data-theme="light"] .courses-page .courses-icon-chip.bg-pink-500\/20 { background: rgba(236, 72, 153, 0.14) !important; }
 
@@ -936,14 +950,14 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .courses-page button[class*="bg-amber-500/10"],
 :root[data-theme="light"] .courses-page a[class*="bg-amber-500/10"] {
   background: rgba(253, 230, 138, 0.35) !important;
-  border-color: rgba(212, 160, 23, 0.35) !important;
+  border-color: rgba(10,131,231, 0.35) !important;
   color: #92400e !important;
 }
 
 :root[data-theme="light"] .courses-page button[class*="bg-amber-500/10"]:hover,
 :root[data-theme="light"] .courses-page a[class*="bg-amber-500/10"]:hover {
   background: rgba(253, 230, 138, 0.55) !important;
-  border-color: rgba(212, 160, 23, 0.5) !important;
+  border-color: rgba(10,131,231, 0.5) !important;
 }
 
 /* ── Shared catalog/marketing pages — cream canvas, dark text (no white copy) ── */
@@ -958,7 +972,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .tutor-led-marketing {
   color: #334155;
   background:
-    radial-gradient(circle at 10% 8%, rgba(212, 160, 23, 0.18), transparent 28%),
+    radial-gradient(circle at 10% 8%, rgba(10,131,231, 0.18), transparent 28%),
     radial-gradient(circle at 88% 14%, rgba(139, 92, 246, 0.08), transparent 24%),
     linear-gradient(180deg, #f8f4ec 0%, #f3ede3 48%, #efe7da 100%);
 }
@@ -1100,7 +1114,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .checkout-page .text-amber-300,
 :root[data-theme="light"] .tutor-led-marketing .text-amber-200,
 :root[data-theme="light"] .tutor-led-marketing .text-amber-300 {
-  color: #9a6812 !important;
+  color: #3b82c4 !important;
 }
 
 :root[data-theme="light"] .category-page .category-hero-overlay {
@@ -1156,7 +1170,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .testimonials-page blockquote,
 :root[data-theme="light"] .category-page .category-faq-item {
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 160, 23, 0.14), transparent 34%),
+    radial-gradient(circle at 12% 0%, rgba(10,131,231, 0.14), transparent 34%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(253, 244, 220, 0.9)) !important;
   box-shadow: 0 10px 28px rgba(148, 118, 59, 0.1) !important;
 }
@@ -1183,7 +1197,7 @@ body.tutor-led-marketing-body {
 /* Contact page — cohesive light theme (no dark blocks / black grids) */
 :root[data-theme="light"] .contact-page {
   background:
-    radial-gradient(circle at 12% 6%, rgba(212, 160, 23, 0.16), transparent 30%),
+    radial-gradient(circle at 12% 6%, rgba(10,131,231, 0.16), transparent 30%),
     radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.06), transparent 26%),
     linear-gradient(180deg, #ebe3d3 0%, #e3d9c6 46%, #ddd2bc 100%) !important;
 }
@@ -1194,12 +1208,12 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .contact-page .contact-office-card,
 :root[data-theme="light"] .contact-page .contact-faq-item {
   background:
-    radial-gradient(circle at 10% 0%, rgba(212, 160, 23, 0.12), transparent 36%),
+    radial-gradient(circle at 10% 0%, rgba(10,131,231, 0.12), transparent 36%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(252, 245, 228, 0.95)) !important;
   border-color: rgba(168, 138, 78, 0.3) !important;
   box-shadow:
     0 10px 28px rgba(120, 95, 55, 0.12),
-    0 0 0 1px rgba(212, 160, 23, 0.08) inset !important;
+    0 0 0 1px rgba(10,131,231, 0.08) inset !important;
 }
 
 :root[data-theme="light"] .contact-page .contact-channel-row {
@@ -1210,7 +1224,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .contact-page .contact-channel-row:hover {
   background: #fffdf8 !important;
-  border-color: rgba(212, 160, 23, 0.38) !important;
+  border-color: rgba(10,131,231, 0.38) !important;
 }
 
 :root[data-theme="light"] .contact-page .contact-faq-trigger,
@@ -1228,10 +1242,10 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .contact-page .contact-bottom-cta {
   background:
-    radial-gradient(circle at 14% 50%, rgba(212, 160, 23, 0.22), transparent 44%),
-    radial-gradient(circle at 86% 50%, rgba(212, 160, 23, 0.14), transparent 42%),
+    radial-gradient(circle at 14% 50%, rgba(10,131,231, 0.22), transparent 44%),
+    radial-gradient(circle at 86% 50%, rgba(10,131,231, 0.14), transparent 42%),
     linear-gradient(90deg, #fff8eb, #fdecc8, #fff8eb) !important;
-  border-color: rgba(212, 160, 23, 0.34) !important;
+  border-color: rgba(10,131,231, 0.34) !important;
 }
 
 :root[data-theme="light"] .contact-page .contact-bottom-cta h3 {
@@ -1249,7 +1263,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .contact-page .contact-hero-pill [class*="bg-amber-500"] {
   background: rgba(253, 230, 138, 0.35) !important;
   color: #b45309 !important;
-  box-shadow: 0 0 0 1px rgba(212, 160, 23, 0.22);
+  box-shadow: 0 0 0 1px rgba(10,131,231, 0.22);
 }
 
 :root[data-theme="light"] .contact-page .contact-hero-pill [class*="text-amber-300"] {
@@ -1270,14 +1284,14 @@ body.tutor-led-marketing-body {
 }
 
 :root[data-theme="light"] .contact-page .contact-input:focus {
-  border-color: rgba(212, 160, 23, 0.55) !important;
-  box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.14);
+  border-color: rgba(10,131,231, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(10,131,231, 0.14);
 }
 
 :root[data-theme="light"] .contact-page .contact-form-panel [class*="bg-amber-500/10"],
 :root[data-theme="light"] .contact-page .contact-channels-panel [class*="bg-amber-500/10"] {
   background: rgba(253, 230, 138, 0.38) !important;
-  border-color: rgba(212, 160, 23, 0.35) !important;
+  border-color: rgba(10,131,231, 0.35) !important;
   color: #92400e !important;
 }
 
@@ -1308,7 +1322,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .contact-page [class*="bg-[#0a0e16]"],
 :root[data-theme="light"] .contact-page [class*="bg-[#0a0f1a]"] {
   background:
-    radial-gradient(circle at 10% 0%, rgba(212, 160, 23, 0.12), transparent 36%),
+    radial-gradient(circle at 10% 0%, rgba(10,131,231, 0.12), transparent 36%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(252, 245, 228, 0.95)) !important;
   border-color: rgba(168, 138, 78, 0.3) !important;
 }
@@ -1316,7 +1330,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .contact-page [class*="from-[#140f08]"],
 :root[data-theme="light"] .contact-page [class*="via-[#0c1018]"] {
   background:
-    radial-gradient(circle at 14% 50%, rgba(212, 160, 23, 0.22), transparent 44%),
+    radial-gradient(circle at 14% 50%, rgba(10,131,231, 0.22), transparent 44%),
     linear-gradient(90deg, #fff8eb, #fdecc8, #fff8eb) !important;
 }
 
@@ -1341,7 +1355,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .category-page section[class*="from-[#1a1408]"] {
   background:
-    radial-gradient(circle at 10% 0%, rgba(212, 160, 23, 0.18), transparent 38%),
+    radial-gradient(circle at 10% 0%, rgba(10,131,231, 0.18), transparent 38%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(253, 244, 220, 0.92)) !important;
 }
 
@@ -1409,7 +1423,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .self-paced-course-page .sp-learn-card,
 :root[data-theme="light"] .self-paced-course-page .sp-faq-item {
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 160, 23, 0.14), transparent 34%),
+    radial-gradient(circle at 12% 0%, rgba(10,131,231, 0.14), transparent 34%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(253, 244, 220, 0.94)) !important;
   border-color: rgba(180, 150, 90, 0.26) !important;
   box-shadow: 0 8px 24px rgba(148, 118, 59, 0.1) !important;
@@ -1458,10 +1472,10 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .self-paced-course-page .sp-bottom-cta {
   background:
-    radial-gradient(circle at 12% 50%, rgba(212, 160, 23, 0.2), transparent 42%),
-    radial-gradient(circle at 88% 50%, rgba(212, 160, 23, 0.14), transparent 40%),
+    radial-gradient(circle at 12% 50%, rgba(10,131,231, 0.2), transparent 42%),
+    radial-gradient(circle at 88% 50%, rgba(10,131,231, 0.14), transparent 40%),
     linear-gradient(90deg, #fff9ee, #fdecc8, #fff9ee) !important;
-  border-color: rgba(212, 160, 23, 0.32) !important;
+  border-color: rgba(10,131,231, 0.32) !important;
 }
 
 :root[data-theme="light"] .self-paced-course-page .sp-cta-icon {
@@ -1492,14 +1506,14 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .self-paced-course-page [class*="bg-zinc-9"],
 :root[data-theme="light"] .self-paced-course-page [class*="bg-black/"] {
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 160, 23, 0.12), transparent 34%),
+    radial-gradient(circle at 12% 0%, rgba(10,131,231, 0.12), transparent 34%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(253, 244, 220, 0.9)) !important;
 }
 
 :root[data-theme="light"] .self-paced-course-page [class*="from-[#1c1608]"],
 :root[data-theme="light"] .self-paced-course-page [class*="via-[#141008]"] {
   background:
-    radial-gradient(circle at 12% 50%, rgba(212, 160, 23, 0.2), transparent 42%),
+    radial-gradient(circle at 12% 50%, rgba(10,131,231, 0.2), transparent 42%),
     linear-gradient(90deg, #fff9ee, #fdecc8, #fff9ee) !important;
 }
 
@@ -1529,7 +1543,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .self-paced-course-page .sp-cert-preview-mock {
   background: linear-gradient(180deg, #fffdf8, #fdecc8, #f8f4ec) !important;
-  border-color: rgba(212, 160, 23, 0.32) !important;
+  border-color: rgba(10,131,231, 0.32) !important;
 }
 
 :root[data-theme="light"] .self-paced-course-page .sp-cert-preview-mock .text-white,
@@ -1547,7 +1561,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .self-paced-course-page #sp-curriculum [class*="bg-[#"],
 :root[data-theme="light"] .self-paced-course-page #sp-overview [class*="bg-[#"] {
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 160, 23, 0.12), transparent 34%),
+    radial-gradient(circle at 12% 0%, rgba(10,131,231, 0.12), transparent 34%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(253, 244, 220, 0.9)) !important;
   border-color: rgba(180, 150, 90, 0.24) !important;
 }
@@ -1558,20 +1572,20 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .tutor-led-marketing [class*="bg-black/"] {
   border-color: rgba(180, 150, 90, 0.22) !important;
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 160, 23, 0.12), transparent 34%),
+    radial-gradient(circle at 12% 0%, rgba(10,131,231, 0.12), transparent 34%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(253, 244, 220, 0.9)) !important;
 }
 
 :root[data-theme="light"] .tutor-led-marketing [class*="from-[#"] {
   background:
-    radial-gradient(circle at 8% 0%, rgba(212, 160, 23, 0.16), transparent 36%),
+    radial-gradient(circle at 8% 0%, rgba(10,131,231, 0.16), transparent 36%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(253, 244, 220, 0.92)) !important;
 }
 
 /* Account page light theme: warm brown canvas + brown galaxy; heading same as dark */
 :root[data-theme="light"] .account-page {
   background:
-    radial-gradient(circle at 14% 12%, rgba(212, 160, 23, 0.14), transparent 34%),
+    radial-gradient(circle at 14% 12%, rgba(10,131,231, 0.14), transparent 34%),
     radial-gradient(circle at 86% 20%, rgba(101, 67, 33, 0.2), transparent 30%),
     linear-gradient(180deg, #3d2b14 0%, #2a1a0a 48%, #1a1008 100%) !important;
   color: #ffffff;
@@ -1662,12 +1676,12 @@ body.tutor-led-marketing-body {
 
 /* Lesson section titles — brand gold (beats inherited white) */
 .my-learning-course-player .lesson-gold-heading {
-  color: #f9b14d !important;
+  color: #00b7fd !important;
   font-size: 1.5rem;
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  text-shadow: 0 0 24px rgba(249, 177, 77, 0.35);
+  text-shadow: 0 0 24px rgba(10,131,231, 0.35);
 }
 
 :root[data-theme="light"] .my-learning-course-player .lesson-gold-heading {
@@ -1694,7 +1708,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .my-learning-page {
   color: #334155;
   background:
-    radial-gradient(circle at 10% 8%, rgba(212, 160, 23, 0.16), transparent 28%),
+    radial-gradient(circle at 10% 8%, rgba(10,131,231, 0.16), transparent 28%),
     radial-gradient(circle at 88% 14%, rgba(139, 92, 246, 0.08), transparent 24%),
     linear-gradient(180deg, #ebe3d3 0%, #e3d9c6 46%, #ddd2bc 100%) !important;
 }
@@ -1763,7 +1777,7 @@ body.tutor-led-marketing-body {
   border-color: #d97706 !important;
   background: linear-gradient(180deg, rgba(253, 230, 138, 0.5) 0%, rgba(253, 244, 220, 0.2) 55%, transparent 100%) !important;
   box-shadow:
-    0 0 16px rgba(212, 160, 23, 0.2),
+    0 0 16px rgba(10,131,231, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
 }
 
@@ -1787,7 +1801,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .my-learning-page [class*="bg-black/"],
 :root[data-theme="light"] .my-learning-page .my-learning-welcome-card {
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 160, 23, 0.14), transparent 34%),
+    radial-gradient(circle at 12% 0%, rgba(10,131,231, 0.14), transparent 34%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(252, 245, 228, 0.94)) !important;
   box-shadow: 0 10px 28px rgba(120, 95, 55, 0.1) !important;
 }
@@ -1795,7 +1809,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .my-learning-page .my-learning-welcome-card[class*="from-violet"] {
   background:
     radial-gradient(circle at 8% 0%, rgba(139, 92, 246, 0.1), transparent 36%),
-    radial-gradient(circle at 92% 100%, rgba(212, 160, 23, 0.12), transparent 32%),
+    radial-gradient(circle at 92% 100%, rgba(10,131,231, 0.12), transparent 32%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(248, 240, 255, 0.92)) !important;
 }
 
@@ -1846,7 +1860,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .my-learning-page a[class*="bg-black/45"],
 :root[data-theme="light"] .my-learning-page a[class*="bg-white/5"] {
   background: linear-gradient(145deg, rgba(255, 251, 235, 0.98), rgba(237, 233, 254, 0.88)) !important;
-  border-color: rgba(212, 160, 23, 0.38) !important;
+  border-color: rgba(10,131,231, 0.38) !important;
   color: #7c3aed !important;
 }
 
@@ -1863,25 +1877,25 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .my-learning-page button[class*="bg-amber-500"],
 :root[data-theme="light"] .my-learning-page a[class*="bg-amber-500"] {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b) !important;
+  background: linear-gradient(135deg, #00b7fd, #0070f0) !important;
   border-color: rgba(217, 119, 6, 0.45) !important;
   color: #1f2937 !important;
-  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.32) !important;
+  box-shadow: 0 2px 10px rgba(54,182,255, 0.32) !important;
 }
 
-:root[data-theme="light"] .my-learning-page button[class*="border-[#FFC107]"],
-:root[data-theme="light"] .my-learning-page button[class*="bg-[#FFC107]/"] {
+:root[data-theme="light"] .my-learning-page button[class*="border-[#0070f0]"],
+:root[data-theme="light"] .my-learning-page button[class*="bg-[#0070f0]/"] {
   background: rgba(253, 230, 138, 0.42) !important;
-  border-color: rgba(212, 160, 23, 0.45) !important;
+  border-color: rgba(10,131,231, 0.45) !important;
   color: #92400e !important;
 }
 
-:root[data-theme="light"] .my-learning-page button[class*="bg-[#FFC107] text-black"],
-:root[data-theme="light"] .my-learning-page button[class*="bg-[#FFC107]"][class*="text-black"] {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b) !important;
+:root[data-theme="light"] .my-learning-page button[class*="bg-[#0070f0] text-black"],
+:root[data-theme="light"] .my-learning-page button[class*="bg-[#0070f0]"][class*="text-black"] {
+  background: linear-gradient(135deg, #00b7fd, #0070f0) !important;
   border-color: rgba(217, 119, 6, 0.5) !important;
   color: #1f2937 !important;
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35) !important;
+  box-shadow: 0 2px 8px rgba(54,182,255, 0.35) !important;
 }
 
 :root[data-theme="light"] .my-learning-page button[class*="bg-emerald-500"],
@@ -1904,7 +1918,7 @@ body.tutor-led-marketing-body {
 }
 
 :root[data-theme="light"] .my-learning-page .animate-pulse [class*="bg-white/10"] {
-  background: rgba(212, 160, 23, 0.15) !important;
+  background: rgba(10,131,231, 0.15) !important;
 }
 
 :root[data-theme="light"] .my-learning-page .border-emerald-500\/25,
@@ -1934,7 +1948,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .my-learning-page .my-learning-calendar-side,
 :root[data-theme="light"] .my-learning-page .my-learning-calendar-help {
   background:
-    radial-gradient(circle at 10% 0%, rgba(212, 160, 23, 0.14), transparent 36%),
+    radial-gradient(circle at 10% 0%, rgba(10,131,231, 0.14), transparent 36%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(252, 245, 228, 0.94)) !important;
   border-color: rgba(168, 138, 78, 0.3) !important;
   box-shadow: 0 10px 28px rgba(120, 95, 55, 0.1) !important;
@@ -1980,7 +1994,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .my-learning-page .my-learning-calendar-day--default:hover {
   background: #fffdf8 !important;
-  border-color: rgba(212, 160, 23, 0.28) !important;
+  border-color: rgba(10,131,231, 0.28) !important;
 }
 
 :root[data-theme="light"] .my-learning-page .my-learning-calendar-day--today {
@@ -2041,7 +2055,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .my-learning-page .my-learning-calendar-shell div[class*="border-white/10"][class*="bg-black/40"] {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(254, 243, 199, 0.55)) !important;
-  border-color: rgba(212, 160, 23, 0.32) !important;
+  border-color: rgba(10,131,231, 0.32) !important;
 }
 
 :root[data-theme="light"] .my-learning-page .my-learning-calendar-shell div[class*="bg-black/40"] button[class*="text-zinc-400"] {
@@ -2067,9 +2081,9 @@ body.tutor-led-marketing-body {
   color: #7c3aed !important;
 }
 
-:root[data-theme="light"] .my-learning-page .my-learning-calendar-side button[class*="bg-[#FFC107]/"] {
+:root[data-theme="light"] .my-learning-page .my-learning-calendar-side button[class*="bg-[#0070f0]/"] {
   background: rgba(253, 230, 138, 0.5) !important;
-  border-color: rgba(212, 160, 23, 0.45) !important;
+  border-color: rgba(10,131,231, 0.45) !important;
   color: #92400e !important;
 }
 
@@ -2083,11 +2097,11 @@ body.tutor-led-marketing-body {
   color: #6d28d9 !important;
 }
 
-:root[data-theme="light"] .my-learning-page .my-learning-calendar-shell [class*="text-[#FFC107]"] {
+:root[data-theme="light"] .my-learning-page .my-learning-calendar-shell [class*="text-[#0070f0]"] {
   color: #b45309 !important;
 }
 
-:root[data-theme="light"] .my-learning-page .my-learning-calendar-side [class*="text-[#FFC107]"],
+:root[data-theme="light"] .my-learning-page .my-learning-calendar-side [class*="text-[#0070f0]"],
 :root[data-theme="light"] .my-learning-page .my-learning-calendar-help .text-violet-300 {
   color: #7c3aed !important;
 }
@@ -2095,9 +2109,9 @@ body.tutor-led-marketing-body {
 /* My Learning — certificate records (light theme) */
 :root[data-theme="light"] .my-learning-page .my-learning-certificate-card {
   background:
-    radial-gradient(circle at 0% 0%, rgba(212, 160, 23, 0.1), transparent 38%),
+    radial-gradient(circle at 0% 0%, rgba(10,131,231, 0.1), transparent 38%),
     linear-gradient(160deg, #ffffff 0%, #fdf8ef 52%, #f8f1e3 100%) !important;
-  border-color: rgba(212, 160, 23, 0.28) !important;
+  border-color: rgba(10,131,231, 0.28) !important;
   box-shadow:
     0 4px 18px rgba(120, 95, 55, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
@@ -2109,7 +2123,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .my-learning-page .my-learning-certificate-count {
   background: rgba(255, 255, 255, 0.88) !important;
-  border-color: rgba(212, 160, 23, 0.28) !important;
+  border-color: rgba(10,131,231, 0.28) !important;
   color: #64748b !important;
 }
 
@@ -2135,11 +2149,11 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .my-learning-page .my-learning-certificate-actions {
   background: rgba(255, 255, 255, 0.72) !important;
-  border-color: rgba(212, 160, 23, 0.2) !important;
+  border-color: rgba(10,131,231, 0.2) !important;
 }
 
 :root[data-theme="light"] .my-learning-page .my-learning-certificate-share {
-  border-color: rgba(212, 160, 23, 0.18) !important;
+  border-color: rgba(10,131,231, 0.18) !important;
 }
 
 :root[data-theme="light"] .my-learning-page .certificate-status-badge {
@@ -2305,7 +2319,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .my-learning-page article[class*="from-[#1b"] {
   background:
-    radial-gradient(circle at 0% 0%, rgba(212, 160, 23, 0.1), transparent 38%),
+    radial-gradient(circle at 0% 0%, rgba(10,131,231, 0.1), transparent 38%),
     linear-gradient(160deg, #ffffff 0%, #fdf8ef 52%, #f8f1e3 100%) !important;
   box-shadow: 0 4px 18px rgba(120, 95, 55, 0.1) !important;
 }
@@ -2396,7 +2410,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .my-learning-course-player [class*="to-violet-950/20"] {
   background: linear-gradient(180deg, rgba(254, 243, 199, 0.45), rgba(237, 233, 254, 0.55)) !important;
-  border-color: rgba(212, 160, 23, 0.32) !important;
+  border-color: rgba(10,131,231, 0.32) !important;
 }
 
 :root[data-theme="light"] .my-learning-course-player .relative.bg-black,
@@ -2444,7 +2458,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .my-learning-page .my-learning-subscription-card {
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 160, 23, 0.12), transparent 38%),
+    radial-gradient(circle at 12% 0%, rgba(10,131,231, 0.12), transparent 38%),
     linear-gradient(160deg, #ffffff 0%, #fdf8ef 52%, #f8f1e3 100%) !important;
   border-color: rgba(168, 138, 78, 0.3) !important;
   box-shadow: 0 8px 24px rgba(120, 95, 55, 0.1) !important;
@@ -2454,7 +2468,7 @@ body.tutor-led-marketing-body {
   border-color: rgba(217, 119, 6, 0.45) !important;
   box-shadow:
     0 8px 28px rgba(120, 95, 55, 0.12),
-    0 0 24px rgba(212, 160, 23, 0.18) !important;
+    0 0 24px rgba(10,131,231, 0.18) !important;
 }
 
 :root[data-theme="light"] .my-learning-page .my-learning-subscription-card--active {
@@ -2481,7 +2495,7 @@ body.tutor-led-marketing-body {
 :root[data-theme="light"] .my-learning-page .my-learning-subscription-secondary-cta,
 :root[data-theme="light"] .my-learning-page .my-learning-subscription-plan-cta.my-learning-subscription-secondary-cta {
   background: linear-gradient(145deg, rgba(255, 251, 235, 0.98), rgba(237, 233, 254, 0.88)) !important;
-  border-color: rgba(212, 160, 23, 0.38) !important;
+  border-color: rgba(10,131,231, 0.38) !important;
   color: #7c3aed !important;
 }
 
@@ -2526,7 +2540,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .my-learning-page .my-learning-subscription-seats a[class*="border-white/15"] {
   background: rgba(255, 251, 235, 0.95) !important;
-  border-color: rgba(212, 160, 23, 0.35) !important;
+  border-color: rgba(10,131,231, 0.35) !important;
   color: #92400e !important;
 }
 
@@ -2555,13 +2569,13 @@ body.tutor-led-marketing-body {
 .my-learning-dashboard-tab {
   background: linear-gradient(
     180deg,
-    rgba(249, 177, 77, 0.22) 0%,
-    rgba(235, 148, 34, 0.12) 55%,
+    rgba(10,131,231, 0.22) 0%,
+    rgba(10,131,231, 0.12) 55%,
     transparent 100%
   );
   box-shadow:
-    0 0 24px rgba(249, 177, 77, 0.45),
-    0 0 48px rgba(235, 148, 34, 0.25),
+    0 0 24px rgba(10,131,231, 0.45),
+    0 0 48px rgba(10,131,231, 0.25),
     inset 0 1px 0 rgba(253, 230, 138, 0.35);
 }
 
@@ -2585,7 +2599,7 @@ body.tutor-led-marketing-body {
   inset: -2px -8px 0;
   border-radius: 8px 8px 0 0;
   box-shadow:
-    0 -4px 28px rgba(249, 177, 77, 0.35),
+    0 -4px 28px rgba(10,131,231, 0.35),
     0 0 40px rgba(251, 191, 36, 0.2);
   animation: none;
 }
@@ -2673,9 +2687,9 @@ body.tutor-led-marketing-body {
 .account-galaxy-glow {
   inset: 0;
   background:
-    radial-gradient(circle at 18% 20%, rgba(249, 177, 77, 0.22), transparent 42%),
+    radial-gradient(circle at 18% 20%, rgba(10,131,231, 0.22), transparent 42%),
     radial-gradient(circle at 82% 14%, rgba(139, 92, 246, 0.16), transparent 40%),
-    radial-gradient(circle at 50% 100%, rgba(249, 177, 77, 0.1), transparent 55%);
+    radial-gradient(circle at 50% 100%, rgba(10,131,231, 0.1), transparent 55%);
   animation: account-galaxy-glow-pulse 10s ease-in-out infinite;
 }
 
@@ -2686,7 +2700,7 @@ body.tutor-led-marketing-body {
 
 :root[data-theme="light"] .account-galaxy-glow {
   background:
-    radial-gradient(circle at 14% 12%, rgba(212, 160, 23, 0.28), transparent 34%),
+    radial-gradient(circle at 14% 12%, rgba(10,131,231, 0.28), transparent 34%),
     radial-gradient(circle at 86% 20%, rgba(101, 67, 33, 0.28), transparent 30%);
 }
 

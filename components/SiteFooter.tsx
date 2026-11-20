@@ -13,8 +13,7 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
-import sfWhiteLogo from "@/SF-WHITE-LOGO.png";
-import sfLightLogo from "@/Untitled design (4).png";
+import brandLogo from "@/logo-mark.png";
 import {
   COMPANY_DISPLAY_NAME,
   COMPANY_LEGAL_NAME,
@@ -33,7 +32,7 @@ import { CountryFlagImg } from "@/components/CountryFlagImg";
 
 export default function SiteFooter({ forceDarkChrome = false }: { forceDarkChrome?: boolean }) {
   const [isLightTheme, setIsLightTheme] = useState(false);
-  const goldText = "text-[#fde68a]";
+  const goldText = "text-[#7ccfff]";
   const useLightTheme = isLightTheme && !forceDarkChrome;
   const sectionShell = "mx-auto max-w-[1760px] px-4 md:px-6 xl:px-8";
   const footerShell = useLightTheme
@@ -42,7 +41,7 @@ export default function SiteFooter({ forceDarkChrome = false }: { forceDarkChrom
   const cardShell = useLightTheme
     ? "bg-linear-to-b from-[#f8f4ec] via-[#f3ede3] to-[#efe7db]"
     : "bg-linear-to-b from-[#181107] via-[#100c08] to-[#090808]";
-  const headingTone = useLightTheme ? "text-[#8a6412]" : "text-amber-300";
+  const headingTone = useLightTheme ? "text-[#3b82c4]" : "text-amber-300";
   const textTone = useLightTheme ? "text-slate-600" : "text-gray-300";
   const statTone = useLightTheme ? "text-slate-700" : "text-gray-200";
   const dividerTone = useLightTheme ? "border-[#b4965a]/25" : "border-amber-500/20";
@@ -66,7 +65,7 @@ export default function SiteFooter({ forceDarkChrome = false }: { forceDarkChrom
             <div className="lg:w-[26%]">
               <div className={`flex items-center gap-3 text-lg font-bold ${useLightTheme ? "text-slate-800" : "text-white"}`}>
                 <Image
-                  src={useLightTheme ? sfLightLogo : sfWhiteLogo}
+                  src={brandLogo}
                   alt={COMPANY_DISPLAY_NAME}
                   className="h-11 w-auto object-contain"
                   priority
@@ -77,10 +76,10 @@ export default function SiteFooter({ forceDarkChrome = false }: { forceDarkChrom
               </div>
               <p className={`mt-4 text-sm leading-relaxed ${textTone}`}>{SFT_ABOUT_BLURB}</p>
               <div className={`mt-4 space-y-2 text-sm ${textTone}`}>
-                <a href={`mailto:${SFT_EMAILS.info}`} className={`flex items-center gap-2 transition-colors ${useLightTheme ? "hover:text-[#8a6412]" : "hover:text-amber-200"}`}>
+                <a href={`mailto:${SFT_EMAILS.info}`} className={`flex items-center gap-2 transition-colors ${useLightTheme ? "hover:text-[#3b82c4]" : "hover:text-amber-200"}`}>
                   <Mail size={15} className={headingTone} /> {SFT_EMAILS.info}
                 </a>
-                <a href={`mailto:${SFT_EMAILS.bdm}`} className={`flex items-center gap-2 transition-colors ${useLightTheme ? "hover:text-[#8a6412]" : "hover:text-amber-200"}`}>
+                <a href={`mailto:${SFT_EMAILS.bdm}`} className={`flex items-center gap-2 transition-colors ${useLightTheme ? "hover:text-[#3b82c4]" : "hover:text-amber-200"}`}>
                   <Mail size={15} className={headingTone} /> {SFT_EMAILS.bdm}
                 </a>
               </div>
@@ -126,7 +125,7 @@ export default function SiteFooter({ forceDarkChrome = false }: { forceDarkChrom
               <ul className={`mt-4 space-y-2 text-sm ${textTone}`}>
                 {SFT_QUICK_LINKS.map((l) => (
                   <li key={l.label}>
-                    <Link href={l.href} className={`transition-colors ${useLightTheme ? "hover:text-[#8a6412]" : "hover:text-amber-200"}`}>
+                    <Link href={l.href} className={`transition-colors ${useLightTheme ? "hover:text-[#3b82c4]" : "hover:text-amber-200"}`}>
                       {l.label}
                     </Link>
                   </li>
@@ -149,7 +148,7 @@ export default function SiteFooter({ forceDarkChrome = false }: { forceDarkChrom
                   { label: "Feedback", href: "/contact" },
                 ].map((l) => (
                   <li key={l.label}>
-                    <Link href={l.href} className={`transition-colors ${useLightTheme ? "hover:text-[#8a6412]" : "hover:text-amber-200"}`}>
+                    <Link href={l.href} className={`transition-colors ${useLightTheme ? "hover:text-[#3b82c4]" : "hover:text-amber-200"}`}>
                       {l.label}
                     </Link>
                   </li>
@@ -174,7 +173,7 @@ export default function SiteFooter({ forceDarkChrome = false }: { forceDarkChrom
                       <MapPin size={14} className={`mt-0.5 shrink-0 ${headingTone}`} />
                       <span>{office.address}</span>
                     </p>
-                    <a href={office.phoneHref} className={`mt-1.5 inline-flex items-center gap-2 text-xs transition-colors ${useLightTheme ? "hover:text-[#8a6412]" : "hover:text-amber-200"}`}>
+                    <a href={office.phoneHref} className={`mt-1.5 inline-flex items-center gap-2 text-xs transition-colors ${useLightTheme ? "hover:text-[#3b82c4]" : "hover:text-amber-200"}`}>
                       <Phone size={14} className={headingTone} />
                       Call us {office.phone}
                     </a>

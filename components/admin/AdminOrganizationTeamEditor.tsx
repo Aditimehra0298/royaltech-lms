@@ -43,7 +43,8 @@ export function AdminOrganizationTeamEditor() {
   const adminHeaders = useCallback((): Record<string, string> => {
     const email = getLearnerEmail();
     return {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json",
+
     };
   }, []);
 
@@ -371,11 +372,11 @@ export function AdminOrganizationTeamEditor() {
         </div>
       </article>
 
-      <article className="rounded-xl border border-[#FFC107]/25 bg-gradient-to-br from-[#FFC107]/5 to-[#0d1528] p-4">
+      <article className="rounded-xl border border-[#0070f0]/25 bg-gradient-to-br from-[#0070f0]/5 to-[#0d1528] p-4">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="flex items-start gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#FFC107]/35 bg-[#FFC107]/15">
-              <Users className="h-5 w-5 text-[#FFC107]" aria-hidden />
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#0070f0]/35 bg-[#0070f0]/15">
+              <Users className="h-5 w-5 text-[#0070f0]" aria-hidden />
             </span>
             <div>
               <h3 className="text-sm font-semibold text-white">Premium plan tiers</h3>

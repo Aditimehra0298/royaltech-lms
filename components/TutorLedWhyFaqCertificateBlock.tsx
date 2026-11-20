@@ -15,8 +15,8 @@ const certificateBenefits: {
     label: "Industry Recognized",
     desc: "IEB-accredited credential trusted by employers",
     icon: Shield,
-    iconWrap: "border-[#FFB800]/35 bg-[#FFB800]/10",
-    iconClass: "text-[#FFB800]",
+    iconWrap: "border-[#00b7fd]/35 bg-[#00b7fd]/10",
+    iconClass: "text-[#00b7fd]",
   },
   {
     label: "Verified Certificate",
@@ -68,7 +68,7 @@ function SectionHeading({
   return (
     <header className="mb-5">
       {eyebrow ? (
-        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFB800]/90">{eyebrow}</p>
+        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[#00b7fd]/90">{eyebrow}</p>
       ) : null}
       <h3 className={`font-bold tracking-tight text-white ${titleSize}`}>{title}</h3>
       {subtitle ? <p className="mt-1.5 max-w-prose text-xs leading-relaxed text-zinc-500">{subtitle}</p> : null}
@@ -88,7 +88,7 @@ export function TutorLedWhyFaqCertificateBlock({
   return (
     <section className="mt-6 md:mt-8" aria-labelledby="tutor-led-trust-heading">
       <div className="mb-5 flex flex-col gap-1 md:mb-6">
-        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#FFB800]/85">Why learners choose us</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#00b7fd]/85">Why learners choose us</p>
         <h2 id="tutor-led-trust-heading" className="text-lg font-bold tracking-tight text-white md:text-xl">
           Training built for real outcomes
         </h2>
@@ -108,10 +108,10 @@ export function TutorLedWhyFaqCertificateBlock({
               {whyChoose.slice(0, 5).map((item) => (
                 <div
                   key={item.title}
-                  className="group flex flex-col items-center rounded-xl border border-transparent px-2 py-3 text-center transition hover:border-[#FFB800]/20 hover:bg-[#FFB800]/[0.04]"
+                  className="group flex flex-col items-center rounded-xl border border-transparent px-2 py-3 text-center transition hover:border-[#00b7fd]/20 hover:bg-[#00b7fd]/[0.04]"
                 >
-                  <div className="mb-3 grid h-11 w-11 place-items-center rounded-xl border border-[#FFB800]/30 bg-gradient-to-b from-[#FFB800]/15 to-[#FFB800]/5 shadow-[0_8px_24px_rgba(255,184,0,0.12)] transition group-hover:border-[#FFB800]/50">
-                    <item.icon className="h-5 w-5 text-[#FFB800]" aria-hidden />
+                  <div className="mb-3 grid h-11 w-11 place-items-center rounded-xl border border-[#00b7fd]/30 bg-gradient-to-b from-[#00b7fd]/15 to-[#00b7fd]/5 shadow-[0_8px_24px_rgba(255,184,0,0.12)] transition group-hover:border-[#00b7fd]/50">
+                    <item.icon className="h-5 w-5 text-[#00b7fd]" aria-hidden />
                   </div>
                   <p className="text-[11px] font-semibold leading-snug text-white">{item.title}</p>
                   {item.desc ? (
@@ -137,7 +137,7 @@ export function TutorLedWhyFaqCertificateBlock({
                     key={faq.q}
                     className={`overflow-hidden rounded-xl border transition ${
                       isOpen
-                        ? "border-[#FFB800]/25 bg-[#FFB800]/[0.04]"
+                        ? "border-[#00b7fd]/25 bg-[#00b7fd]/[0.04]"
                         : "border-white/[0.06] bg-black/30 hover:border-white/10"
                     }`}
                   >
@@ -153,7 +153,7 @@ export function TutorLedWhyFaqCertificateBlock({
                       <span
                         className={`grid h-7 w-7 shrink-0 place-items-center rounded-lg border transition ${
                           isOpen
-                            ? "border-[#FFB800]/40 bg-[#FFB800]/15 text-[#FFB800]"
+                            ? "border-[#00b7fd]/40 bg-[#00b7fd]/15 text-[#00b7fd]"
                             : "border-white/10 bg-white/[0.03] text-zinc-500"
                         }`}
                       >
@@ -161,7 +161,7 @@ export function TutorLedWhyFaqCertificateBlock({
                       </span>
                     </button>
                     {isOpen ? (
-                      <div className="border-t border-[#FFB800]/15 px-4 pb-4 pt-3 text-xs leading-relaxed text-zinc-400 md:text-sm">
+                      <div className="border-t border-[#00b7fd]/15 px-4 pb-4 pt-3 text-xs leading-relaxed text-zinc-400 md:text-sm">
                         {faq.a}
                       </div>
                     ) : null}
@@ -173,13 +173,13 @@ export function TutorLedWhyFaqCertificateBlock({
         </div>
 
         {/* ── Right column: Certificate ── */}
-        <article className="relative flex flex-col overflow-hidden rounded-2xl border border-[#FFB800]/40 bg-gradient-to-br from-zinc-950/90 via-zinc-950/70 to-black p-5 shadow-[0_0_48px_rgba(255,184,0,0.1),inset_0_1px_0_rgba(255,184,0,0.12)] md:p-6 lg:min-h-[520px]">
+        <article className="relative flex flex-col overflow-hidden rounded-2xl border border-[#00b7fd]/40 bg-gradient-to-br from-zinc-950/90 via-zinc-950/70 to-black p-5 shadow-[0_0_48px_rgba(255,184,0,0.1),inset_0_1px_0_rgba(255,184,0,0.12)] md:p-6 lg:min-h-[520px]">
           <div
-            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#FFB800]/10 blur-3xl"
+            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#00b7fd]/10 blur-3xl"
             aria-hidden
           />
           <div
-            className="pointer-events-none absolute -bottom-20 -left-12 h-40 w-40 rounded-full bg-[#FFB800]/5 blur-3xl"
+            className="pointer-events-none absolute -bottom-20 -left-12 h-40 w-40 rounded-full bg-[#00b7fd]/5 blur-3xl"
             aria-hidden
           />
 
@@ -196,12 +196,12 @@ export function TutorLedWhyFaqCertificateBlock({
               {certificateBenefits.map(({ label, desc, icon: Icon, iconWrap, iconClass }) => (
                 <li
                   key={label}
-                  className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-black/25 px-3 py-2.5 transition hover:border-[#FFB800]/20 hover:bg-black/40"
+                  className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-black/25 px-3 py-2.5 transition hover:border-[#00b7fd]/20 hover:bg-black/40"
                 >
                   <span
-                    className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg border ${iconWrap ?? "border-[#FFB800]/30 bg-[#FFB800]/10"}`}
+                    className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg border ${iconWrap ?? "border-[#00b7fd]/30 bg-[#00b7fd]/10"}`}
                   >
-                    <Icon className={`h-4 w-4 ${iconClass ?? "text-[#FFB800]"}`} aria-hidden />
+                    <Icon className={`h-4 w-4 ${iconClass ?? "text-[#00b7fd]"}`} aria-hidden />
                   </span>
                   <span className="min-w-0">
                     <span className="block text-xs font-semibold text-white">{label}</span>
@@ -226,7 +226,7 @@ export function TutorLedWhyFaqCertificateBlock({
             </div>
           </div>
 
-          <p className="relative mt-4 border-t border-[#FFB800]/15 pt-4 text-center text-[10px] leading-relaxed text-zinc-500 lg:text-left">
+          <p className="relative mt-4 border-t border-[#00b7fd]/15 pt-4 text-center text-[10px] leading-relaxed text-zinc-500 lg:text-left">
             Sample preview — your personalized Certificate of Attainment is issued upon successful completion.
           </p>
         </article>

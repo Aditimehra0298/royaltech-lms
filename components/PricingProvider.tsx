@@ -232,7 +232,7 @@ export function PricingProvider({ children }: { children: ReactNode }) {
             onClick={closePricingPanel}
           />
           <aside
-            className="fixed inset-y-0 right-0 z-[201] flex w-full max-w-md flex-col border-l border-[#FFB800]/30 bg-zinc-950 shadow-[-12px_0_48px_rgba(0,0,0,0.55)]"
+            className="fixed inset-y-0 right-0 z-[201] flex w-full max-w-md flex-col border-l border-[#00b7fd]/30 bg-zinc-950 shadow-[-12px_0_48px_rgba(0,0,0,0.55)]"
             role="dialog"
             aria-labelledby="pricing-panel-title"
           >
@@ -260,12 +260,12 @@ export function PricingProvider({ children }: { children: ReactNode }) {
                 type="button"
                 onClick={() => void detectLocationForPanel()}
                 disabled={detectingLocation}
-                className="mb-4 flex w-full items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/80 px-4 py-2.5 text-sm font-semibold text-zinc-200 transition hover:border-[#FFB800]/40 hover:text-white disabled:opacity-60"
+                className="mb-4 flex w-full items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/80 px-4 py-2.5 text-sm font-semibold text-zinc-200 transition hover:border-[#00b7fd]/40 hover:text-white disabled:opacity-60"
               >
                 {detectingLocation ? (
-                  <Loader2 size={16} className="animate-spin text-[#FFB800]" />
+                  <Loader2 size={16} className="animate-spin text-[#00b7fd]" />
                 ) : (
-                  <MapPin size={16} className="text-[#FFB800]" />
+                  <MapPin size={16} className="text-[#00b7fd]" />
                 )}
                 {detectingLocation ? "Detecting location…" : "Use my current location"}
               </button>
@@ -273,7 +273,7 @@ export function PricingProvider({ children }: { children: ReactNode }) {
               <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-zinc-500">
                 Country / region
               </label>
-              <div className="mb-3 flex items-center gap-2 rounded-xl border border-[#FFB800]/25 bg-[#FFB800]/5 px-3 py-2">
+              <div className="mb-3 flex items-center gap-2 rounded-xl border border-[#00b7fd]/25 bg-[#00b7fd]/5 px-3 py-2">
                 <CountryFlagImg code={panelCountryCode} width={32} className="h-5 w-7 rounded object-cover" />
                 <span className="text-sm font-medium text-white">
                   {countryOptions.find((c) => c.code === panelCountryCode)?.name ?? panelCountryCode}
@@ -282,7 +282,7 @@ export function PricingProvider({ children }: { children: ReactNode }) {
               <select
                 value={panelCountryCode}
                 onChange={(e) => setPanelCountryCode(e.target.value)}
-                className="w-full rounded-xl border border-zinc-700 bg-black px-3 py-3 text-sm text-white outline-none focus:border-[#FFB800]/60"
+                className="w-full rounded-xl border border-zinc-700 bg-black px-3 py-3 text-sm text-white outline-none focus:border-[#00b7fd]/60"
               >
                 {countryOptions.map((c) => (
                   <option key={c.code} value={c.code}>
@@ -300,7 +300,7 @@ export function PricingProvider({ children }: { children: ReactNode }) {
               <button
                 type="button"
                 onClick={confirmPricingRegion}
-                className="w-full rounded-xl bg-[#FFB800] py-3 text-sm font-extrabold text-black transition hover:bg-[#e5a500]"
+                className="w-full rounded-xl bg-[#00b7fd] py-3 text-sm font-extrabold text-black transition hover:bg-[#e5a500]"
               >
                 Apply country &amp; refresh prices
               </button>

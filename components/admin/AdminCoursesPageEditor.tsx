@@ -58,11 +58,11 @@ type SectionKey =
   | "display";
 
 const sectionMeta: Record<SectionKey, { label: string; icon: typeof Rocket; color: string }> = {
-  hero: { label: "Hero Section", icon: Rocket, color: "#f59e0b" },
+  hero: { label: "Hero Section", icon: Rocket, color: "#0070f0" },
   tutorLed: { label: "Tutor-Led Sessions", icon: Zap, color: "#3b82f6" },
   recentUpdates: { label: "Recent Updates", icon: Layers, color: "#8b5cf6" },
   upcoming: { label: "Upcoming (Future)", icon: Globe, color: "#10b981" },
-  featured: { label: "Featured Courses", icon: Sparkles, color: "#f59e0b" },
+  featured: { label: "Featured Courses", icon: Sparkles, color: "#0070f0" },
   faqs: { label: "FAQ Section", icon: MessageCircleQuestion, color: "#6366f1" },
   cta: { label: "CTA / Ready to Start", icon: Users, color: "#ec4899" },
   display: { label: "Display Settings", icon: Settings2, color: "#64748b" },
@@ -73,7 +73,7 @@ const iconColorOptions: CoursesPageUpcoming["iconColor"][] = [
 ];
 const iconColorMap: Record<string, string> = {
   rose: "#f43f5e", sky: "#0ea5e9", violet: "#8b5cf6",
-  emerald: "#10b981", amber: "#f59e0b", blue: "#3b82f6",
+  emerald: "#10b981", amber: "#0070f0", blue: "#3b82f6",
 };
 
 /* ─── Canvas crop export (react-easy-crop gives pixel area) ─── */
@@ -164,19 +164,19 @@ function CropModal({
 
   return (
     <div className="fixed inset-0 z-100 flex items-center justify-center overflow-y-auto bg-black/90 backdrop-blur-xl p-4 py-6" onClick={onCancel}>
-      <div className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/8 bg-[#070b14] shadow-[0_0_100px_rgba(245,158,11,0.08),0_32px_80px_rgba(0,0,0,0.7)]"
+      <div className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/8 bg-[#070b14] shadow-[0_0_100px_rgba(54,182,255,0.08),0_32px_80px_rgba(0,0,0,0.7)]"
         onClick={(e) => e.stopPropagation()}
         style={{ maxHeight: "min(92vh, calc(100vh - 3rem))" }}>
 
         {/* ── Neon accent line ── */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#f59e0b]/60 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#0070f0]/60 to-transparent" />
 
         {/* ── Header - fixed ── */}
         <div className="relative flex shrink-0 items-center justify-between px-6 py-4">
-          <div className="absolute inset-0 bg-linear-to-b from-[#f59e0b]/4 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-b from-[#0070f0]/4 to-transparent" />
           <div className="relative flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-[#f59e0b]/25 to-[#f59e0b]/5 ring-1 ring-[#f59e0b]/20">
-              <Crop size={16} className="text-[#f59e0b]" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-[#0070f0]/25 to-[#0070f0]/5 ring-1 ring-[#0070f0]/20">
+              <Crop size={16} className="text-[#0070f0]" />
             </div>
             <div>
               <h2 className="text-sm font-bold tracking-tight">Image Studio</h2>
@@ -206,13 +206,13 @@ function CropModal({
               containerStyle: { borderRadius: "1rem", background: "#05080f" },
               mediaStyle: { transform: flipH ? "scaleX(-1)" : undefined },
               cropAreaStyle: {
-                border: "2px solid rgba(245, 158, 11, 0.7)",
-                boxShadow: "0 0 30px rgba(245, 158, 11, 0.15), inset 0 0 30px rgba(245, 158, 11, 0.05)",
+                border: "2px solid rgba(54,182,255, 0.7)",
+                boxShadow: "0 0 30px rgba(54,182,255, 0.15), inset 0 0 30px rgba(54,182,255, 0.05)",
               },
             }}
           />
           {/* Floating zoom badge */}
-          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-1 text-[10px] font-medium text-[#f59e0b] ring-1 ring-[#f59e0b]/20 backdrop-blur-md">
+          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-1 text-[10px] font-medium text-[#0070f0] ring-1 ring-[#0070f0]/20 backdrop-blur-md">
             <ZoomIn size={10} />
             {Math.round(zoom * 100)}%
           </div>
@@ -235,7 +235,7 @@ function CropModal({
                 return (
                   <button key={p.label} type="button" onClick={() => setAr(p.value)}
                     className={`flex-1 rounded-lg px-2 py-1.5 text-[10px] font-semibold transition-all ${active
-                      ? "bg-linear-to-r from-[#f59e0b] to-[#d97706] text-black shadow-lg shadow-amber-500/20"
+                      ? "bg-linear-to-r from-[#0070f0] to-[#d97706] text-black shadow-lg shadow-amber-500/20"
                       : "text-gray-400 hover:text-white hover:bg-white/5"}`}>
                     {p.label}
                   </button>
@@ -250,9 +250,9 @@ function CropModal({
             <div className="flex flex-1 items-center gap-3 rounded-xl bg-white/3 px-3 py-2 ring-1 ring-white/5">
               <ZoomOut size={12} className="shrink-0 text-gray-500" />
               <input type="range" min={1} max={3} step={0.01} value={zoom} onChange={(e) => setZoom(Number(e.target.value))}
-                className="flex-1 accent-[#f59e0b] h-1 cursor-pointer [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#f59e0b] [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(245,158,11,0.5)]" />
+                className="flex-1 accent-[#0070f0] h-1 cursor-pointer [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#0070f0] [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(54,182,255,0.5)]" />
               <ZoomIn size={12} className="shrink-0 text-gray-500" />
-              <span className="ml-1 min-w-[3ch] text-right text-[11px] font-mono text-[#f59e0b]">{zoom.toFixed(1)}x</span>
+              <span className="ml-1 min-w-[3ch] text-right text-[11px] font-mono text-[#0070f0]">{zoom.toFixed(1)}x</span>
             </div>
           </div>
 
@@ -273,7 +273,7 @@ function CropModal({
             <span className="text-[10px] font-semibold uppercase tracking-widest text-gray-600 w-14">Tools</span>
             <div className="flex items-center gap-1.5">
               <button type="button" onClick={() => setFlipH(!flipH)}
-                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[10px] font-medium ring-1 transition ${flipH ? "bg-[#f59e0b]/15 text-[#f59e0b] ring-[#f59e0b]/30" : "text-gray-400 ring-white/5 hover:bg-white/5 hover:text-white"}`}>
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[10px] font-medium ring-1 transition ${flipH ? "bg-[#0070f0]/15 text-[#0070f0] ring-[#0070f0]/30" : "text-gray-400 ring-white/5 hover:bg-white/5 hover:text-white"}`}>
                 <FlipHorizontal2 size={12} /> Flip
               </button>
               <button type="button" onClick={() => setRotation((r) => r - 90)}
@@ -299,7 +299,7 @@ function CropModal({
 
         {/* ── Footer - always visible ── */}
         <div className="relative z-10 flex shrink-0 items-center justify-between border-t border-white/10 bg-[#070b14] px-6 py-4">
-          <div className="absolute inset-0 bg-linear-to-t from-[#f59e0b]/3 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-[#0070f0]/3 to-transparent" />
           <div className="relative">{cropError && <p className="text-xs font-medium text-red-400">{cropError}</p>}{!cropError && <p className="text-[10px] text-gray-600">Drag to pan &middot; Scroll to zoom</p>}</div>
           <div className="relative flex items-center gap-3">
             <button type="button" onClick={onCancel}
@@ -315,7 +315,7 @@ function CropModal({
         </div>
 
         {/* ── Bottom neon line ── */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#f59e0b]/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#0070f0]/30 to-transparent" />
       </div>
     </div>
   );
@@ -392,7 +392,7 @@ function ImageUploader({
     <>
       <div className="space-y-1.5">
         {label && <label className="block text-[11px] font-medium uppercase tracking-wider text-gray-500">{label}</label>}
-        <div className={`group relative overflow-hidden rounded-xl border border-dashed border-white/15 bg-linear-to-br from-white/3 to-transparent ${h} transition-all hover:border-[#f59e0b]/40`}>
+        <div className={`group relative overflow-hidden rounded-xl border border-dashed border-white/15 bg-linear-to-br from-white/3 to-transparent ${h} transition-all hover:border-[#0070f0]/40`}>
           {preview ? (
             <img src={preview} alt="Preview" className="h-full w-full object-cover" onError={() => setPreview("")} />
           ) : (
@@ -403,7 +403,7 @@ function ImageUploader({
           )}
           <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/60 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
             <button type="button" onClick={() => { setMode("upload"); fileRef.current?.click(); }}
-              className="flex items-center gap-1 rounded-lg bg-[#f59e0b] px-3 py-1.5 text-[11px] font-semibold text-black shadow-lg transition hover:bg-[#e5a32f]">
+              className="flex items-center gap-1 rounded-lg bg-[#0070f0] px-3 py-1.5 text-[11px] font-semibold text-black shadow-lg transition hover:bg-[#e5a32f]">
               <Upload size={12} /> {compact ? "Photo" : "Upload & Crop"}
             </button>
             {!compact && <button type="button" onClick={() => setMode("url")}
@@ -413,7 +413,7 @@ function ImageUploader({
           </div>
           {uploading && (
             <div className="absolute inset-0 grid place-items-center bg-black/70">
-              <Loader2 size={20} className="animate-spin text-[#f59e0b]" />
+              <Loader2 size={20} className="animate-spin text-[#0070f0]" />
             </div>
           )}
         </div>
@@ -524,13 +524,13 @@ export default function AdminCoursesPageEditor() {
   if (loading) {
     return (
       <div className="flex items-center justify-center gap-3 py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#f59e0b] border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#0070f0] border-t-transparent" />
         <span className="text-sm text-gray-400">Loading editor...</span>
       </div>
     );
   }
 
-  const inputCls = "w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none transition focus:border-[#f59e0b]/60 focus:shadow-[0_0_16px_rgba(245,158,11,0.12)]";
+  const inputCls = "w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none transition focus:border-[#0070f0]/60 focus:shadow-[0_0_16px_rgba(54,182,255,0.12)]";
   const labelCls = "block text-[11px] font-medium uppercase tracking-wider text-gray-500 mb-1.5";
 
   const SectionHeader = ({ sectionKey }: { sectionKey: SectionKey }) => {
@@ -559,24 +559,24 @@ export default function AdminCoursesPageEditor() {
 
   const cardCls = "rounded-2xl border border-white/[0.07] bg-linear-to-br from-[#0d1528] via-[#0b1224] to-[#0a0f1e] p-5 shadow-[0_4px_32px_rgba(0,0,0,0.3)]";
   const itemCls = "rounded-xl border border-white/[0.07] bg-black/30 p-3 backdrop-blur-sm transition-all hover:border-white/15";
-  const btnAdd = "inline-flex items-center gap-1.5 rounded-xl border border-dashed border-white/15 bg-linear-to-r from-white/[0.02] to-transparent px-4 py-2.5 text-xs text-gray-300 transition hover:border-[#f59e0b]/40 hover:text-[#f59e0b]";
+  const btnAdd = "inline-flex items-center gap-1.5 rounded-xl border border-dashed border-white/15 bg-linear-to-r from-white/[0.02] to-transparent px-4 py-2.5 text-xs text-gray-300 transition hover:border-[#0070f0]/40 hover:text-[#0070f0]";
   const btnDanger = "inline-flex items-center justify-center rounded-lg border border-red-500/20 bg-red-500/10 p-2 text-red-400 transition hover:bg-red-500/20 hover:text-red-300";
 
   return (
     <div className="space-y-5">
       {/* Header */}
       <section className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-linear-to-r from-[#0d1528] via-[#12182e] to-[#0d1528] p-5">
-        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#f59e0b]/10 blur-3xl" />
+        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#0070f0]/10 blur-3xl" />
         <div className="absolute -left-10 bottom-0 h-32 w-32 rounded-full bg-[#6366f1]/10 blur-3xl" />
         <div className="relative flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-[#f59e0b] to-[#d97706] shadow-lg shadow-amber-500/20">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-[#0070f0] to-[#d97706] shadow-lg shadow-amber-500/20">
               <LayoutDashboard size={22} className="text-black" />
             </div>
             <div>
               <h1 className="text-xl font-bold tracking-tight">Courses Page Editor</h1>
               <p className="text-xs text-gray-400">
-                Manage hero, sessions, updates, FAQ, CTA and display settings for <code className="rounded bg-white/5 px-1 text-[10px] text-[#f59e0b]">/courses</code>
+                Manage hero, sessions, updates, FAQ, CTA and display settings for <code className="rounded bg-white/5 px-1 text-[10px] text-[#0070f0]">/courses</code>
               </p>
             </div>
           </div>
@@ -593,7 +593,7 @@ export default function AdminCoursesPageEditor() {
               type="button"
               onClick={save}
               disabled={saving}
-              className="flex items-center gap-1.5 rounded-xl bg-linear-to-r from-[#f59e0b] to-[#d97706] px-5 py-2.5 text-xs font-bold text-black shadow-lg shadow-amber-500/25 transition hover:shadow-amber-500/40 disabled:opacity-50"
+              className="flex items-center gap-1.5 rounded-xl bg-linear-to-r from-[#0070f0] to-[#d97706] px-5 py-2.5 text-xs font-bold text-black shadow-lg shadow-amber-500/25 transition hover:shadow-amber-500/40 disabled:opacity-50"
             >
               {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
               {saving ? "Saving..." : saved ? "Saved" : "Save Changes"}
@@ -767,7 +767,7 @@ export default function AdminCoursesPageEditor() {
             <div>
               <div className="mb-3 flex items-center justify-between">
                 <p className="text-xs font-semibold text-gray-300">Expert Profiles</p>
-                <span className="rounded-md bg-[#f59e0b]/15 px-2 py-0.5 text-[10px] font-medium text-[#f59e0b]">{config.featuredExperts.length} experts</span>
+                <span className="rounded-md bg-[#0070f0]/15 px-2 py-0.5 text-[10px] font-medium text-[#0070f0]">{config.featuredExperts.length} experts</span>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {config.featuredExperts.map((expert, idx) => (
@@ -782,7 +782,7 @@ export default function AdminCoursesPageEditor() {
                     </div>
                     <div className="flex-1 space-y-1.5 pt-1">
                       <input
-                        className="w-full rounded-md border border-white/10 bg-black/40 px-2.5 py-1.5 text-xs outline-none transition focus:border-[#f59e0b]/50"
+                        className="w-full rounded-md border border-white/10 bg-black/40 px-2.5 py-1.5 text-xs outline-none transition focus:border-[#0070f0]/50"
                         placeholder="Expert name"
                         value={expert.name}
                         onChange={(e) => setExpert(idx, { name: e.target.value })}
@@ -881,7 +881,7 @@ export default function AdminCoursesPageEditor() {
           type="button"
           onClick={save}
           disabled={saving}
-          className="flex items-center gap-2 rounded-2xl bg-linear-to-r from-[#f59e0b] to-[#d97706] px-8 py-3 text-sm font-bold text-black shadow-[0_8px_32px_rgba(245,158,11,0.35)] transition-all hover:shadow-[0_12px_40px_rgba(245,158,11,0.5)] hover:scale-[1.02] disabled:opacity-50"
+          className="flex items-center gap-2 rounded-2xl bg-linear-to-r from-[#0070f0] to-[#d97706] px-8 py-3 text-sm font-bold text-black shadow-[0_8px_32px_rgba(54,182,255,0.35)] transition-all hover:shadow-[0_12px_40px_rgba(54,182,255,0.5)] hover:scale-[1.02] disabled:opacity-50"
         >
           {saving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
           {saving ? "Saving..." : saved ? "All Changes Saved" : "Save All Changes"}

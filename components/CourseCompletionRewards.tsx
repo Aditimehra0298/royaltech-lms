@@ -347,7 +347,7 @@ export function CourseCompletionRewards({
           className="relative overflow-hidden rounded-xl border border-amber-500/20 px-4 py-8 sm:px-8"
           style={{
             background:
-              "linear-gradient(165deg, rgba(245,158,11,0.07) 0%, rgba(20,24,32,0.95) 38%, rgba(88,28,135,0.08) 100%)",
+              "linear-gradient(165deg, rgba(54,182,255,0.07) 0%, rgba(20,24,32,0.95) 38%, rgba(88,28,135,0.08) 100%)",
           }}
         >
           <div

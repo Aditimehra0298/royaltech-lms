@@ -1,8 +1,8 @@
 /** Shared SF Trainings transactional email chrome (table-based for Gmail/Outlook). */
 
 export const EMAIL_BRAND = {
-  gold: "#eb9422",
-  goldLight: "#f9b14d",
+  gold: "#0070f0",
+  goldLight: "#00b7fd",
   goldDark: "#c97810",
   greenDark: "#0c3320",
   green: "#14532d",
@@ -53,7 +53,7 @@ function logoBlock(appName: string, logoSrc?: string): string {
         <td align="center" style="width:72px;height:72px;border-radius:18px;
           background:linear-gradient(145deg,${EMAIL_BRAND.goldLight},${EMAIL_BRAND.gold});
           font-size:26px;font-weight:800;color:${EMAIL_BRAND.ink};line-height:72px;text-align:center;
-          box-shadow:0 8px 24px rgba(235,148,34,0.35)">
+          box-shadow:0 8px 24px rgba(10,131,231,0.35)">
           SFT
         </td>
       </tr>
@@ -162,7 +162,7 @@ export function emailButton(href: string, label: string, variant: "primary" | "s
   const safeHref = escapeHtml(href);
   const safeLabel = escapeHtml(label);
   if (variant === "primary") {
-    return `<a href="${safeHref}" style="display:inline-block;padding:14px 28px;background:linear-gradient(180deg,${EMAIL_BRAND.goldLight},${EMAIL_BRAND.gold});color:${EMAIL_BRAND.ink};font-size:15px;font-weight:700;text-decoration:none;border-radius:12px;box-shadow:0 4px 14px rgba(235,148,34,0.38)">${safeLabel}</a>`;
+    return `<a href="${safeHref}" style="display:inline-block;padding:14px 28px;background:linear-gradient(180deg,${EMAIL_BRAND.goldLight},${EMAIL_BRAND.gold});color:${EMAIL_BRAND.ink};font-size:15px;font-weight:700;text-decoration:none;border-radius:12px;box-shadow:0 4px 14px rgba(10,131,231,0.38)">${safeLabel}</a>`;
   }
   return `<a href="${safeHref}" style="display:inline-block;padding:14px 28px;background:linear-gradient(180deg,${EMAIL_BRAND.greenMid},${EMAIL_BRAND.green});color:${EMAIL_BRAND.text};font-size:15px;font-weight:600;text-decoration:none;border-radius:12px;border:1px solid ${EMAIL_BRAND.goldDark}">${safeLabel}</a>`;
 }
@@ -176,7 +176,7 @@ export function emailOtpCodeBlock(code: string, label = "Your verification code"
         <td align="center">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
             style="border-radius:18px;overflow:hidden;border:2px solid ${EMAIL_BRAND.gold};
-            box-shadow:0 8px 28px rgba(22,101,52,0.18),0 4px 16px rgba(235,148,34,0.2)">
+            box-shadow:0 8px 28px rgba(22,101,52,0.18),0 4px 16px rgba(10,131,231,0.2)">
             <tr>
               <td style="height:4px;background:linear-gradient(90deg,${EMAIL_BRAND.goldDark},${EMAIL_BRAND.goldLight},${EMAIL_BRAND.greenLight})"></td>
             </tr>
@@ -188,7 +188,7 @@ export function emailOtpCodeBlock(code: string, label = "Your verification code"
                 </p>
                 <p class="otp-code" style="margin:0;font-size:42px;font-weight:800;letter-spacing:0.32em;
                   color:${EMAIL_BRAND.goldLight};font-family:Consolas,Monaco,monospace;
-                  text-shadow:0 0 24px rgba(249,177,77,0.5)">${safeCode}</p>
+                  text-shadow:0 0 24px rgba(10,131,231,0.5)">${safeCode}</p>
               </td>
             </tr>
           </table>

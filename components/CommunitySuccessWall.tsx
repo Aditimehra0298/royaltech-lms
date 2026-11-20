@@ -59,7 +59,7 @@ function Pill({
         ? "bg-violet-500/20 text-violet-200 ring-violet-400/30"
         : tone === "sky"
           ? "bg-sky-500/20 text-sky-200 ring-sky-400/30"
-          : "bg-[#FFC107]/15 text-[#FFC107] ring-[#FFC107]/35";
+          : "bg-[#0070f0]/15 text-[#0070f0] ring-[#0070f0]/35";
   return (
     <span className={`inline-block rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide ring-1 ${cls}`}>
       {children}
@@ -74,7 +74,7 @@ function Stars({ value, size = "sm" }: { value: number; size?: "sm" | "xs" }) {
       {[1, 2, 3, 4, 5].map((n) => (
         <Star
           key={n}
-          className={`${sz} ${n <= value ? "fill-[#FFC107] text-[#FFC107]" : "text-zinc-600"}`}
+          className={`${sz} ${n <= value ? "fill-[#0070f0] text-[#0070f0]" : "text-zinc-600"}`}
           aria-hidden
         />
       ))}
@@ -242,7 +242,7 @@ export function CommunitySuccessWall({
               href={shareUrl.startsWith("http") ? shareUrl : href}
               target={shareUrl.startsWith("http") ? "_blank" : undefined}
               rel={shareUrl.startsWith("http") ? "noreferrer" : undefined}
-              className="w-[152px] shrink-0 rounded-xl border border-white/10 bg-black/35 p-2.5 transition hover:border-[#FFC107]/35"
+              className="w-[152px] shrink-0 rounded-xl border border-white/10 bg-black/35 p-2.5 transition hover:border-[#0070f0]/35"
             >
               <MediaThumb
                 src={thumb}
@@ -259,7 +259,7 @@ export function CommunitySuccessWall({
               </p>
               <p className="truncate text-[10px] leading-snug text-zinc-400">{cert.courseTitle}</p>
               {cert.scorePercent != null ? (
-                <p className="mt-1 font-mono text-[10px] text-[#FFC107]">{cert.scorePercent}%</p>
+                <p className="mt-1 font-mono text-[10px] text-[#0070f0]">{cert.scorePercent}%</p>
               ) : null}
             </Link>
           );
@@ -382,7 +382,7 @@ export function CommunitySuccessWall({
 
       <Link
         href="/my-learning?tab=certificates"
-        className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#FFC107] hover:underline"
+        className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#0070f0] hover:underline"
       >
         View more success stories
         <span aria-hidden>→</span>

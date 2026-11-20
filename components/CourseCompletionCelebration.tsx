@@ -25,7 +25,7 @@ type ConfettiPiece = {
   spin: number;
 };
 
-const CONFETTI_COLORS = ["#f59e0b", "#fbbf24", "#8b5cf6", "#a78bfa", "#22c55e", "#f472b6", "#ffffff"];
+const CONFETTI_COLORS = ["#0070f0", "#00b7fd", "#8b5cf6", "#a78bfa", "#22c55e", "#f472b6", "#ffffff"];
 
 function spawnConfetti(width: number, height: number, count: number): ConfettiPiece[] {
   return Array.from({ length: count }, () => ({
@@ -35,7 +35,7 @@ function spawnConfetti(width: number, height: number, count: number): ConfettiPi
     vy: Math.random() * 4 + 3,
     w: Math.random() * 10 + 5,
     h: Math.random() * 6 + 3,
-    color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)] ?? "#f59e0b",
+    color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)] ?? "#0070f0",
     rotation: Math.random() * 360,
     spin: (Math.random() - 0.5) * 12,
   }));
@@ -213,12 +213,12 @@ export function CourseCompletionCelebration({
     <img
       src={badgeSrc}
       alt={`${courseTitle} course badge`}
-      className={`${badgeSizeClass} object-contain drop-shadow-[0_12px_40px_rgba(245,158,11,0.45)] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]`}
+      className={`${badgeSizeClass} object-contain drop-shadow-[0_12px_40px_rgba(54,182,255,0.45)] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]`}
       onError={() => setBadgeFailed(true)}
     />
   ) : (
     <div
-      className={`flex ${badgeSizeClass} items-center justify-center rounded-3xl bg-gradient-to-br from-amber-500 to-violet-600 shadow-[0_12px_40px_rgba(245,158,11,0.35)] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]`}
+      className={`flex ${badgeSizeClass} items-center justify-center rounded-3xl bg-gradient-to-br from-amber-500 to-violet-600 shadow-[0_12px_40px_rgba(54,182,255,0.35)] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]`}
     >
       <BadgeCheck className="h-1/2 w-1/2 text-white" strokeWidth={2.5} aria-hidden />
     </div>

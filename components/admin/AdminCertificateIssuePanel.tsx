@@ -172,7 +172,7 @@ export default function AdminCertificateIssuePanel({ courses, onIssued }: Props)
             type="button"
             onClick={() => void submit()}
             disabled={busy || !email.trim() || !courseSlug}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-4 py-2 text-sm font-bold text-black shadow-[0_0_24px_rgba(245,158,11,0.25)] hover:from-amber-400 hover:to-amber-300 disabled:opacity-50"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 px-4 py-2 text-sm font-bold text-black shadow-[0_0_24px_rgba(54,182,255,0.25)] hover:from-amber-400 hover:to-amber-300 disabled:opacity-50"
           >
             {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Award className="h-4 w-4" />}
             Issue certificate

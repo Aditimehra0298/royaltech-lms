@@ -51,7 +51,7 @@ export default function CertificateEarnedClient({ certificate, certificateOnly =
         className="relative overflow-hidden rounded-2xl border border-amber-500/20 px-6 py-10 text-center"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.12) 0%, transparent 55%), #141414",
+            "radial-gradient(ellipse at 50% 0%, rgba(54,182,255,0.12) 0%, transparent 55%), #141414",
         }}
       >
         <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-emerald-300/90">
@@ -60,7 +60,7 @@ export default function CertificateEarnedClient({ certificate, certificateOnly =
         </p>
 
         {badgeSrc ? (
-          <div className="relative mx-auto mt-6 h-36 w-36 overflow-hidden rounded-full border-2 border-amber-400/45 bg-[#0d1118] shadow-[0_12px_40px_rgba(245,158,11,0.25)]">
+          <div className="relative mx-auto mt-6 h-36 w-36 overflow-hidden rounded-full border-2 border-amber-400/45 bg-[#0d1118] shadow-[0_12px_40px_rgba(54,182,255,0.25)]">
             <Image
               src={badgeSrc}
               alt={`${certificate.courseTitle} badge`}

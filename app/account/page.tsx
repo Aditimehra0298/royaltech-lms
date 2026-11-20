@@ -821,7 +821,7 @@ export default function AccountPage() {
     })();
   };
 
-  const goldGradient = "bg-gradient-to-b from-[#f9b14d] to-[#eb9422]";
+  const goldGradient = "bg-gradient-to-b from-[#00b7fd] to-[#0070f0]";
   const accountGalaxyProps = isLightTheme ? ACCOUNT_GALAXY_PROPS_LIGHT : ACCOUNT_GALAXY_PROPS_DARK;
 
   return (
@@ -884,17 +884,17 @@ export default function AccountPage() {
                       onClick={() => handleAccountTypeChange(type.id)}
                       className={`account-type-card group relative w-full overflow-hidden rounded-[1.75rem] border p-3.5 text-left transition-all duration-300 ${
                         active
-                          ? "border-amber-300/90 bg-amber-500/15 shadow-[0_0_45px_rgba(235,148,34,0.45)]"
-                          : "border-white/15 bg-white/[0.04] hover:-translate-y-1 hover:border-amber-500/45 hover:shadow-[0_0_34px_rgba(235,148,34,0.22)]"
+                          ? "border-amber-300/90 bg-amber-500/15 shadow-[0_0_45px_rgba(10,131,231,0.45)]"
+                          : "border-white/15 bg-white/[0.04] hover:-translate-y-1 hover:border-amber-500/45 hover:shadow-[0_0_34px_rgba(10,131,231,0.22)]"
                       }`}
                     >
                       <div
-                        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(235,148,34,0.32),rgba(235,148,34,0.06)_35%,transparent_70%)]"
+                        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(10,131,231,0.32),rgba(10,131,231,0.06)_35%,transparent_70%)]"
                         aria-hidden
                       />
                       <div className="relative flex h-44 items-center justify-center overflow-hidden rounded-2xl border border-amber-500/20 bg-black/45 p-2 sm:h-48 lg:h-52">
                         <div
-                          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(249,177,77,0.22),transparent_70%)]"
+                          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(10,131,231,0.22),transparent_70%)]"
                           aria-hidden
                         />
                         <Image
@@ -909,7 +909,7 @@ export default function AccountPage() {
                         <div className="text-lg font-bold tracking-tight">{type.title}</div>
                         <p className="mt-1.5 text-xs leading-relaxed text-gray-300">{type.desc}</p>
                         <span
-                          className={`mt-4 inline-flex min-w-[10.5rem] items-center justify-center rounded-full px-5 py-2.5 text-xs font-bold text-black shadow-[0_8px_24px_rgba(235,148,34,0.35)] transition ${goldGradient} group-hover:-translate-y-0.5 group-hover:brightness-110 ${
+                          className={`mt-4 inline-flex min-w-[10.5rem] items-center justify-center rounded-full px-5 py-2.5 text-xs font-bold text-black shadow-[0_8px_24px_rgba(10,131,231,0.35)] transition ${goldGradient} group-hover:-translate-y-0.5 group-hover:brightness-110 ${
                             active ? "ring-2 ring-amber-200/80" : ""
                           }`}
                         >
@@ -946,7 +946,7 @@ export default function AccountPage() {
                   onMouseDown={(e) => e.stopPropagation()}
                 >
                   <div
-                    className="pointer-events-none absolute inset-x-0 top-0 h-32 rounded-t-[1.75rem] bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.18),transparent_70%)]"
+                    className="pointer-events-none absolute inset-x-0 top-0 h-32 rounded-t-[1.75rem] bg-[radial-gradient(ellipse_at_top,rgba(54,182,255,0.18),transparent_70%)]"
                     aria-hidden
                   />
                   <button
@@ -960,7 +960,7 @@ export default function AccountPage() {
 
                 <div className="relative border-b border-white/10 px-5 pb-5 pt-5 sm:px-7 sm:pb-6 sm:pt-6">
                   <div className="flex items-start gap-4 pr-10">
-                    <div className="relative h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden rounded-2xl border border-amber-400/35 bg-black/40 shadow-[0_0_24px_rgba(245,158,11,0.2)]">
+                    <div className="relative h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden rounded-2xl border border-amber-400/35 bg-black/40 shadow-[0_0_24px_rgba(54,182,255,0.2)]">
                       <Image
                         src={avatarForAccountType(selectedAccountType)}
                         alt="Selected avatar"
@@ -1099,7 +1099,7 @@ export default function AccountPage() {
                     type="button"
                     onClick={handleGoogleSignIn}
                     disabled={googleLoading || !googleScriptReady}
-                    className={`flex w-full items-center justify-center gap-3 rounded-xl border border-amber-400/50 px-6 py-3.5 text-base font-semibold text-amber-50 shadow-[0_0_24px_rgba(245,158,11,0.2)] ${goldGradient} !text-black hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60`}
+                    className={`flex w-full items-center justify-center gap-3 rounded-xl border border-amber-400/50 px-6 py-3.5 text-base font-semibold text-amber-50 shadow-[0_0_24px_rgba(54,182,255,0.2)] ${goldGradient} !text-black hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60`}
                   >
                     <GoogleMark />
                     {googleLoading

@@ -4,9 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Bell, Globe, Menu, Moon, Search, ShoppingCart, Sun, X } from "lucide-react";
-import sfWhiteLogo from "@/SF-WHITE-LOGO.png";
-import sfLightLogo from "@/Untitled design (4).png";
+import { Bell, Globe, Menu, Search, ShoppingCart, X } from "lucide-react";
+import brandLogo from "@/logo-mark.png";
 import {
   profileInitial,
   readLearnerProfileFromStorage,
@@ -55,13 +54,13 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [activeAudience, setActiveAudience] = useState<AudienceId>("industry");
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState<LearnerAuthProfile>({});
   const [cartCount, setCartCount] = useState(0);
-  const goldGradient = "bg-gradient-to-b from-[#f9b14d] to-[#eb9422]";
-  const goldText = theme === "light" && !forceDarkChrome ? "text-[#8a6412]" : "text-[#fde68a]";
+  const goldGradient = "bg-gradient-to-b from-[#00b7fd] to-[#0070f0]";
+  const goldText = "text-[#00b7fd]";
+  const isLight = false;
   const languages = ["English", "Hindi", "Spanish", "French", "German", "Arabic"];
   const myLearningMenu = [
     { label: "🎓 My Learning", href: "/my-learning?tab=dashboard" },
@@ -106,21 +105,9 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
   }, [pathname, searchParams]);
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("sft_theme");
-    const initialTheme =
-      saved === "light" || saved === "dark"
-        ? saved
-        : window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-    setTheme(initialTheme);
-    document.documentElement.dataset.theme = initialTheme;
+    document.documentElement.dataset.theme = "dark";
+    window.localStorage.setItem("sft_theme", "dark");
   }, []);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem("sft_theme", theme);
-  }, [theme]);
 
   useEffect(() => {
     return installLearnerCsrfFetch();
@@ -211,7 +198,6 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
 
   const profileAvatar = userProfile.avatarUrl?.trim();
   const profileLabel = profileInitial(userProfile.name, userProfile.email ?? getLearnerEmail());
-  const isLight = theme === "light" && !forceDarkChrome;
 
   return (
     <>
@@ -245,10 +231,10 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
                   className={`chrome-audience-tab group relative -mb-px inline-flex min-h-11 min-w-0 max-w-[20rem] flex-1 cursor-pointer items-center justify-center truncate px-3 pb-3 pt-2.5 outline-none transition-[background-color,color,box-shadow,transform,border-color] sm:flex-none sm:max-w-none sm:px-4 ${
                     active
                       ? isLight
-                        ? "z-10 rounded-t-xl border border-b-0 border-[#b4965a]/70 bg-linear-to-b from-[#fff8ec] to-[#f8f4ec] text-[#6a4a0c] shadow-[0_-4px_18px_rgba(212,160,23,0.28)]"
-                        : "z-10 rounded-t-xl border border-b-0 border-amber-400/55 bg-linear-to-b from-[#1c160c] via-[#12100a] to-[#0a0a0a] text-amber-50 shadow-[0_-4px_20px_rgba(245,158,11,0.28)]"
+                        ? "z-10 rounded-t-xl border border-b-0 border-[#b4965a]/70 bg-linear-to-b from-[#fff8ec] to-[#f8f4ec] text-[#0049a3] shadow-[0_-4px_18px_rgba(10,131,231,0.28)]"
+                        : "z-10 rounded-t-xl border border-b-0 border-amber-400/55 bg-linear-to-b from-[#1c160c] via-[#12100a] to-[#0a0a0a] text-amber-50 shadow-[0_-4px_20px_rgba(54,182,255,0.28)]"
                       : isLight
-                        ? "rounded-t-lg border border-[#b4965a]/35 bg-[#cbb89a] text-slate-800 hover:-translate-y-0.5 hover:border-[#9a7222] hover:bg-[#d8c6a6] hover:text-[#6a4a0c]"
+                        ? "rounded-t-lg border border-[#b4965a]/35 bg-[#cbb89a] text-slate-800 hover:-translate-y-0.5 hover:border-[#9a7222] hover:bg-[#d8c6a6] hover:text-[#0049a3]"
                         : "rounded-t-lg border border-amber-400/25 bg-[#141922] text-amber-100 hover:-translate-y-0.5 hover:border-amber-400/50 hover:bg-[#1c2433] hover:text-white"
                   }`}
                 >
@@ -256,8 +242,8 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
                     <span
                       className={`pointer-events-none absolute inset-x-3 top-0 h-[3px] rounded-b-full ${
                         isLight
-                          ? "bg-gradient-to-r from-[#d4a017] via-[#f0c14b] to-[#d4a017]"
-                          : "bg-gradient-to-r from-[#eb9422] via-[#f9b14d] to-[#eb9422]"
+                          ? "bg-gradient-to-r from-[#0070f0] via-[#00b7fd] to-[#0070f0]"
+                          : "bg-gradient-to-r from-[#0070f0] via-[#00b7fd] to-[#0070f0]"
                       }`}
                       aria-hidden
                     />
@@ -300,9 +286,9 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
         >
           <Link href="/" className="group flex shrink-0 cursor-pointer items-center gap-3">
             <Image
-              src={isLight ? sfLightLogo : sfWhiteLogo}
+              src={brandLogo}
               alt={COMPANY_DISPLAY_NAME}
-              className={`w-auto object-contain ${compactHeader ? "h-11" : "h-16"}`}
+              className={`w-auto object-contain ${compactHeader ? "h-11" : "h-14"}`}
             />
             <div className="hidden md:block">
               <p
@@ -326,7 +312,7 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
                 placeholder="What do you want to learn?"
                 className={`w-full rounded-full border py-2.5 pl-10 pr-4 text-[14px] transition-all focus:outline-none ${
                   isLight
-                    ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-800 placeholder:text-slate-500 focus:border-[#9a7222] focus:shadow-[0_0_0_3px_rgba(212,160,23,0.2)]"
+                    ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-800 placeholder:text-slate-500 focus:border-[#9a7222] focus:shadow-[0_0_0_3px_rgba(10,131,231,0.2)]"
                     : "border-amber-500/40 bg-black/40 text-gray-100 placeholder:text-gray-500 focus:border-amber-400/70"
                 }`}
               />
@@ -334,53 +320,20 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
             <button
               type="button"
               aria-label="Search courses"
-              className={`inline-flex h-10 w-10 items-center justify-center rounded-full text-black transition-all hover:brightness-110 ${goldGradient}`}
+              className={`inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition-all hover:brightness-110 ${goldGradient}`}
             >
               <Search className="h-4 w-4" />
             </button>
           </div>
 
           <div className="flex shrink-0 flex-nowrap items-center gap-2 text-[14px] font-bold">
-            <button
-              type="button"
-              onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
-              className={`hidden shrink-0 items-center gap-2 rounded-full border px-2 py-1 transition-colors md:inline-flex ${
-                isLight
-                  ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-700 hover:bg-[#ecdfcb]"
-                  : "border-white/15 bg-white/5 text-amber-100 hover:border-amber-400/60 hover:text-amber-200"
-              }`}
-              aria-label={isLight ? "Switch to night theme" : "Switch to day theme"}
-              title={isLight ? "Day theme — click for night" : "Night theme — click for day"}
-            >
-              <Sun
-                size={14}
-                className={isLight ? "text-amber-500" : "text-gray-500"}
-                aria-hidden
-              />
-              <span
-                className={`relative h-5 w-9 rounded-full transition-colors ${
-                  isLight ? "bg-amber-300/70" : "bg-slate-600"
-                }`}
-              >
-                <span
-                  className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow-sm transition-all ${
-                    isLight ? "left-0.5" : "left-4"
-                  }`}
-                />
-              </span>
-              <Moon
-                size={14}
-                className={isLight ? "text-slate-400" : "text-amber-300"}
-                aria-hidden
-              />
-            </button>
             <div className="relative hidden shrink-0 md:block">
               <button
                 type="button"
                 onClick={() => setIsLanguageOpen((prev) => !prev)}
                 className={`rounded-full border p-2 transition-colors ${
                   isLight
-                    ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-700 hover:border-[#9a7222] hover:text-[#7a5610]"
+                    ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-700 hover:border-[#9a7222] hover:text-[#0058c7]"
                     : "border-white/15 bg-white/5 text-gray-200 hover:border-amber-400/60 hover:text-amber-200"
                 }`}
                 aria-label="Select language"
@@ -406,7 +359,7 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
                       className={`block w-full rounded-lg px-3 py-2 text-left text-sm transition-colors ${
                         selectedLanguage === lang
                           ? isLight
-                            ? "bg-amber-200/45 text-[#7a5610]"
+                            ? "bg-amber-200/45 text-[#0058c7]"
                             : "bg-amber-500/20 text-amber-200"
                           : isLight
                             ? "text-slate-700 hover:bg-amber-100/45"
@@ -427,7 +380,7 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
                   href="/my-learning?tab=dashboard"
                   className={`relative shrink-0 rounded-full border p-2 transition-colors ${
                     isLight
-                      ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-700 hover:border-[#9a7222] hover:text-[#7a5610]"
+                      ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-700 hover:border-[#9a7222] hover:text-[#0058c7]"
                       : "border-white/15 bg-white/5 text-gray-200 hover:border-amber-400/60 hover:text-amber-200"
                   }`}
                   aria-label="Notifications"
@@ -439,7 +392,7 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
                   href="/cart"
                   className={`relative shrink-0 rounded-full border p-2 transition-colors ${
                     isLight
-                      ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-700 hover:border-[#9a7222] hover:text-[#7a5610]"
+                      ? "border-[#b4965a]/45 bg-[#f6efe3] text-slate-700 hover:border-[#9a7222] hover:text-[#0058c7]"
                       : "border-white/15 bg-white/5 text-gray-200 hover:border-amber-400/60 hover:text-amber-200"
                   }`}
                   aria-label="Cart"
@@ -455,7 +408,7 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
                   <button
                     type="button"
                     onClick={() => setIsProfileOpen((prev) => !prev)}
-                    className="h-9 w-9 overflow-hidden rounded-full border border-amber-300/60 bg-linear-to-br from-[#f9b14d] to-[#eb9422] p-px shadow-[0_0_18px_rgba(249,177,77,0.35)]"
+                    className="h-9 w-9 overflow-hidden rounded-full border border-amber-300/60 bg-linear-to-br from-[#00b7fd] to-[#0070f0] p-px shadow-[0_0_18px_rgba(10,131,231,0.35)]"
                     aria-label="Open profile menu"
                   >
                     {profileAvatar ? (
@@ -533,7 +486,7 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
 
                 <Link
                   href="/account?mode=signup"
-                  className={`${goldGradient} ml-2 whitespace-nowrap rounded-[20px] px-5 py-2 text-[14px] font-bold text-black shadow-md transition-all hover:brightness-110 active:scale-95`}
+                  className={`${goldGradient} ml-2 whitespace-nowrap rounded-[20px] px-5 py-2 text-[14px] font-bold text-white shadow-md transition-all hover:brightness-110 active:scale-95`}
                 >
                   Sign Up
                 </Link>
@@ -570,10 +523,10 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
                     className={`border-b-2 py-2 transition-colors ${
                       isActive
                         ? isLight
-                          ? "border-[#b8860b] text-[#7a5610]"
+                          ? "border-[#b8860b] text-[#0058c7]"
                           : "border-amber-400 text-amber-200"
                         : isLight
-                          ? "border-transparent hover:text-[#8a6412]"
+                          ? "border-transparent hover:text-[#3b82c4]"
                           : "border-transparent hover:text-amber-400"
                     }`}
                   >
@@ -712,7 +665,7 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
                   <Link
                     href="/profile"
                     onClick={() => setIsMenuOpen(false)}
-                    className={`block w-full rounded-xl py-4 text-center font-bold text-black ${goldGradient}`}
+                    className={`block w-full rounded-xl py-4 text-center font-bold text-white ${goldGradient}`}
                   >
                     Profile
                   </Link>
@@ -729,7 +682,7 @@ export default function SiteHeader({ forceDarkChrome = false }: { forceDarkChrom
                   <Link
                     href="/account?mode=signup"
                     onClick={() => setIsMenuOpen(false)}
-                    className={`block w-full rounded-xl py-4 text-center font-bold text-black ${goldGradient}`}
+                    className={`block w-full rounded-xl py-4 text-center font-bold text-white ${goldGradient}`}
                   >
                     Sign Up
                   </Link>

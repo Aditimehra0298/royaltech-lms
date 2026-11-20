@@ -136,7 +136,8 @@ export default function AdminCourseCertificateApprovals({
     const res = await fetch(`/api/admin/certificates/${id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json",
+
       },
       body: JSON.stringify(body),
     });
@@ -351,7 +352,7 @@ export default function AdminCourseCertificateApprovals({
                     className="relative overflow-hidden rounded-xl border border-amber-500/15 px-3 py-5"
                     style={{
                       background:
-                        "radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.08) 0%, transparent 60%)",
+                        "radial-gradient(ellipse at 50% 0%, rgba(54,182,255,0.08) 0%, transparent 60%)",
                     }}
                   >
                     <p className="text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-500">

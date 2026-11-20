@@ -137,7 +137,7 @@ function Stars({ value }: { value: number }) {
       {[1, 2, 3, 4, 5].map((n) => (
         <Star
           key={n}
-          className={`h-3 w-3 ${n <= value ? "fill-[#FFC107] text-[#FFC107]" : "text-zinc-600"}`}
+          className={`h-3 w-3 ${n <= value ? "fill-[#0070f0] text-[#0070f0]" : "text-zinc-600"}`}
           aria-hidden
         />
       ))}
@@ -491,7 +491,7 @@ export function MyLearningCommunityHub({
     return (
       <div className="rounded-2xl border border-white/10 bg-[#0a0a0a] p-8 text-center">
         <p className="text-sm text-gray-400">
-          <Link href="/account?mode=login" className="font-semibold text-[#FFC107] hover:underline">
+          <Link href="/account?mode=login" className="font-semibold text-[#0070f0] hover:underline">
             Sign in
           </Link>{" "}
           to join the Community Hub.
@@ -515,7 +515,7 @@ export function MyLearningCommunityHub({
           {focusCourseSlug ? (
             <p className="mt-2 text-xs text-zinc-500">
               Filtered for{" "}
-              <span className="text-[#FFC107]">{courseTitles[focusCourseSlug] ?? focusCourseSlug}</span>
+              <span className="text-[#0070f0]">{courseTitles[focusCourseSlug] ?? focusCourseSlug}</span>
               .{" "}
               <Link href="/my-learning?tab=community" className="text-violet-300 hover:underline">
                 View all
@@ -527,7 +527,7 @@ export function MyLearningCommunityHub({
           <button
             type="button"
             onClick={() => feedbackRef.current?.scrollIntoView({ behavior: "smooth" })}
-            className="inline-flex items-center gap-2 rounded-lg bg-[#FFC107] px-4 py-2.5 text-sm font-bold text-black hover:bg-[#FFD54F]"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#0070f0] px-4 py-2.5 text-sm font-bold text-black hover:bg-[#7ccfff]"
           >
             <Star className="h-4 w-4" aria-hidden />
             Share Your Review
@@ -535,9 +535,9 @@ export function MyLearningCommunityHub({
           <button
             type="button"
             onClick={scrollToAskQuestion}
-            className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-black/40 px-4 py-2.5 text-sm font-semibold text-white hover:border-[#FFC107]/40"
+            className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-black/40 px-4 py-2.5 text-sm font-semibold text-white hover:border-[#0070f0]/40"
           >
-            <MessageSquare className="h-4 w-4 text-[#FFC107]" aria-hidden />
+            <MessageSquare className="h-4 w-4 text-[#0070f0]" aria-hidden />
             Ask a Question
           </button>
         </div>
@@ -586,7 +586,7 @@ export function MyLearningCommunityHub({
                   onClick={() => setFeedScope(id)}
                   className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold ${
                     feedScope === id
-                      ? "bg-[#FFC107]/20 text-[#FFC107]"
+                      ? "bg-[#0070f0]/20 text-[#0070f0]"
                       : "border border-white/10 text-zinc-400 hover:text-white"
                   }`}
                 >
@@ -609,7 +609,7 @@ export function MyLearningCommunityHub({
                 return (
                   <div
                     key={item.id}
-                    className="rounded-xl border border-white/10 bg-black/30 p-3 transition hover:border-[#FFC107]/20"
+                    className="rounded-xl border border-white/10 bg-black/30 p-3 transition hover:border-[#0070f0]/20"
                   >
                     <div className="flex gap-3">
                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-violet-500/20 text-xs font-bold text-violet-200">
@@ -646,7 +646,7 @@ export function MyLearningCommunityHub({
                             {meta.label}
                           </span>
                         </div>
-                        <p className="mt-0.5 text-xs font-medium text-[#FFC107]">{item.courseTitle}</p>
+                        <p className="mt-0.5 text-xs font-medium text-[#0070f0]">{item.courseTitle}</p>
                         {item.rating ? (
                           <div className="mt-1">
                             <Stars value={item.rating} />
@@ -658,7 +658,7 @@ export function MyLearningCommunityHub({
                           <span>{item.timeLabel}</span>
                           <Link
                             href={item.href}
-                            className="inline-flex items-center gap-1 font-semibold text-[#FFC107] hover:underline"
+                            className="inline-flex items-center gap-1 font-semibold text-[#0070f0] hover:underline"
                           >
                             View thread
                             <ArrowRight className="h-3 w-3" aria-hidden />
@@ -724,7 +724,7 @@ export function MyLearningCommunityHub({
                       href={card.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-black/40 px-3 py-1.5 text-[11px] font-semibold text-white ring-1 ring-white/10 hover:ring-[#FFC107]/40"
+                      className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-black/40 px-3 py-1.5 text-[11px] font-semibold text-white ring-1 ring-white/10 hover:ring-[#0070f0]/40"
                     >
                       <ConnectPlatformIcon icon={card.icon} size={14} />
                       {card.cta}
@@ -852,7 +852,7 @@ export function MyLearningCommunityHub({
                         >
                           <Star
                             className={`h-4 w-4 ${
-                              n <= feedbackRating ? "fill-[#FFC107] text-[#FFC107]" : "text-zinc-600"
+                              n <= feedbackRating ? "fill-[#0070f0] text-[#0070f0]" : "text-zinc-600"
                             }`}
                           />
                         </button>
@@ -905,12 +905,12 @@ export function MyLearningCommunityHub({
           <ul className="mt-3 space-y-2 text-xs leading-relaxed text-zinc-400">
             {COMMUNITY_GUIDELINES.map((rule) => (
               <li key={rule} className="flex gap-2">
-                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#FFC107]" aria-hidden />
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#0070f0]" aria-hidden />
                 {rule}
               </li>
             ))}
           </ul>
-          <Link href="/faq" className="mt-3 inline-flex text-xs font-semibold text-[#FFC107] hover:underline">
+          <Link href="/faq" className="mt-3 inline-flex text-xs font-semibold text-[#0070f0] hover:underline">
             View full guidelines
           </Link>
         </article>
@@ -946,17 +946,17 @@ export function MyLearningCommunityHub({
       <article className="rounded-2xl border border-white/10 bg-black/40 p-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="inline-flex items-center gap-2 text-base font-bold text-white">
-            <Bell className="h-4 w-4 text-[#FFC107]" aria-hidden />
+            <Bell className="h-4 w-4 text-[#0070f0]" aria-hidden />
             Announcements
           </h2>
-          <Link href="/my-learning?tab=calendar" className="text-[10px] font-semibold text-[#FFC107] hover:underline">
+          <Link href="/my-learning?tab=calendar" className="text-[10px] font-semibold text-[#0070f0] hover:underline">
             View all on calendar
           </Link>
         </div>
         <ul className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
           {announcements.map((a) => (
             <li key={a.id} className="flex gap-2.5 rounded-lg border border-white/10 bg-black/30 p-2.5">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#FFC107]/15 text-[#FFC107]">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0070f0]/15 text-[#0070f0]">
                 <Megaphone className="h-4 w-4" aria-hidden />
               </span>
               <span className="min-w-0">

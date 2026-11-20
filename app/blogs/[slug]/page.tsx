@@ -46,7 +46,7 @@ export default async function BlogArticlePage({ params }: Props) {
       secondaryCtaHref="/book-a-call"
       secondaryCtaLabel="Ask an advisor"
     >
-      <div className="lh-path-card overflow-hidden rounded-3xl border border-amber-500/35 bg-black/20 p-4 shadow-[0_0_28px_rgba(249,177,77,0.14)] md:p-6">
+      <div className="lh-path-card overflow-hidden rounded-3xl border border-amber-500/35 bg-black/20 p-4 shadow-[0_0_28px_rgba(10,131,231,0.14)] md:p-6">
         <Image
           src={post.image}
           alt={post.title}
@@ -61,7 +61,7 @@ export default async function BlogArticlePage({ params }: Props) {
       <LmsContentCard>
         <p>
           This article supports learners on the {COMPANY_DISPLAY_NAME} LMS. Explore related courses in{" "}
-          <Link href="/courses" className="font-bold text-[#eb9422] underline decoration-amber-500/40">
+          <Link href="/courses" className="font-bold text-[#0070f0] underline decoration-amber-500/40">
             Our Courses
           </Link>{" "}
           or ask the site assistant for category recommendations.

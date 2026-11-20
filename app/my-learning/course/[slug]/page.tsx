@@ -797,7 +797,10 @@ export default function CourseLearningPlayerPage() {
   const isDefaultBrandPath =
     !customBrandLogo ||
     customBrandLogo === BRAND_LOGO_PUBLIC_PATH ||
+    customBrandLogo === "/logo-mark.png" ||
+    customBrandLogo === "/logo-mark.png" ||
     customBrandLogo === "/SF-WHITE-LOGO.png" ||
+    customBrandLogo.endsWith("/logo-mark.png") ||
     customBrandLogo.endsWith("/SF-WHITE-LOGO.png");
   const logoUrl = customBrandLogo || BRAND_LOGO_PUBLIC_PATH;
   const useHeaderBrandLogo = isDefaultBrandPath;
@@ -910,10 +913,10 @@ export default function CourseLearningPlayerPage() {
     const selected = activeLearningTool === tool.label;
     const available = Boolean(tool.value);
     if (selected) {
-      return "border-amber-300/70 bg-gradient-to-br from-amber-500/30 to-violet-600/25 text-white shadow-[0_0_22px_rgba(245,158,11,0.35)] ring-2 ring-amber-300/50";
+      return "border-amber-300/70 bg-gradient-to-br from-amber-500/30 to-violet-600/25 text-white shadow-[0_0_22px_rgba(54,182,255,0.35)] ring-2 ring-amber-300/50";
     }
     if (available) {
-      return "border-amber-400/40 bg-amber-500/15 text-amber-100 hover:border-amber-300/60 hover:bg-amber-500/25 hover:shadow-[0_0_14px_rgba(245,158,11,0.2)]";
+      return "border-amber-400/40 bg-amber-500/15 text-amber-100 hover:border-amber-300/60 hover:bg-amber-500/25 hover:shadow-[0_0_14px_rgba(54,182,255,0.2)]";
     }
     return "border-violet-400/35 bg-violet-500/12 text-violet-100 hover:border-violet-300/50 hover:bg-violet-500/20 hover:shadow-[0_0_14px_rgba(139,92,246,0.2)]";
   };

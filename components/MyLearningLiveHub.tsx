@@ -44,7 +44,7 @@ function dayDotClass(dayIndex: number, completedDays: number, trainingDays: numb
     return "bg-[#4CAF50]/35 text-[#66BB6A] ring-1 ring-[#4CAF50]/50";
   }
   if (dayIndex === completedDays && completedDays < trainingDays) {
-    return "border-2 border-[#FFC107] bg-[#FFC107]/15 text-[#FFC107] ring-2 ring-[#FFC107]/30";
+    return "border-2 border-[#0070f0] bg-[#0070f0]/15 text-[#0070f0] ring-2 ring-[#0070f0]/30";
   }
   return "border border-white/15 text-gray-500";
 }
@@ -191,7 +191,7 @@ export function MyLearningLiveHub({ enrollments, exploreCourses = [] }: Props) {
                       {course.examUnlocked ? (
                         <Link
                           href={examHref}
-                          className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#FFC107]/55 bg-[#FFC107]/15 px-2.5 py-1 text-[10px] font-bold text-[#FFC107] shadow-[0_0_12px_rgba(255,193,7,0.25)] transition hover:bg-[#FFC107]/25"
+                          className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#0070f0]/55 bg-[#0070f0]/15 px-2.5 py-1 text-[10px] font-bold text-[#0070f0] shadow-[0_0_12px_rgba(255,193,7,0.25)] transition hover:bg-[#0070f0]/25"
                         >
                           <GraduationCap className="h-3.5 w-3.5" aria-hidden />
                           Final exam active
@@ -260,7 +260,7 @@ export function MyLearningLiveHub({ enrollments, exploreCourses = [] }: Props) {
                       <div className="flex flex-wrap justify-end gap-1">
                         <Link
                           href={tutorLedLearnerLiveJoinHref(course.slug)}
-                          className="inline-flex items-center gap-1 rounded-md bg-[#FFC107] px-2.5 py-1 text-xs font-semibold text-black"
+                          className="inline-flex items-center gap-1 rounded-md bg-[#0070f0] px-2.5 py-1 text-xs font-semibold text-black"
                         >
                           <Play className="h-3 w-3 fill-black" aria-hidden />
                           Join live
@@ -281,15 +281,15 @@ export function MyLearningLiveHub({ enrollments, exploreCourses = [] }: Props) {
         </div>
       </div>
 
-      <article className="mt-4 rounded-xl border border-[#FFC107]/20 bg-black/30 p-4">
+      <article className="mt-4 rounded-xl border border-[#0070f0]/20 bg-black/30 p-4">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
           <h2 className="inline-flex items-center gap-2 text-xl font-bold text-white">
-            <Compass className="h-5 w-5 text-[#FFC107]" aria-hidden />
+            <Compass className="h-5 w-5 text-[#0070f0]" aria-hidden />
             Explore courses
           </h2>
           <Link
             href={liveTutorCourseHref()}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-[#FFC107] hover:underline"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#0070f0] hover:underline"
           >
             View all tutor-led programs
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
@@ -309,7 +309,7 @@ export function MyLearningLiveHub({ enrollments, exploreCourses = [] }: Props) {
               return (
                 <article
                   key={course.slug}
-                  className="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-black/25 transition hover:border-[#FFC107]/35"
+                  className="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-black/25 transition hover:border-[#0070f0]/35"
                 >
                   <div className="relative h-32 bg-black/40">
                     {course.image ? (
@@ -325,7 +325,7 @@ export function MyLearningLiveHub({ enrollments, exploreCourses = [] }: Props) {
                         Live training
                       </div>
                     )}
-                    <span className="absolute left-2 top-2 rounded-md bg-[#FFC107] px-2 py-0.5 text-[9px] font-bold uppercase text-black">
+                    <span className="absolute left-2 top-2 rounded-md bg-[#0070f0] px-2 py-0.5 text-[9px] font-bold uppercase text-black">
                       Tutor led
                     </span>
                     {enrolled ? (
@@ -339,13 +339,13 @@ export function MyLearningLiveHub({ enrollments, exploreCourses = [] }: Props) {
                     <p className="mt-1 line-clamp-2 text-[11px] text-gray-500">{course.subtitle}</p>
                     <ul className="mt-2 space-y-1 text-[10px] text-gray-400">
                       <li className="flex items-center gap-1.5">
-                        <Calendar className="h-3 w-3 shrink-0 text-[#FFC107]/80" aria-hidden />
+                        <Calendar className="h-3 w-3 shrink-0 text-[#0070f0]/80" aria-hidden />
                         {course.nextBatchDate}
                       </li>
                       <li>
                         {course.trainingDays} day{course.trainingDays === 1 ? "" : "s"} • {course.duration}
                       </li>
-                      <li className="inline-flex items-center gap-1 font-semibold text-[#FFC107]">
+                      <li className="inline-flex items-center gap-1 font-semibold text-[#0070f0]">
                         <IndianRupee className="h-3 w-3" aria-hidden />
                         {course.price.toLocaleString("en-IN")}
                       </li>
@@ -355,7 +355,7 @@ export function MyLearningLiveHub({ enrollments, exploreCourses = [] }: Props) {
                       className={`mt-3 inline-flex w-full items-center justify-center gap-1 rounded-lg py-2 text-xs font-bold ${
                         enrolled
                           ? "border border-white/15 text-amber-200 hover:bg-white/5"
-                          : "bg-[#FFC107] text-black hover:bg-[#FFD54F]"
+                          : "bg-[#0070f0] text-black hover:bg-[#7ccfff]"
                       }`}
                     >
                       {enrolled ? "Open program hub" : "View & enroll"}

@@ -96,7 +96,7 @@ export function MyLearningIndividualSubscriptions({ plans = INDIVIDUAL_SUBSCRIPT
           Self-paced courses
         </span>
         <span className="my-learning-subscription-pill inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-black/30 px-3 py-1">
-          <Video size={13} className="text-[#FFC107]" />
+          <Video size={13} className="text-[#0070f0]" />
           Tutor-led programs
         </span>
         <span className="my-learning-subscription-pill inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-black/30 px-3 py-1">

@@ -577,7 +577,7 @@ export default async function CoursesPage({
         </section>
 
         <section className="mt-4 grid gap-4 lg:grid-cols-2">
-          <article className="courses-featured-panel rounded-2xl border border-amber-300/35 bg-linear-to-br from-[#0b1530] via-[#091224] to-[#050a16] p-5 shadow-[0_0_26px_rgba(245,158,11,0.2)]">
+          <article className="courses-featured-panel rounded-2xl border border-amber-300/35 bg-linear-to-br from-[#0b1530] via-[#091224] to-[#050a16] p-5 shadow-[0_0_26px_rgba(54,182,255,0.2)]">
             <div className="mb-3 flex items-center justify-between">
               <h3 className="text-lg font-bold text-amber-100">Featured Courses</h3>
               <button className="text-xs font-semibold text-amber-200">View All</button>
@@ -589,7 +589,7 @@ export default async function CoursesPage({
               <div className="flex items-center">
                 {featuredExperts.map((expert, idx) => (
                   <div key={expert.name} className={`group relative ${idx > 0 ? "-ml-3" : ""}`}>
-                    <div className="h-11 w-11 overflow-hidden rounded-full border-2 border-amber-300/70 bg-white/10 shadow-[0_0_18px_rgba(245,158,11,0.28)]">
+                    <div className="h-11 w-11 overflow-hidden rounded-full border-2 border-amber-300/70 bg-white/10 shadow-[0_0_18px_rgba(54,182,255,0.28)]">
                       <Image
                         unoptimized
                         src={expert.photo}
@@ -613,7 +613,7 @@ export default async function CoursesPage({
               </button>
             </div>
           </article>
-          <article className="courses-featured-panel rounded-2xl border border-amber-300/35 bg-linear-to-br from-[#0b1530] via-[#091224] to-[#050a16] p-5 shadow-[0_0_26px_rgba(245,158,11,0.2)]">
+          <article className="courses-featured-panel rounded-2xl border border-amber-300/35 bg-linear-to-br from-[#0b1530] via-[#091224] to-[#050a16] p-5 shadow-[0_0_26px_rgba(54,182,255,0.2)]">
             <div className="mb-3 flex items-center justify-between">
               <h3 className="text-lg font-bold text-amber-100">Recommended for You</h3>
               {recommendedCourses.length > 3 ? (
@@ -712,7 +712,7 @@ export default async function CoursesPage({
                 alt="Graduation cap & diploma"
                 width={280}
                 height={220}
-                className="drop-shadow-[0_0_24px_rgba(212,160,23,0.45)]"
+                className="drop-shadow-[0_0_24px_rgba(10,131,231,0.45)]"
                 style={{ objectFit: "contain" }}
               />
             </div>

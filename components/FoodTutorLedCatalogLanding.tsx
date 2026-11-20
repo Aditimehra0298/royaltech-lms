@@ -112,7 +112,7 @@ export default function FoodTutorLedCatalogLanding({ page }: Props) {
           </p>
           <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-white md:text-5xl md:leading-[1.08]">
             {page.hero.heading}
-            <span className="mt-1 block bg-gradient-to-r from-amber-300 to-[#eb9422] bg-clip-text text-transparent">
+            <span className="mt-1 block bg-gradient-to-r from-amber-300 to-[#0070f0] bg-clip-text text-transparent">
               {page.hero.headingHighlight}
             </span>
           </h1>
@@ -134,7 +134,7 @@ export default function FoodTutorLedCatalogLanding({ page }: Props) {
           </ul>
           <a
             href={page.hero.ctaHref || "#food-tutor-led-programs"}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-[#eb9422] px-5 py-2.5 text-sm font-bold text-black shadow-[0_8px_24px_rgba(235,148,34,0.35)]"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-[#0070f0] px-5 py-2.5 text-sm font-bold text-black shadow-[0_8px_24px_rgba(10,131,231,0.35)]"
           >
             {page.hero.ctaText}
             <ChevronRight className="h-4 w-4" />
@@ -377,7 +377,7 @@ export default function FoodTutorLedCatalogLanding({ page }: Props) {
         <p className="mx-auto mt-2 max-w-xl text-sm text-zinc-400">{page.cta.description}</p>
         <a
           href={page.cta.buttonHref || "#food-tutor-led-programs"}
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-[#eb9422] px-6 py-2.5 text-sm font-bold text-black"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-[#0070f0] px-6 py-2.5 text-sm font-bold text-black"
         >
           {page.cta.buttonText}
           <ChevronRight className="h-4 w-4" />

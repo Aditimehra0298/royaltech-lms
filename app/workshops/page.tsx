@@ -42,7 +42,7 @@ export default async function WorkshopsIndexPage() {
                   <p className="mt-1 text-xs text-gray-400">Instructor · {w.instructor}</p>
                   <Link
                     href={w.registerHref}
-                    className="mt-4 flex w-full items-center justify-center rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] py-2.5 text-sm font-bold text-black transition hover:brightness-110"
+                    className="mt-4 flex w-full items-center justify-center rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] py-2.5 text-sm font-bold text-black transition hover:brightness-110"
                   >
                     Register
                   </Link>

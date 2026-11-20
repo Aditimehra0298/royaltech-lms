@@ -44,7 +44,7 @@ body {
 :root[data-theme="light"] .learnly-home {
   color: #1f2937;
   background:
-    radial-gradient(circle at 10% 8%, rgba(212, 160, 23, 0.2), transparent 28%),
+    radial-gradient(circle at 10% 8%, rgba(10,131,231, 0.2), transparent 28%),
     radial-gradient(circle at 88% 14%, rgba(139, 92, 246, 0.1), transparent 24%),
     linear-gradient(180deg, #f8f4ec 0%, #f3ede3 48%, #efe7da 100%);
 }
@@ -60,12 +60,12 @@ body {
 :root[data-theme="light"] .learnly-home .lh-testimonial-card,
 :root[data-theme="light"] .learnly-home .lh-unlock-shell {
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 160, 23, 0.2), transparent 34%),
+    radial-gradient(circle at 12% 0%, rgba(10,131,231, 0.2), transparent 34%),
     linear-gradient(135deg, rgba(248, 244, 236, 0.95), rgba(243, 237, 227, 0.92)) !important;
   border-color: rgba(180, 150, 90, 0.2) !important;
   box-shadow:
     0 14px 32px rgba(148, 118, 59, 0.14),
-    0 0 0 1px rgba(212, 160, 23, 0.1) inset !important;
+    0 0 0 1px rgba(10,131,231, 0.1) inset !important;
   backdrop-filter: blur(8px);
   transition: transform 220ms ease, box-shadow 240ms ease;
 }
@@ -80,7 +80,7 @@ body {
   transform: translateY(-3px);
   box-shadow:
     0 18px 40px rgba(148, 118, 59, 0.2),
-    0 0 24px rgba(212, 160, 23, 0.2) !important;
+    0 0 24px rgba(10,131,231, 0.2) !important;
 }
 
 :root[data-theme="light"] .learnly-home .bg-white,
@@ -158,15 +158,15 @@ body {
   background: linear-gradient(180deg, #f9cb77 0%, #e5a32f 100%) !important;
   color: #111827 !important;
   box-shadow:
-    0 10px 24px rgba(212, 160, 23, 0.3),
-    0 0 22px rgba(212, 160, 23, 0.22) !important;
+    0 10px 24px rgba(10,131,231, 0.3),
+    0 0 22px rgba(10,131,231, 0.22) !important;
 }
 
 :root[data-theme="light"] .learnly-home .lh-gold-btn:hover,
 :root[data-theme="light"] .learnly-home button[class*="text-black"][class*="rounded-full"]:hover {
   transform: translateY(-1px);
   box-shadow:
-    0 14px 30px rgba(212, 160, 23, 0.34),
+    0 14px 30px rgba(10,131,231, 0.34),
     0 0 28px rgba(139, 92, 246, 0.2) !important;
 }
 
@@ -175,7 +175,7 @@ body {
   background:
     linear-gradient(rgba(248, 244, 236, 0.9), rgba(243, 237, 227, 0.92)),
     url("/op.png"),
-    radial-gradient(circle at 10% 8%, rgba(212, 160, 23, 0.18), transparent 30%),
+    radial-gradient(circle at 10% 8%, rgba(10,131,231, 0.18), transparent 30%),
     radial-gradient(circle at 90% 12%, rgba(139, 92, 246, 0.1), transparent 24%),
     linear-gradient(180deg, #f8f4ec 0%, #f3ede3 52%, #efe7da 100%) !important;
   color: #1f2937 !important;
@@ -201,11 +201,11 @@ body {
 :root[data-theme="light"] .about-page div[class*="bg-white/5"],
 :root[data-theme="light"] .about-page div[class*="bg-[#0a1120]/80"] {
   background:
-    radial-gradient(circle at 10% 0%, rgba(212, 160, 23, 0.16), transparent 34%),
+    radial-gradient(circle at 10% 0%, rgba(10,131,231, 0.16), transparent 34%),
     linear-gradient(135deg, rgba(248, 244, 236, 0.96), rgba(243, 237, 227, 0.92)) !important;
   box-shadow:
     0 12px 30px rgba(148, 118, 59, 0.12),
-    0 0 0 1px rgba(212, 160, 23, 0.08) inset !important;
+    0 0 0 1px rgba(10,131,231, 0.08) inset !important;
 }
 
 :root[data-theme="light"] .about-page h1,
@@ -227,7 +227,7 @@ body {
 :root[data-theme="light"] .about-page .text-amber-300,
 :root[data-theme="light"] .about-page .text-violet-200,
 :root[data-theme="light"] .about-page .text-violet-300 {
-  color: #7a5610 !important;
+  color: #0058c7 !important;
 }
 
 /* About "More Than Learning" section light-theme polish */
@@ -241,8 +241,8 @@ body {
 
 :root[data-theme="light"] .about-page .about-who-badge {
   border-color: rgba(180, 150, 90, 0.35) !important;
-  background: rgba(212, 160, 23, 0.14) !important;
-  color: #7a5610 !important;
+  background: rgba(10,131,231, 0.14) !important;
+  color: #0058c7 !important;
 }
 
 :root[data-theme="light"] .about-page .about-who-title {

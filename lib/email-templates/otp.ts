@@ -54,7 +54,7 @@ export function buildOtpEmail(input: OtpTemplateInput): {
   const bodyHtml = `
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px">
       <tr>
-        <td style="padding:12px 16px;background:linear-gradient(90deg,${EMAIL_BRAND.greenSoft},rgba(249,177,77,0.12));
+        <td style="padding:12px 16px;background:linear-gradient(90deg,${EMAIL_BRAND.greenSoft},rgba(10,131,231,0.12));
           border-radius:12px;border-left:4px solid ${EMAIL_BRAND.greenMid}">
           <p style="margin:0;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:${EMAIL_BRAND.greenMid}">
             ${escapeHtml(heading)}

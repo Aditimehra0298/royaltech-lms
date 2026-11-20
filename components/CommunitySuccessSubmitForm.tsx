@@ -75,9 +75,9 @@ export function CommunitySuccessSubmitForm({ slugs, courseTitles, onSubmitted }:
   };
 
   return (
-    <article className="rounded-2xl border border-[#FFC107]/25 bg-gradient-to-br from-[#FFC107]/5 via-black/40 to-black p-4">
+    <article className="rounded-2xl border border-[#0070f0]/25 bg-gradient-to-br from-[#0070f0]/5 via-black/40 to-black p-4">
       <h2 className="inline-flex items-center gap-2 text-lg font-bold text-white">
-        <Trophy className="h-5 w-5 text-[#FFC107]" aria-hidden />
+        <Trophy className="h-5 w-5 text-[#0070f0]" aria-hidden />
         Submit Your Success
       </h2>
       <p className="mt-1 text-[11px] leading-relaxed text-zinc-400">
@@ -162,7 +162,7 @@ export function CommunitySuccessSubmitForm({ slugs, courseTitles, onSubmitted }:
             type="button"
             onClick={() => void submit()}
             disabled={submitting}
-            className="rounded-lg bg-[#FFC107] px-5 py-2.5 text-sm font-bold text-black hover:bg-[#FFD54F] disabled:opacity-60"
+            className="rounded-lg bg-[#0070f0] px-5 py-2.5 text-sm font-bold text-black hover:bg-[#7ccfff] disabled:opacity-60"
           >
             {submitting ? "Submitting…" : "Submit to Success Wall"}
           </button>

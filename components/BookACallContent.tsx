@@ -128,7 +128,7 @@ export default function BookACallContent() {
               <button
                 type="submit"
                 disabled={sending}
-                className="lh-gold-btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-[#f9b14d] to-[#eb9422] px-5 py-3 text-sm font-bold text-black shadow-[0_8px_24px_rgba(249,177,77,.35)] transition-all hover:-translate-y-0.5 hover:brightness-110 disabled:opacity-50"
+                className="lh-gold-btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-[#00b7fd] to-[#0070f0] px-5 py-3 text-sm font-bold text-white shadow-[0_8px_24px_rgba(0,183,253,.35)] transition-all hover:-translate-y-0.5 hover:brightness-110 disabled:opacity-50"
               >
                 {sending ? <Loader2 size={16} className="animate-spin" /> : <CalendarClock size={16} />}
                 Submit request
@@ -138,7 +138,7 @@ export default function BookACallContent() {
         </LmsContentCard>
 
         <div className="space-y-4">
-          <div className="lh-path-card overflow-hidden rounded-2xl border border-amber-500/35 bg-black/20 p-4 shadow-[0_0_24px_rgba(249,177,77,0.14)]">
+          <div className="lh-path-card overflow-hidden rounded-2xl border border-amber-500/35 bg-black/20 p-4 shadow-[0_0_24px_rgba(10,131,231,0.14)]">
             <Image
               src="/lms-advisor-side.png"
               alt="Talk with SFT training advisors"
@@ -147,7 +147,7 @@ export default function BookACallContent() {
               className="mx-auto h-auto w-full max-w-sm object-contain"
               sizes="420px"
             />
-            <p className="mt-3 text-center text-sm font-bold text-[#fde68a]">Speak with our training advisors</p>
+            <p className="mt-3 text-center text-sm font-bold text-[#7ccfff]">Speak with our training advisors</p>
           </div>
 
           <LmsContentCard title="Faster options">
@@ -161,13 +161,13 @@ export default function BookACallContent() {
             </a>
             <p className="inline-flex items-center gap-2">
               <Mail size={15} className="text-amber-300" />
-              <a href={`mailto:${SFT_EMAILS.info}`} className="font-bold text-[#fde68a] underline decoration-amber-500/40">
+              <a href={`mailto:${SFT_EMAILS.info}`} className="font-bold text-[#7ccfff] underline decoration-amber-500/40">
                 {SFT_EMAILS.info}
               </a>
             </p>
             <p>
               Or visit{" "}
-              <Link href="/contact" className="font-bold text-[#eb9422] underline decoration-amber-500/40">
+              <Link href="/contact" className="font-bold text-[#0070f0] underline decoration-amber-500/40">
                 Contact
               </Link>{" "}
               for offices and live chat.

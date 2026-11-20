@@ -373,7 +373,7 @@ export default async function CourseCategoryPage({
                 <div className="mt-10 flex flex-wrap gap-3">
                   <a
                     href="#course-grid"
-                    className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] px-7 py-3.5 text-sm font-bold text-black shadow-lg shadow-amber-900/30 transition hover:brightness-110"
+                    className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] px-7 py-3.5 text-sm font-bold text-black shadow-lg shadow-amber-900/30 transition hover:brightness-110"
                   >
                     Explore Courses <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                   </a>
@@ -449,7 +449,7 @@ export default async function CourseCategoryPage({
                     );
                   })()}
                   {i === 0 ? (
-                    <span className="absolute left-3 top-3 rounded-md bg-gradient-to-r from-amber-400 to-[#eb9422] px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-black">
+                    <span className="absolute left-3 top-3 rounded-md bg-gradient-to-r from-amber-400 to-[#0070f0] px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-black">
                       Bestseller
                     </span>
                   ) : null}
@@ -601,7 +601,7 @@ export default async function CourseCategoryPage({
                   <p className="mt-1 text-xs text-gray-400">Instructor · {w.instructor}</p>
                   <Link
                     href={w.registerHref}
-                    className="mt-4 flex w-full items-center justify-center rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] py-2.5 text-sm font-bold text-black transition hover:brightness-110"
+                    className="mt-4 flex w-full items-center justify-center rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] py-2.5 text-sm font-bold text-black transition hover:brightness-110"
                   >
                     Register
                   </Link>
@@ -702,7 +702,7 @@ export default async function CourseCategoryPage({
                 />
                 <button
                   type="button"
-                  className="min-h-12 shrink-0 rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] px-8 text-sm font-bold text-black hover:brightness-110"
+                  className="min-h-12 shrink-0 rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] px-8 text-sm font-bold text-black hover:brightness-110"
                 >
                   Subscribe
                 </button>
@@ -735,7 +735,7 @@ export default async function CourseCategoryPage({
           </p>
           <Link
             href="#course-grid"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] px-10 py-4 text-sm font-bold text-black shadow-lg transition hover:brightness-110"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] px-10 py-4 text-sm font-bold text-black shadow-lg transition hover:brightness-110"
           >
             Start Learning Now <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
           </Link>

@@ -313,7 +313,7 @@ export function MyLearningCalendarView({
           </div>
           <Link
             href="/my-learning?tab=dashboard"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-[#FFC107]/35 bg-[#FFC107]/10 px-3 py-2 text-xs font-semibold text-[#FFC107] transition hover:bg-[#FFC107]/20"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-[#0070f0]/35 bg-[#0070f0]/10 px-3 py-2 text-xs font-semibold text-[#0070f0] transition hover:bg-[#0070f0]/20"
           >
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
             Back to dashboard
@@ -323,17 +323,17 @@ export function MyLearningCalendarView({
 
       <div className="grid gap-4 xl:grid-cols-[1.55fr_1fr]">
         {/* Left — calendar */}
-        <article className="my-learning-calendar-shell rounded-2xl border border-[#FFC107]/25 bg-gradient-to-br from-[#14120a] via-[#0c0c0c] to-black p-4 shadow-[0_0_40px_rgba(255,193,7,0.06)] md:p-5">
+        <article className="my-learning-calendar-shell rounded-2xl border border-[#0070f0]/25 bg-gradient-to-br from-[#14120a] via-[#0c0c0c] to-black p-4 shadow-[0_0_40px_rgba(255,193,7,0.06)] md:p-5">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
             <h2 className="my-learning-calendar-heading inline-flex items-center gap-2 text-lg font-bold text-white">
-              <CalendarDays className="h-5 w-5 text-[#FFC107]" aria-hidden />
+              <CalendarDays className="h-5 w-5 text-[#0070f0]" aria-hidden />
               {isOrg ? "Team calendar" : "My calendar"}
             </h2>
             <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={goToday}
-                className="rounded-lg border border-[#FFC107]/40 bg-[#FFC107]/10 px-3 py-1.5 text-xs font-semibold text-[#FFC107] hover:bg-[#FFC107]/20"
+                className="rounded-lg border border-[#0070f0]/40 bg-[#0070f0]/10 px-3 py-1.5 text-xs font-semibold text-[#0070f0] hover:bg-[#0070f0]/20"
               >
                 Today
               </button>
@@ -366,7 +366,7 @@ export function MyLearningCalendarView({
                     onClick={() => setViewMode(mode)}
                     className={`rounded-md px-3 py-1.5 text-[11px] font-semibold capitalize ${
                       viewMode === mode
-                        ? "bg-[#FFC107] text-black"
+                        ? "bg-[#0070f0] text-black"
                         : "text-zinc-400 hover:text-white"
                     }`}
                   >
@@ -413,7 +413,7 @@ export function MyLearningCalendarView({
                       onClick={() => setSelected(startOfDay(cell.date!))}
                       className={`my-learning-calendar-day relative flex min-h-[64px] flex-col items-center justify-start rounded-lg px-0.5 pt-1.5 text-sm font-medium transition ${
                         isSelected
-                          ? `my-learning-calendar-day--selected bg-[#FFC107]/15 text-[#FFC107] ring-2 ${primaryKind ? eventKindRing(primaryKind) : "ring-[#FFC107]/60"}`
+                          ? `my-learning-calendar-day--selected bg-[#0070f0]/15 text-[#0070f0] ring-2 ${primaryKind ? eventKindRing(primaryKind) : "ring-[#0070f0]/60"}`
                           : isToday
                             ? "my-learning-calendar-day--today bg-violet-500/15 text-violet-100 ring-1 ring-violet-400/50"
                             : "my-learning-calendar-day--default bg-black/50 text-zinc-200 hover:bg-white/5"
@@ -464,7 +464,7 @@ export function MyLearningCalendarView({
                     onClick={() => setSelected(d)}
                     className={`my-learning-calendar-week-day rounded-xl border p-2 text-left ${
                       isSelected
-                        ? "border-[#FFC107]/50 bg-[#FFC107]/10"
+                        ? "border-[#0070f0]/50 bg-[#0070f0]/10"
                         : "border-white/10 bg-black/40"
                     }`}
                   >
@@ -490,7 +490,7 @@ export function MyLearningCalendarView({
                   <li key={ev.id}>
                     <Link
                       href={ev.href}
-                      className="flex items-center justify-between gap-2 rounded-lg border border-white/10 bg-black/40 px-3 py-2.5 hover:border-[#FFC107]/30"
+                      className="flex items-center justify-between gap-2 rounded-lg border border-white/10 bg-black/40 px-3 py-2.5 hover:border-[#0070f0]/30"
                     >
                       <div className="min-w-0">
                         <p className="truncate text-sm font-medium text-white">{ev.title}</p>
@@ -507,10 +507,10 @@ export function MyLearningCalendarView({
           <div className="mt-5 rounded-xl border border-white/10 bg-black/40 p-4">
             <div className="flex flex-wrap items-center gap-4 border-b border-white/10 pb-4">
               <div
-                className="flex h-[4.5rem] w-[4.5rem] shrink-0 flex-col items-center justify-center rounded-xl border border-[#FFC107]/35 bg-[#FFC107]/10 shadow-[0_0_20px_rgba(255,193,7,0.12)]"
+                className="flex h-[4.5rem] w-[4.5rem] shrink-0 flex-col items-center justify-center rounded-xl border border-[#0070f0]/35 bg-[#0070f0]/10 shadow-[0_0_20px_rgba(255,193,7,0.12)]"
                 aria-hidden
               >
-                <span className="text-3xl font-bold leading-none text-[#FFC107]">{selected.getDate()}</span>
+                <span className="text-3xl font-bold leading-none text-[#0070f0]">{selected.getDate()}</span>
                 <span className="mt-0.5 text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
                   {selectedMonthShort}
                 </span>
@@ -542,15 +542,15 @@ export function MyLearningCalendarView({
                         setSelected(startOfDay(nextUpcoming.date));
                         setViewDate(new Date(nextUpcoming.date.getFullYear(), nextUpcoming.date.getMonth(), 1));
                       }}
-                      className="mt-3 w-full rounded-lg border border-[#FFC107]/30 bg-[#FFC107]/10 px-3 py-2.5 text-left text-xs transition hover:bg-[#FFC107]/15"
+                      className="mt-3 w-full rounded-lg border border-[#0070f0]/30 bg-[#0070f0]/10 px-3 py-2.5 text-left text-xs transition hover:bg-[#0070f0]/15"
                     >
-                      <span className="font-semibold text-[#FFC107]">Next up · {formatShortDate(nextUpcoming.date)}</span>
+                      <span className="font-semibold text-[#0070f0]">Next up · {formatShortDate(nextUpcoming.date)}</span>
                       <span className="mt-0.5 block truncate text-zinc-400">{nextUpcoming.title}</span>
                     </button>
                   ) : (
                     <Link
                       href="/my-learning?tab=live"
-                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#FFC107] hover:underline"
+                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#0070f0] hover:underline"
                     >
                       <Compass className="h-3.5 w-3.5" aria-hidden />
                       Explore tutor-led programs
@@ -597,7 +597,7 @@ export function MyLearningCalendarView({
                           )}
                           <div className="min-w-0">
                             <p className="text-[10px] font-bold uppercase tracking-wide text-zinc-500">{kindLabel}</p>
-                            {time ? <p className="text-xs font-semibold text-[#FFC107]">{time}</p> : null}
+                            {time ? <p className="text-xs font-semibold text-[#0070f0]">{time}</p> : null}
                             <p className="text-sm font-medium text-white">{ev.title}</p>
                             {ev.subtitle ? (
                               <p className="mt-0.5 truncate text-[11px] text-zinc-400">{ev.subtitle}</p>
@@ -616,7 +616,7 @@ export function MyLearningCalendarView({
                         ) : (
                           <Link
                             href={ev.href}
-                            className="shrink-0 rounded-lg bg-[#FFC107] px-3 py-2 text-[11px] font-bold text-black hover:bg-[#FFD54F]"
+                            className="shrink-0 rounded-lg bg-[#0070f0] px-3 py-2 text-[11px] font-bold text-black hover:bg-[#7ccfff]"
                           >
                             {ev.kind === "live"
                               ? "Join session"
@@ -729,10 +729,10 @@ export function MyLearningCalendarView({
           <article className="my-learning-calendar-side rounded-2xl border border-white/10 bg-black/40 p-4">
             <div className="flex items-center justify-between gap-2">
               <h2 className="my-learning-calendar-heading inline-flex items-center gap-2 text-lg font-bold text-white">
-                <Bell className="h-5 w-5 text-[#FFC107]" aria-hidden />
+                <Bell className="h-5 w-5 text-[#0070f0]" aria-hidden />
                 Notifications
               </h2>
-              <Link href="/my-learning?tab=dashboard" className="text-[11px] font-semibold text-[#FFC107] hover:underline">
+              <Link href="/my-learning?tab=dashboard" className="text-[11px] font-semibold text-[#0070f0] hover:underline">
                 View all
               </Link>
             </div>
@@ -756,7 +756,7 @@ export function MyLearningCalendarView({
                   onClick={() => setNotifFilter(id)}
                   className={`rounded-full px-2.5 py-1 text-[10px] font-semibold ${
                     notifFilter === id
-                      ? "bg-[#FFC107]/20 text-[#FFC107]"
+                      ? "bg-[#0070f0]/20 text-[#0070f0]"
                       : "border border-white/10 text-zinc-400 hover:text-white"
                   }`}
                 >
@@ -777,7 +777,7 @@ export function MyLearningCalendarView({
                     n.tone === "violet"
                       ? "bg-violet-500/15 text-violet-300"
                       : n.tone === "amber"
-                        ? "bg-[#FFC107]/15 text-[#FFC107]"
+                        ? "bg-[#0070f0]/15 text-[#0070f0]"
                         : n.tone === "sky"
                           ? "bg-sky-500/15 text-sky-300"
                           : "bg-emerald-500/15 text-emerald-300";
@@ -785,7 +785,7 @@ export function MyLearningCalendarView({
                     <Link
                       key={n.id}
                       href={n.href}
-                      className="flex gap-3 rounded-xl border border-white/10 bg-black/30 p-2.5 transition hover:border-[#FFC107]/25"
+                      className="flex gap-3 rounded-xl border border-white/10 bg-black/30 p-2.5 transition hover:border-[#0070f0]/25"
                     >
                       <span
                         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${iconBg}`}

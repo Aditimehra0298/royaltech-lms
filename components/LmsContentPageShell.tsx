@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import { COMPANY_DISPLAY_NAME } from "@/lib/contact-site-data";
 
 const sectionShell = "mx-auto max-w-[1760px] px-4 md:px-6 xl:px-8";
-const goldGradient = "bg-gradient-to-b from-[#f9b14d] to-[#eb9422]";
+const goldGradient = "bg-gradient-to-b from-[#00b7fd] to-[#0070f0]";
 
 type Props = {
   badge: string;
@@ -51,9 +51,9 @@ export default function LmsContentPageShell({
     return () => observer.disconnect();
   }, []);
 
-  const goldText = isLightTheme ? "lh-gold-text text-[#9a6812]" : "text-[#fde68a]";
+  const goldText = isLightTheme ? "lh-gold-text text-[#3b82c4]" : "text-[#7ccfff]";
   const muted = isLightTheme ? "text-slate-600" : "text-slate-400";
-  const backTone = isLightTheme ? "text-[#9a6812] hover:text-[#7a520e]" : "text-amber-200/85 hover:text-amber-100";
+  const backTone = isLightTheme ? "text-[#3b82c4] hover:text-[#0058c7]" : "text-amber-200/85 hover:text-amber-100";
 
   return (
     <div
@@ -83,7 +83,7 @@ export default function LmsContentPageShell({
 
         <section
           className={`lh-path-card mt-6 overflow-hidden rounded-3xl border ${
-            isLightTheme ? "border-[#b4965a]/30 bg-white/70 shadow-[0_12px_40px_rgba(154,104,18,0.08)]" : "border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] shadow-[0_0_40px_rgba(249,177,77,0.14)]"
+            isLightTheme ? "border-[#b4965a]/30 bg-white/70 shadow-[0_12px_40px_rgba(154,104,18,0.08)]" : "border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] shadow-[0_0_40px_rgba(10,131,231,0.14)]"
           }`}
         >
           <div className="grid lg:grid-cols-[1.12fr_0.88fr]">
@@ -91,11 +91,11 @@ export default function LmsContentPageShell({
               <p
                 className={`lh-premium-badge inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] ${
                   isLightTheme
-                    ? "border-[#b4965a]/35 bg-[#f8f1e4] text-[#9a6812]"
+                    ? "border-[#b4965a]/35 bg-[#f8f1e4] text-[#3b82c4]"
                     : "border-amber-400/35 bg-amber-500/10 text-amber-200"
                 }`}
               >
-                <Sparkles size={13} className={isLightTheme ? "text-[#c47f0a]" : "text-amber-300"} />
+                <Sparkles size={13} className={isLightTheme ? "text-[#0070f0]" : "text-amber-300"} />
                 {badge}
               </p>
 
@@ -119,7 +119,7 @@ export default function LmsContentPageShell({
                   {ctaHref && ctaLabel ? (
                     <Link
                       href={ctaHref}
-                      className={`lh-gold-btn inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-black shadow-[0_8px_24px_rgba(249,177,77,.35)] transition-all hover:-translate-y-0.5 hover:brightness-110 ${goldGradient}`}
+                      className={`lh-gold-btn inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white shadow-[0_8px_24px_rgba(0,183,253,.35)] transition-all hover:-translate-y-0.5 hover:brightness-110 ${goldGradient}`}
                     >
                       {ctaLabel} <ArrowRight size={14} />
                     </Link>
@@ -129,8 +129,8 @@ export default function LmsContentPageShell({
                       href={secondaryCtaHref}
                       className={`inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-bold transition ${
                         isLightTheme
-                          ? "border-[#b4965a]/40 text-[#9a6812] hover:bg-[#f8f1e4]"
-                          : "border-amber-500/40 text-[#fde68a] hover:bg-amber-500/10"
+                          ? "border-[#b4965a]/40 text-[#3b82c4] hover:bg-[#f8f1e4]"
+                          : "border-amber-500/40 text-[#7ccfff] hover:bg-amber-500/10"
                       }`}
                     >
                       {secondaryCtaLabel}
@@ -177,7 +177,7 @@ export default function LmsContentPageShell({
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/courses"
-                className={`lh-gold-btn inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-black shadow-[0_8px_24px_rgba(249,177,77,.35)] transition-all hover:-translate-y-0.5 hover:brightness-110 ${goldGradient}`}
+                className={`lh-gold-btn inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white shadow-[0_8px_24px_rgba(0,183,253,.35)] transition-all hover:-translate-y-0.5 hover:brightness-110 ${goldGradient}`}
               >
                 Explore courses <ArrowRight size={14} />
               </Link>
@@ -185,8 +185,8 @@ export default function LmsContentPageShell({
                 href="/book-a-call"
                 className={`inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-bold transition ${
                   isLightTheme
-                    ? "border-[#b4965a]/40 text-[#9a6812] hover:bg-white/70"
-                    : "border-amber-500/45 text-[#fde68a] hover:bg-amber-500/10"
+                    ? "border-[#b4965a]/40 text-[#3b82c4] hover:bg-white/70"
+                    : "border-amber-500/45 text-[#7ccfff] hover:bg-amber-500/10"
                 }`}
               >
                 Book a call
@@ -222,8 +222,8 @@ export function LmsContentCard({
     <section
       className={`lh-path-card rounded-2xl border p-5 transition-all md:p-6 ${
         isLightTheme
-          ? "border-[#b4965a]/28 bg-white/75 shadow-[0_8px_28px_rgba(154,104,18,0.08)] hover:border-[#9a6812]/45"
-          : "border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] shadow-[0_0_24px_rgba(249,177,77,0.14)] hover:border-amber-300/70 hover:shadow-[0_0_32px_rgba(249,177,77,0.22)]"
+          ? "border-[#b4965a]/28 bg-white/75 shadow-[0_8px_28px_rgba(154,104,18,0.08)] hover:border-[#3b82c4]/45"
+          : "border-amber-500/35 bg-linear-to-b from-[#1b1306] via-[#120d07] to-[#0a0808] shadow-[0_0_24px_rgba(10,131,231,0.14)] hover:border-amber-300/70 hover:shadow-[0_0_32px_rgba(10,131,231,0.22)]"
       }`}
     >
       {title ? (
@@ -232,14 +232,14 @@ export function LmsContentCard({
             <span
               className={`lh-icon-chip inline-flex h-9 w-9 items-center justify-center rounded-xl border ${
                 isLightTheme
-                  ? "border-[#b4965a]/30 bg-[#f8f1e4] text-[#9a6812]"
+                  ? "border-[#b4965a]/30 bg-[#f8f1e4] text-[#3b82c4]"
                   : "border-amber-400/30 bg-amber-500/10 text-amber-300"
               }`}
             >
               {icon}
             </span>
           ) : null}
-          <h2 className={`lh-card-title text-lg font-bold ${isLightTheme ? "text-slate-900" : "text-[#fde68a]"}`}>
+          <h2 className={`lh-card-title text-lg font-bold ${isLightTheme ? "text-slate-900" : "text-[#7ccfff]"}`}>
             {title}
           </h2>
         </div>

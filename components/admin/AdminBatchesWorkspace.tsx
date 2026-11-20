@@ -262,7 +262,7 @@ export default function AdminBatchesWorkspace() {
                 type="button"
                 onClick={() => void seedIsoPrograms()}
                 disabled={seeding}
-                className="inline-flex items-center gap-1 rounded-lg bg-[#FFB800] px-2.5 py-1 font-semibold text-black hover:bg-[#e5a600] disabled:opacity-50"
+                className="inline-flex items-center gap-1 rounded-lg bg-[#00b7fd] px-2.5 py-1 font-semibold text-black hover:bg-[#e5a600] disabled:opacity-50"
               >
                 {seeding ? <Loader2 className="h-3 w-3 animate-spin" /> : <Award className="h-3 w-3" />}
                 Add 4 ISO programs

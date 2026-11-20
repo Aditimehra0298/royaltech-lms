@@ -178,7 +178,7 @@ function VerifyContent({ isLight }: { isLight: boolean }) {
           }}
           className={`mb-4 flex w-full items-center justify-center gap-2 rounded-xl border py-3 text-sm font-semibold transition ${
             isLight
-              ? "border-[#b4965a]/45 bg-[#f8f4ec] text-[#8a6412] hover:bg-[#f1e8d8]"
+              ? "border-[#b4965a]/45 bg-[#f8f4ec] text-[#3b82c4] hover:bg-[#f1e8d8]"
               : "border-white/15 bg-white/5 text-amber-200 hover:bg-white/10"
           }`}
         >
@@ -223,7 +223,7 @@ function VerifyContent({ isLight }: { isLight: boolean }) {
         <button
           type="submit"
           disabled={!canSubmit}
-          className="mt-4 w-full rounded-xl bg-gradient-to-b from-[#f9b14d] to-[#eb9422] py-3 text-sm font-bold text-black shadow-md transition hover:brightness-110 disabled:opacity-50"
+          className="mt-4 w-full rounded-xl bg-gradient-to-b from-[#00b7fd] to-[#0070f0] py-3 text-sm font-bold text-black shadow-md transition hover:brightness-110 disabled:opacity-50"
         >
           {status === "loading" ? "Verifying…" : "Verify certificate"}
         </button>
@@ -256,7 +256,7 @@ function VerifyContent({ isLight }: { isLight: boolean }) {
             </p>
 
             {certificate.certificateNumber ? (
-              <p className="mt-4 font-mono text-base font-semibold text-[#8a6412]">
+              <p className="mt-4 font-mono text-base font-semibold text-[#3b82c4]">
                 {certificate.certificateNumber}
               </p>
             ) : null}
@@ -349,7 +349,7 @@ function VerifyContent({ isLight }: { isLight: boolean }) {
             <p className={`mt-4 text-xs ${muted}`}>
               Use the same email registered for the course, and the exact certificate number. Need
               help?{" "}
-              <Link href="/contact" className="font-semibold text-[#8a6412] underline">
+              <Link href="/contact" className="font-semibold text-[#3b82c4] underline">
                 Contact us
               </Link>
               .
@@ -388,7 +388,7 @@ export default function VerifyCertificatePage() {
       }
     >
       <div className="mx-auto mb-10 max-w-3xl text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8a6412]">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3b82c4]">
           Accredited credential check
         </p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
@@ -400,7 +400,7 @@ export default function VerifyCertificatePage() {
         </p>
         <div
           className={`mt-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-wide ${
-            isLight ? "text-[#8a6412]" : "text-amber-200/90"
+            isLight ? "text-[#3b82c4]" : "text-amber-200/90"
           }`}
         >
           <span className={`rounded-full border px-3 py-1 ${isLight ? "border-[#b4965a]/40 bg-white/70" : "border-amber-500/30 bg-white/5"}`}>

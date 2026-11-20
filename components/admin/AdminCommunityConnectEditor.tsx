@@ -241,7 +241,7 @@ export function AdminCommunityConnectEditor() {
               type="button"
               onClick={() => void save()}
               disabled={saving}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-[#FFC107] px-4 py-2 text-xs font-bold text-black hover:bg-[#FFD54F] disabled:opacity-60"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#0070f0] px-4 py-2 text-xs font-bold text-black hover:bg-[#7ccfff] disabled:opacity-60"
             >
               <Save className="h-3.5 w-3.5" aria-hidden />
               {saving ? "Saving…" : "Save connect links"}
