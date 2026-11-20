@@ -3,10 +3,14 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || "",
-});
+/** Lazy client — do not construct at module load (breaks `next build` without OPENAI_API_KEY). */
+function getOpenAI(): OpenAI {
+  const apiKey = process.env.OPENAI_API_KEY?.trim();
+  if (!apiKey) {
+    throw new Error("OPENAI_API_KEY is not configured");
+  }
+  return new OpenAI({ apiKey });
+}
 
 /** Detect issue category from the description text to build the SFT token prefix. */
 function detectCategory(text: string): string {
@@ -50,6 +54,8 @@ export async function POST(req: Request) {
         { status: 500, headers: { "Content-Type": "application/json" } }
       );
     }
+
+    const openai = getOpenAI();
 
     // 1. Create thread if not provided, or reuse the existing thread
     const threadIdToUse = threadId || (await openai.beta.threads.create()).id;
